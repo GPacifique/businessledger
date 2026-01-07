@@ -52,7 +52,7 @@ class IncomeController extends Controller
             'amount' => $request->amount,
             'date' => $request->date,
             'payment_method' => $request->payment_method,
-            'reference_number' => $request->reference_number,
+            'reference_number' => $request->reference_number ?: Income::generateReferenceNumber(),
             'notes' => $request->notes,
             'created_by' => auth()->id(),
         ]);
@@ -98,7 +98,7 @@ class IncomeController extends Controller
             'amount' => $request->amount,
             'date' => $request->date,
             'payment_method' => $request->payment_method,
-            'reference_number' => $request->reference_number,
+            'reference_number' => $request->reference_number ?: ($income->reference_number ?: Income::generateReferenceNumber()),
             'notes' => $request->notes,
         ]);
 

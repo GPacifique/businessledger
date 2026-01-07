@@ -73,4 +73,29 @@ class Expense extends Model
     {
         return $query->where('is_recurring', true);
     }
+
+    /**
+     * Generate a unique reference number for expense
+     * Format: EXP-YYYYMMDD-XXXXX
+     */
+    public static function generateReferenceNumber(): string
+    {
+        $date = now()->format('Ymd');
+        $prefix = 'EXP-' . $date . '-';
+
+        // Get the last expense with this prefix
+        $lastExpense = self::where('reference_number', 'like', $prefix . '%')
+            ->orderBy('reference_number', 'desc')
+            ->first();
+
+        if ($lastExpense) {
+            // Extract the number and increment
+            $lastNumber = (int) substr($lastExpense->reference_number, -5);
+            $newNumber = $lastNumber + 1;
+        } else {
+            $newNumber = 1;
+        }
+
+        return $prefix . str_pad($newNumber, 5, '0', STR_PAD_LEFT);
+    }
 }

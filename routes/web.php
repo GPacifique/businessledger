@@ -61,7 +61,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/admin/businesses/{business}/reject', [SystemAdminController::class, 'rejectBusiness'])->name('admin.businesses.reject');
         Route::get('/admin/businesses/create', [SystemAdminController::class, 'createBusiness'])->name('admin.businesses.create');
         Route::post('/admin/businesses', [SystemAdminController::class, 'storeBusiness'])->name('admin.businesses.store');
+        Route::get('/admin/businesses/{business}/edit', [SystemAdminController::class, 'editBusiness'])->name('admin.businesses.edit');
+        Route::put('/admin/businesses/{business}', [SystemAdminController::class, 'updateBusiness'])->name('admin.businesses.update');
+        Route::delete('/admin/businesses/{business}', [SystemAdminController::class, 'destroyBusiness'])->name('admin.businesses.destroy');
         Route::get('/admin/users', [SystemAdminController::class, 'listUsers'])->name('admin.users.index');
+        Route::get('/admin/users/{user}/edit', [SystemAdminController::class, 'editUser'])->name('admin.users.edit');
+        Route::put('/admin/users/{user}', [SystemAdminController::class, 'updateUser'])->name('admin.users.update');
+        Route::delete('/admin/users/{user}', [SystemAdminController::class, 'destroyUser'])->name('admin.users.destroy');
     });
 
     // Business Admin Routes - Only accessible by business_admin

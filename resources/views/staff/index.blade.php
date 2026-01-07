@@ -107,6 +107,13 @@
                             <a href="{{ route('staff.edit', $member) }}" class="inline-flex items-center px-3 py-1.5 border border-transparent rounded-md text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 transition">
                                 Edit
                             </a>
+                            <form action="{{ route('staff.destroy', $member) }}" method="POST" class="inline" onsubmit="return confirm('Are you sure you want to delete this staff member?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="inline-flex items-center px-3 py-1.5 border border-transparent rounded-md text-sm font-medium text-white bg-red-600 hover:bg-red-700 transition">
+                                    Delete
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>

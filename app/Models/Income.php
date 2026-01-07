@@ -64,4 +64,29 @@ class Income extends Model
     {
         return $query->whereYear('date', now()->year);
     }
+
+    /**
+     * Generate a unique reference number for income
+     * Format: INC-YYYYMMDD-XXXXX
+     */
+    public static function generateReferenceNumber(): string
+    {
+        $date = now()->format('Ymd');
+        $prefix = 'INC-' . $date . '-';
+
+        // Get the last income with this prefix
+        $lastIncome = self::where('reference_number', 'like', $prefix . '%')
+            ->orderBy('reference_number', 'desc')
+            ->first();
+
+        if ($lastIncome) {
+            // Extract the number and increment
+            $lastNumber = (int) substr($lastIncome->reference_number, -5);
+            $newNumber = $lastNumber + 1;
+        } else {
+            $newNumber = 1;
+        }
+
+        return $prefix . str_pad($newNumber, 5, '0', STR_PAD_LEFT);
+    }
 }
