@@ -33,7 +33,17 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'captcha_answer' => ['required', 'integer'],
+            'captcha_hash' => ['required', 'string'],
+        ], [
+            'captcha_answer.required' => 'Please solve the math puzzle.',
         ]);
+
+        // Verify the captcha answer
+        $expectedHash = hash('sha256', $request->captcha_answer . config('app.key'));
+        if ($expectedHash !== $request->captcha_hash) {
+            return back()->withErrors(['captcha_answer' => 'Incorrect answer. Please try again.'])->withInput();
+        }
 
         $user = User::create([
             'name' => $request->name,

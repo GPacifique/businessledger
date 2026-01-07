@@ -75,6 +75,62 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
+        <!-- Security Puzzle -->
+        <div class="mt-4">
+            <label class="block text-sm font-semibold text-gray-700 mb-2">Security Check</label>
+            <div class="bg-gradient-to-r from-slate-50 to-gray-50 rounded-xl p-4 border border-gray-200">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center">
+                        <div class="p-2 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg mr-3">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-gray-700">Solve to verify you're human</p>
+                            <p class="text-xs text-gray-500">Answer the math question below</p>
+                        </div>
+                    </div>
+                </div>
+
+                @php
+                    $operators = ['+', '-', '×'];
+                    $operator = $operators[array_rand($operators)];
+
+                    if ($operator === '+') {
+                        $num1 = rand(5, 15);
+                        $num2 = rand(3, 10);
+                        $answer = $num1 + $num2;
+                    } elseif ($operator === '-') {
+                        $num1 = rand(10, 20);
+                        $num2 = rand(2, 9);
+                        $answer = $num1 - $num2;
+                    } else {
+                        $num1 = rand(2, 9);
+                        $num2 = rand(2, 5);
+                        $answer = $num1 * $num2;
+                    }
+
+                    $hashedAnswer = hash('sha256', $answer . config('app.key'));
+                @endphp
+
+                <div class="flex items-center space-x-3">
+                    <div class="flex-1 bg-white rounded-lg px-4 py-3 border border-gray-200 text-center">
+                        <span class="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                            {{ $num1 }} {{ $operator }} {{ $num2 }} = ?
+                        </span>
+                    </div>
+                    <div class="flex-1">
+                        <input type="number" name="captcha_answer" id="captcha_answer"
+                            class="block w-full rounded-lg border-gray-200 text-center text-xl font-bold focus:border-indigo-500 focus:ring-indigo-500 transition-colors duration-200"
+                            placeholder="?" required>
+                        <input type="hidden" name="captcha_hash" value="{{ $hashedAnswer }}">
+                    </div>
+                </div>
+            </div>
+            <x-input-error :messages="$errors->get('captcha_answer')" class="mt-2" />
+        </div>
+
         <div class="mt-6">
             <button type="submit" class="w-full justify-center py-3 inline-flex items-center px-6 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 border border-transparent rounded-xl font-semibold text-base text-white hover:from-emerald-600 hover:via-teal-600 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all duration-300 shadow-lg shadow-emerald-500/25 hover:shadow-xl hover:-translate-y-0.5">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
