@@ -28,7 +28,9 @@ class IncomeController extends Controller
             ->orderBy('name')
             ->get();
 
-        return view('incomes.create', compact('categories'));
+        $referenceNumber = Income::generateReferenceNumber();
+
+        return view('incomes.create', compact('categories', 'referenceNumber'));
     }
 
     public function store(Request $request)

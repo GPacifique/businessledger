@@ -163,10 +163,11 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>
                                     </svg>
                                 </div>
-                                <input type="text" name="reference_number" id="reference_number" value="{{ old('reference_number') }}"
-                                    class="pl-12 block w-full rounded-xl border-gray-200 shadow-sm focus:border-emerald-500 focus:ring-emerald-500 transition-colors duration-200"
-                                    placeholder="e.g., Invoice #, Receipt #">
+                                <input type="text" name="reference_number" id="reference_number" value="{{ old('reference_number', $referenceNumber) }}"
+                                    class="pl-12 block w-full rounded-xl border-gray-200 shadow-sm focus:border-emerald-500 focus:ring-emerald-500 transition-colors duration-200 bg-gray-50"
+                                    readonly>
                             </div>
+                            <p class="mt-1 text-xs text-gray-500">Auto-generated reference number</p>
                             @error('reference_number')
                                 <p class="mt-2 text-sm text-rose-600 flex items-center">
                                     <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
