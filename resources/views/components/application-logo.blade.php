@@ -20,8 +20,8 @@
         <rect x="34" y="25" width="5" height="5" rx="1" fill="currentColor" opacity="0.6"/>
     </g>
 
-    <!-- Shopledger Text -->
+    <!-- BusinessLedger Text -->
     <text x="52" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="currentColor">
-        Shop<tspan fill="currentColor" opacity="0.7">ledger</tspan>
+        Business<tspan fill="currentColor" opacity="0.7">Ledger</tspan>
     </text>
 </svg>

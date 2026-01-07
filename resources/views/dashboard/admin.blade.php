@@ -8,8 +8,8 @@
                     </svg>
                 </div>
                 <div>
-                    <h2 class="font-bold text-xl text-gray-800 leading-tight">System Admin Dashboard</h2>
-                    <p class="text-sm text-gray-500">Manage all shops and users</p>
+                    <h2 class="font-bold text-xl text-gray-800 leading-tight">{{ __('messages.System Admin Dashboard') }}</h2>
+                    <p class="text-sm text-gray-500">{{ __('messages.Manage all businesses and users') }}</p>
                 </div>
             </div>
             <div class="text-right hidden md:block">
@@ -33,34 +33,34 @@
                                 </svg>
                             </div>
                         </div>
-                        <h3 class="text-sm font-medium text-gray-500 mb-1">Total Shops</h3>
-                        <p class="text-3xl font-bold text-gray-900">{{ number_format($totalShops) }}</p>
+                        <h3 class="text-sm font-medium text-gray-500 mb-1">{{ __('messages.Total Businesses') }}</h3>
+                        <p class="text-3xl font-bold text-gray-900">{{ number_format($totalBusinesses) }}</p>
                         <div class="mt-3 flex items-center text-sm">
-                            <span class="text-indigo-600 font-medium">All registered shops</span>
+                            <span class="text-indigo-600 font-medium">{{ __('messages.All registered businesses') }}</span>
                         </div>
                     </div>
                     <div class="h-1 bg-gradient-to-r from-indigo-400 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                 </div>
 
                 <!-- Pending Approval -->
-                <div class="stat-card group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 {{ $pendingShops > 0 ? 'ring-2 ring-yellow-400 ring-opacity-50' : '' }}" style="animation-delay: 0.2s">
+                <div class="stat-card group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 {{ $pendingBusinesses > 0 ? 'ring-2 ring-yellow-400 ring-opacity-50' : '' }}" style="animation-delay: 0.2s">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-4">
-                            <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg {{ $pendingShops > 0 ? 'animate-pulse' : '' }}">
+                            <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg {{ $pendingBusinesses > 0 ? 'animate-pulse' : '' }}">
                                 <svg class="h-7 w-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                 </svg>
                             </div>
-                            @if($pendingShops > 0)
+                            @if($pendingBusinesses > 0)
                             <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-bold bg-red-100 text-red-600 animate-pulse">
-                                Action needed
+                                {{ __('messages.Action needed') }}
                             </span>
                             @endif
                         </div>
-                        <h3 class="text-sm font-medium text-gray-500 mb-1">Pending Approval</h3>
-                        <p class="text-3xl font-bold {{ $pendingShops > 0 ? 'text-yellow-600' : 'text-gray-900' }}">{{ number_format($pendingShops) }}</p>
+                        <h3 class="text-sm font-medium text-gray-500 mb-1">{{ __('messages.Pending Approval') }}</h3>
+                        <p class="text-3xl font-bold {{ $pendingBusinesses > 0 ? 'text-yellow-600' : 'text-gray-900' }}">{{ number_format($pendingBusinesses) }}</p>
                         <div class="mt-3 flex items-center text-sm">
-                            <span class="text-yellow-600 font-medium">Awaiting review</span>
+                            <span class="text-yellow-600 font-medium">{{ __('messages.Awaiting review') }}</span>
                         </div>
                     </div>
                     <div class="h-1 bg-gradient-to-r from-yellow-400 to-orange-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
@@ -76,10 +76,10 @@
                                 </svg>
                             </div>
                         </div>
-                        <h3 class="text-sm font-medium text-gray-500 mb-1">Approved Shops</h3>
-                        <p class="text-3xl font-bold text-green-600">{{ number_format($approvedShops) }}</p>
+                        <h3 class="text-sm font-medium text-gray-500 mb-1">{{ __('messages.Approved Businesses') }}</h3>
+                        <p class="text-3xl font-bold text-green-600">{{ number_format($approvedBusinesses) }}</p>
                         <div class="mt-3 flex items-center text-sm">
-                            <span class="text-green-600 font-medium">Active & running</span>
+                            <span class="text-green-600 font-medium">{{ __('messages.Active & running') }}</span>
                         </div>
                     </div>
                     <div class="h-1 bg-gradient-to-r from-green-400 to-emerald-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
@@ -95,10 +95,10 @@
                                 </svg>
                             </div>
                         </div>
-                        <h3 class="text-sm font-medium text-gray-500 mb-1">Total Users</h3>
+                        <h3 class="text-sm font-medium text-gray-500 mb-1">{{ __('messages.Total Users') }}</h3>
                         <p class="text-3xl font-bold text-gray-900">{{ number_format($totalUsers) }}</p>
                         <div class="mt-3 flex items-center text-sm">
-                            <span class="text-purple-600 font-medium">Registered users</span>
+                            <span class="text-purple-600 font-medium">{{ __('messages.Registered users') }}</span>
                         </div>
                     </div>
                     <div class="h-1 bg-gradient-to-r from-purple-400 to-pink-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
@@ -114,10 +114,10 @@
                                 </svg>
                             </div>
                         </div>
-                        <h3 class="text-sm font-medium text-gray-500 mb-1">Unassigned Users</h3>
+                        <h3 class="text-sm font-medium text-gray-500 mb-1">{{ __('messages.Unassigned Users') }}</h3>
                         <p class="text-3xl font-bold text-cyan-600">{{ number_format($unassignedUsers) }}</p>
                         <div class="mt-3 flex items-center text-sm">
-                            <span class="text-cyan-600 font-medium">Without a shop</span>
+                            <span class="text-cyan-600 font-medium">{{ __('messages.Without a business') }}</span>
                         </div>
                     </div>
                     <div class="h-1 bg-gradient-to-r from-cyan-400 to-teal-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
@@ -134,23 +134,23 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-900">Quick Actions</h3>
-                            <p class="text-xs text-gray-500">Manage shops and users</p>
+                            <h3 class="text-lg font-semibold text-gray-900">{{ __('messages.Quick Actions') }}</h3>
+                            <p class="text-xs text-gray-500">{{ __('messages.Manage all businesses and users') }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="p-6">
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                         <!-- Create Shop Button -->
-                        <a href="{{ route('admin.shops.create') }}" class="group flex items-center p-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border-2 border-green-200 hover:border-green-400 transition-all duration-300 hover:shadow-lg transform hover:scale-105">
+                        <a href="{{ route('admin.businesses.create') }}" class="group flex items-center p-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border-2 border-green-200 hover:border-green-400 transition-all duration-300 hover:shadow-lg transform hover:scale-105">
                             <div class="h-12 w-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center mr-4 group-hover:rotate-6 transition-transform">
                                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
                                 </svg>
                             </div>
                             <div>
-                                <p class="font-bold text-green-800">Create Shop</p>
-                                <p class="text-xs text-green-600">Add new shop & assign user</p>
+                                <p class="font-bold text-green-800">{{ __('messages.Create Business') }}</p>
+                                <p class="text-xs text-green-600">{{ __('messages.Add new business & assign user') }}</p>
                             </div>
                         </a>
 
@@ -162,8 +162,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <p class="font-bold text-purple-800">All Users</p>
-                                <p class="text-xs text-purple-600">View & manage users</p>
+                                <p class="font-bold text-purple-800">{{ __('messages.All Users') }}</p>
+                                <p class="text-xs text-purple-600">{{ __('messages.View & manage users') }}</p>
                             </div>
                         </a>
 
@@ -175,8 +175,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <p class="font-bold text-indigo-800">All Shops</p>
-                                <p class="text-xs text-indigo-600">View recent shops</p>
+                                <p class="font-bold text-indigo-800">{{ __('messages.All Businesses') }}</p>
+                                <p class="text-xs text-indigo-600">{{ __('messages.View recent businesses') }}</p>
                             </div>
                         </a>
 
@@ -188,10 +188,10 @@
                                 </svg>
                             </div>
                             <div>
-                                <p class="font-bold text-gray-800">System Health</p>
+                                <p class="font-bold text-gray-800">{{ __('messages.System Health') }}</p>
                                 <p class="text-xs text-green-600 flex items-center">
                                     <span class="h-2 w-2 rounded-full bg-green-500 mr-1 animate-pulse"></span>
-                                    All systems operational
+                                    {{ __('messages.All systems operational') }}
                                 </p>
                             </div>
                         </div>
@@ -199,8 +199,8 @@
                 </div>
             </div>
 
-            <!-- Pending Shops Section -->
-            @if($pendingShops > 0)
+            <!-- pending businesss Section -->
+            @if($pendingBusinesses > 0)
             <div class="bg-white rounded-2xl shadow-sm border border-yellow-200 overflow-hidden mb-8 animate-slide-up">
                 <div class="px-6 py-5 border-b border-yellow-200 bg-gradient-to-r from-yellow-50 to-orange-50">
                     <div class="flex items-center justify-between">
@@ -212,11 +212,11 @@
                             </div>
                             <div>
                                 <h3 class="text-lg font-bold text-yellow-800">Shops Awaiting Approval</h3>
-                                <p class="text-xs text-yellow-600">{{ $pendingShops }} shop(s) need your attention</p>
+                                <p class="text-xs text-yellow-600">{{ $pendingBusinesses }} shop(s) need your attention</p>
                             </div>
                         </div>
                         <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-bold bg-yellow-100 text-yellow-800">
-                            {{ $pendingShops }} pending
+                            {{ $pendingBusinesses }} pending
                         </span>
                     </div>
                 </div>
@@ -231,16 +231,16 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-100">
-                            @foreach($pendingShopsList as $shop)
+                            @foreach($pendingBusinessesList as $business)
                             <tr class="hover:bg-gradient-to-r hover:from-yellow-50 hover:to-orange-50 transition-all duration-200">
                                 <td class="px-6 py-4">
                                     <div class="flex items-center">
                                         <div class="h-12 w-12 rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center mr-4">
-                                            <span class="text-lg font-bold text-gray-600">{{ strtoupper(substr($shop->name, 0, 2)) }}</span>
+                                            <span class="text-lg font-bold text-gray-600">{{ strtoupper(substr($business->name, 0, 2)) }}</span>
                                         </div>
                                         <div>
-                                            <div class="text-sm font-bold text-gray-900">{{ $shop->name }}</div>
-                                            <div class="text-xs text-gray-500 font-mono">{{ $shop->slug }}</div>
+                                            <div class="text-sm font-bold text-gray-900">{{ $business->name }}</div>
+                                            <div class="text-xs text-gray-500 font-mono">{{ $business->slug }}</div>
                                         </div>
                                     </div>
                                 </td>
@@ -251,18 +251,18 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                                             </svg>
                                         </div>
-                                        <span class="text-sm text-gray-600">{{ $shop->users->where('role', 'shop_admin')->first()?->email ?? 'N/A' }}</span>
+                                        <span class="text-sm text-gray-600">{{ $business->users->where('role', 'business_admin')->first()?->email ?? 'N/A' }}</span>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="flex flex-col">
-                                        <span class="text-sm font-medium text-gray-900">{{ $shop->created_at->format('M d, Y') }}</span>
-                                        <span class="text-xs text-gray-500">{{ $shop->created_at->diffForHumans() }}</span>
+                                        <span class="text-sm font-medium text-gray-900">{{ $business->created_at->format('M d, Y') }}</span>
+                                        <span class="text-xs text-gray-500">{{ $business->created_at->diffForHumans() }}</span>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center justify-center space-x-2">
-                                        <form action="{{ route('admin.shops.approve', $shop) }}" method="POST" class="inline">
+                                        <form action="{{ route('admin.businesses.approve', $business) }}" method="POST" class="inline">
                                             @csrf
                                             <button type="submit" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-lg text-sm font-medium hover:from-green-600 hover:to-emerald-700 transition-all transform hover:scale-105 shadow-sm hover:shadow-md">
                                                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -271,7 +271,7 @@
                                                 Approve
                                             </button>
                                         </form>
-                                        <form action="{{ route('admin.shops.reject', $shop) }}" method="POST" class="inline">
+                                        <form action="{{ route('admin.businesses.reject', $business) }}" method="POST" class="inline">
                                             @csrf
                                             <button type="submit" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-red-500 to-rose-600 text-white rounded-lg text-sm font-medium hover:from-red-600 hover:to-rose-700 transition-all transform hover:scale-105 shadow-sm hover:shadow-md">
                                                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -299,13 +299,13 @@
                     </div>
                     <div>
                         <h4 class="text-lg font-bold text-green-800">All caught up! ✨</h4>
-                        <p class="text-sm text-green-600">No pending shop approvals at the moment.</p>
+                        <p class="text-sm text-green-600">No pending business approvals at the moment.</p>
                     </div>
                 </div>
             </div>
             @endif
 
-            <!-- Recent Shops -->
+            <!-- Recent Businesses -->
             <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden animate-slide-up" style="animation-delay: 0.3s">
                 <div class="px-6 py-5 border-b border-gray-100 bg-gradient-to-r from-gray-50 to-white">
                     <div class="flex items-center justify-between">
@@ -316,7 +316,7 @@
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="text-lg font-semibold text-gray-900">Recent Shops</h3>
+                                <h3 class="text-lg font-semibold text-gray-900">Recent Businesses</h3>
                                 <p class="text-xs text-gray-500">Latest registered shops</p>
                             </div>
                         </div>
@@ -333,26 +333,26 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-100">
-                            @forelse($recentShops as $shop)
+                            @forelse($recentBusinesses as $business)
                             <tr class="hover:bg-gradient-to-r hover:from-gray-50 hover:to-white transition-all duration-200">
                                 <td class="px-6 py-4">
                                     <div class="flex items-center">
                                         <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center mr-3">
-                                            <span class="text-sm font-bold text-indigo-600">{{ strtoupper(substr($shop->name, 0, 2)) }}</span>
+                                            <span class="text-sm font-bold text-indigo-600">{{ strtoupper(substr($business->name, 0, 2)) }}</span>
                                         </div>
                                         <div>
-                                            <div class="text-sm font-semibold text-gray-900">{{ $shop->name }}</div>
-                                            <div class="text-xs text-gray-500 font-mono">{{ $shop->slug }}</div>
+                                            <div class="text-sm font-semibold text-gray-900">{{ $business->name }}</div>
+                                            <div class="text-xs text-gray-500 font-mono">{{ $business->slug }}</div>
                                         </div>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
-                                    @if($shop->status === 'approved')
+                                    @if($business->status === 'approved')
                                     <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800">
                                         <span class="w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5"></span>
                                         Approved
                                     </span>
-                                    @elseif($shop->status === 'pending')
+                                    @elseif($business->status === 'pending')
                                     <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-800">
                                         <span class="w-1.5 h-1.5 rounded-full bg-yellow-500 mr-1.5 animate-pulse"></span>
                                         Pending
@@ -367,14 +367,14 @@
                                 <td class="px-6 py-4">
                                     <div class="flex items-center">
                                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                                            {{ $shop->users->count() }} users
+                                            {{ $business->users->count() }} users
                                         </span>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="flex flex-col">
-                                        <span class="text-sm font-medium text-gray-900">{{ $shop->created_at->format('M d, Y') }}</span>
-                                        <span class="text-xs text-gray-500">{{ $shop->created_at->diffForHumans() }}</span>
+                                        <span class="text-sm font-medium text-gray-900">{{ $business->created_at->format('M d, Y') }}</span>
+                                        <span class="text-xs text-gray-500">{{ $business->created_at->diffForHumans() }}</span>
                                     </div>
                                 </td>
                             </tr>
@@ -387,7 +387,7 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5"/>
                                             </svg>
                                         </div>
-                                        <p class="text-gray-500">No shops registered yet</p>
+                                        <p class="text-gray-500">No businesses registered yet</p>
                                     </div>
                                 </td>
                             </tr>

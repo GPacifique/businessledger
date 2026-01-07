@@ -2,49 +2,69 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sale;
-use App\Models\Product;
+use App\Models\Income;
+use App\Models\Expense;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
+use Carbon\Carbon;
 
 class SellerController extends Controller
 {
     public function dashboard()
     {
         $user = auth()->user();
-        $shop = $user->shop;
+        $business = $user->business;
 
-        if (!$shop || $shop->status !== 'approved') {
-            return view('dashboard.user', compact('shop'));
+        if (!$business || $business->status !== 'approved') {
+            return view('dashboard.user', compact('business'));
         }
 
         $today = Carbon::today();
+        $weekStart = Carbon::now()->startOfWeek();
 
-        // Today's sales by this seller
-        $todaySales = Sale::where('shop_id', $shop->id)
-            ->where('created_by', $user->id)
-            ->whereDate('sale_date', $today)
-            ->sum('total_amount');
+        // Today's stats
+        $todayIncome = Income::where('business_id', $business->id)
+            ->whereDate('date', $today)
+            ->sum('amount');
 
-        $todaySalesCount = Sale::where('shop_id', $shop->id)
+        $todayExpenses = Expense::where('business_id', $business->id)
+            ->whereDate('date', $today)
+            ->sum('amount');
+
+        $todayBalance = $todayIncome - $todayExpenses;
+
+        // Weekly entries by this user
+        $weeklyEntries = Income::where('business_id', $business->id)
             ->where('created_by', $user->id)
-            ->whereDate('sale_date', $today)
+            ->whereBetween('date', [$weekStart, $today])
+            ->count()
+            + Expense::where('business_id', $business->id)
+            ->where('created_by', $user->id)
+            ->whereBetween('date', [$weekStart, $today])
             ->count();
 
-        // Recent sales by this seller
-        $recentSales = Sale::where('shop_id', $shop->id)
-            ->where('created_by', $user->id)
-            ->with('items.product')
+        // Recent transactions
+        $recentIncomes = Income::where('business_id', $business->id)
+            ->with('category')
+            ->orderByDesc('date')
             ->orderByDesc('created_at')
-            ->take(10)
+            ->take(5)
             ->get();
 
-        // Products for quick sale
-        $products = Product::where('shop_id', $shop->id)
-            ->where('stock', '>', 0)
-            ->orderBy('name')
+        $recentExpenses = Expense::where('business_id', $business->id)
+            ->with('category')
+            ->orderByDesc('date')
+            ->orderByDesc('created_at')
+            ->take(5)
             ->get();
 
-        return view('dashboard.seller', compact('shop', 'todaySales', 'todaySalesCount', 'recentSales', 'products'));
+        return view('dashboard.seller', compact(
+            'business',
+            'todayIncome',
+            'todayExpenses',
+            'todayBalance',
+            'weeklyEntries',
+            'recentIncomes',
+            'recentExpenses'
+        ));
     }
 }

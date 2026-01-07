@@ -2,62 +2,110 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Purchase;
-use App\Models\Sale;
-use App\Models\SaleItem;
+use App\Models\Income;
+use App\Models\Expense;
+use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
+use Carbon\Carbon;
 
 class AccountantController extends Controller
 {
     public function dashboard()
     {
         $user = auth()->user();
-        $shop = $user->shop;
+        $business = $user->business;
 
-        if (!$shop || $shop->status !== 'approved') {
-            return view('dashboard.user', compact('shop'));
+        if (!$business || $business->status !== 'approved') {
+            return view('dashboard.user', compact('business'));
         }
 
         $today = Carbon::today();
+        $startOfMonth = Carbon::now()->startOfMonth();
+        $endOfMonth = Carbon::now()->endOfMonth();
 
         // Today stats
-        $todaySales = Sale::where('shop_id', $shop->id)->whereDate('sale_date', $today)->sum('total_amount');
-        $todayPurchases = Purchase::where('shop_id', $shop->id)->whereDate('purchase_date', $today)->sum('total_amount');
+        $todayIncome = Income::where('business_id', $business->id)
+            ->whereDate('date', $today)
+            ->sum('amount');
 
-        // Weekly stats
-        $weekStart = Carbon::now()->startOfWeek();
-        $weekEnd = Carbon::now()->endOfWeek();
-        $weeklySales = Sale::where('shop_id', $shop->id)->whereBetween('sale_date', [$weekStart, $weekEnd])->sum('total_amount');
-        $weeklyPurchases = Purchase::where('shop_id', $shop->id)->whereBetween('purchase_date', [$weekStart, $weekEnd])->sum('total_amount');
+        $todayExpenses = Expense::where('business_id', $business->id)
+            ->whereDate('date', $today)
+            ->sum('amount');
 
         // Monthly stats
-        $monthSales = Sale::where('shop_id', $shop->id)
-            ->whereMonth('sale_date', $today->month)
-            ->whereYear('sale_date', $today->year)
-            ->sum('total_amount');
-        $monthPurchases = Purchase::where('shop_id', $shop->id)
-            ->whereMonth('purchase_date', $today->month)
-            ->whereYear('purchase_date', $today->year)
-            ->sum('total_amount');
+        $monthIncome = Income::where('business_id', $business->id)
+            ->whereBetween('date', [$startOfMonth, $endOfMonth])
+            ->sum('amount');
 
-        // Yearly stats
-        $yearSales = Sale::where('shop_id', $shop->id)->whereYear('sale_date', $today->year)->sum('total_amount');
-        $yearPurchases = Purchase::where('shop_id', $shop->id)->whereYear('purchase_date', $today->year)->sum('total_amount');
+        $monthExpenses = Expense::where('business_id', $business->id)
+            ->whereBetween('date', [$startOfMonth, $endOfMonth])
+            ->sum('amount');
 
-        // Profit calculation
-        $monthProfit = SaleItem::whereHas('sale', function ($q) use ($shop, $today) {
-            $q->where('shop_id', $shop->id)
-              ->whereMonth('sale_date', $today->month)
-              ->whereYear('sale_date', $today->year);
-        })->selectRaw('SUM(quantity * (unit_price - cost_price_at_sale)) as profit')->value('profit') ?? 0;
+        // All time totals
+        $totalIncome = Income::where('business_id', $business->id)->sum('amount');
+        $totalExpenses = Expense::where('business_id', $business->id)->sum('amount');
+        $netProfit = $totalIncome - $totalExpenses;
+
+        // Recent transactions
+        $recentIncomes = Income::where('business_id', $business->id)
+            ->with('category')
+            ->orderByDesc('date')
+            ->orderByDesc('created_at')
+            ->take(5)
+            ->get();
+
+        $recentExpenses = Expense::where('business_id', $business->id)
+            ->with('category')
+            ->orderByDesc('date')
+            ->orderByDesc('created_at')
+            ->take(5)
+            ->get();
+
+        // Category stats for this month
+        $categoryStats = [];
+
+        $incomeCategories = Income::where('business_id', $business->id)
+            ->whereBetween('date', [$startOfMonth, $endOfMonth])
+            ->selectRaw('category_id, SUM(amount) as total')
+            ->groupBy('category_id')
+            ->with('category')
+            ->get();
+
+        foreach ($incomeCategories as $item) {
+            $categoryStats[] = [
+                'name' => $item->category->name ?? 'Uncategorized',
+                'type' => 'income',
+                'total' => $item->total,
+            ];
+        }
+
+        $expenseCategories = Expense::where('business_id', $business->id)
+            ->whereBetween('date', [$startOfMonth, $endOfMonth])
+            ->selectRaw('category_id, SUM(amount) as total')
+            ->groupBy('category_id')
+            ->with('category')
+            ->get();
+
+        foreach ($expenseCategories as $item) {
+            $categoryStats[] = [
+                'name' => $item->category->name ?? 'Uncategorized',
+                'type' => 'expense',
+                'total' => $item->total,
+            ];
+        }
 
         return view('dashboard.accountant', compact(
-            'shop',
-            'todaySales', 'todayPurchases',
-            'weeklySales', 'weeklyPurchases',
-            'monthSales', 'monthPurchases', 'monthProfit',
-            'yearSales', 'yearPurchases'
+            'business',
+            'todayIncome',
+            'todayExpenses',
+            'monthIncome',
+            'monthExpenses',
+            'totalIncome',
+            'totalExpenses',
+            'netProfit',
+            'recentIncomes',
+            'recentExpenses',
+            'categoryStats'
         ));
     }
 }

@@ -11,11 +11,11 @@ class StaffController extends Controller
     public function index(Request $request)
     {
         $user = $request->user();
-        if (!$user->isShopAdmin()) {
+        if (!$user->isBusinessAdmin()) {
             abort(403);
         }
 
-        $query = User::where('shop_id', $user->shop_id)
+        $query = User::where('business_id', $user->business_id)
             ->where('id', '!=', $user->id);
 
         if ($request->filled('role')) {
@@ -54,7 +54,7 @@ class StaffController extends Controller
         ]);
 
         $admin = $request->user();
-        if (!$admin->isShopAdmin()) {
+        if (!$admin->isBusinessAdmin()) {
             abort(403);
         }
 
@@ -63,7 +63,7 @@ class StaffController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => $request->role,
-            'shop_id' => $admin->shop_id,
+            'business_id' => $admin->business_id,
             'account_status' => 'active',
         ]);
 
@@ -130,7 +130,7 @@ class StaffController extends Controller
     protected function authorizeStaff(Request $request, User $staff): void
     {
         $user = $request->user();
-        if (!$user->isShopAdmin() || $staff->shop_id !== $user->shop_id) {
+        if (!$user->isBusinessAdmin() || $staff->business_id !== $user->business_id) {
             abort(403);
         }
     }

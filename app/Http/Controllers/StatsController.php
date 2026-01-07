@@ -16,19 +16,19 @@ class StatsController extends Controller
             'period' => 'required|in:daily,weekly,monthly,yearly',
         ]);
 
-        $shopId = $request->user()->shop_id;
+        $businessId = $request->user()->business_id;
         [$start, $end] = $this->periodBounds($request->period);
 
-        $purchaseTotal = Purchase::where('shop_id', $shopId)
+        $purchaseTotal = Purchase::where('business_id', $businessId)
             ->whereBetween('purchase_date', [$start, $end])
             ->sum('total_amount');
 
-        $saleTotal = Sale::where('shop_id', $shopId)
+        $saleTotal = Sale::where('business_id', $businessId)
             ->whereBetween('sale_date', [$start, $end])
             ->sum('total_amount');
 
-        $profit = SaleItem::whereHas('sale', function ($q) use ($shopId, $start, $end) {
-                $q->where('shop_id', $shopId)
+        $profit = SaleItem::whereHas('sale', function ($q) use ($businessId, $start, $end) {
+                $q->where('business_id', $businessId)
                   ->whereBetween('sale_date', [$start, $end]);
             })
             ->selectRaw('SUM(quantity * (unit_price - cost_price_at_sale)) as profit')

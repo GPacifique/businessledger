@@ -119,19 +119,19 @@
                                 <svg class="h-5 w-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                                 </svg>
-                                <span class="text-gray-700">Create new sales</span>
+                                <span class="text-gray-700">Record income entries</span>
                             </li>
                             <li class="flex items-center text-sm">
                                 <svg class="h-5 w-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                                 </svg>
-                                <span class="text-gray-700">View product inventory</span>
+                                <span class="text-gray-700">Record expense entries</span>
                             </li>
                             <li class="flex items-center text-sm">
                                 <svg class="h-5 w-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                                 </svg>
-                                <span class="text-gray-700">View own sales history</span>
+                                <span class="text-gray-700">View transaction history</span>
                             </li>
                             <li class="flex items-center text-sm">
                                 <svg class="h-5 w-5 text-red-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -146,13 +146,13 @@
                                 <svg class="h-5 w-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                                 </svg>
-                                <span class="text-gray-700">View all sales</span>
+                                <span class="text-gray-700">View all income records</span>
                             </li>
                             <li class="flex items-center text-sm">
                                 <svg class="h-5 w-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                                 </svg>
-                                <span class="text-gray-700">View all purchases</span>
+                                <span class="text-gray-700">View all expense records</span>
                             </li>
                             <li class="flex items-center text-sm">
                                 <svg class="h-5 w-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -164,7 +164,7 @@
                                 <svg class="h-5 w-5 text-red-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
                                 </svg>
-                                <span class="text-gray-400">Cannot create sales</span>
+                                <span class="text-gray-400">Cannot create entries</span>
                             </li>
                         </ul>
                     @endif
@@ -174,40 +174,45 @@
             <!-- Recent Activity -->
             <div class="bg-white overflow-hidden shadow-sm rounded-xl">
                 <div class="px-6 py-4 border-b border-gray-200">
-                    <h3 class="text-lg font-semibold text-gray-900">Recent Sales by {{ $staff->name }}</h3>
+                    <h3 class="text-lg font-semibold text-gray-900">Recent Entries by {{ $staff->name }}</h3>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Sale ID</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Type</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Title</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Date</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Items</th>
                                 <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Amount</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
-                            @forelse($staff->sales()->with('items')->latest('sale_date')->take(5)->get() as $sale)
+                            @php
+                                $recentIncomes = $staff->incomes()->latest('date')->take(3)->get()->map(fn($i) => ['type' => 'income', 'title' => $i->title, 'date' => $i->date, 'amount' => $i->amount]);
+                                $recentExpenses = $staff->expenses()->latest('date')->take(3)->get()->map(fn($e) => ['type' => 'expense', 'title' => $e->title, 'date' => $e->date, 'amount' => $e->amount]);
+                                $recentEntries = $recentIncomes->merge($recentExpenses)->sortByDesc('date')->take(5);
+                            @endphp
+                            @forelse($recentEntries as $entry)
                             <tr class="hover:bg-gray-50">
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <a href="{{ route('sales.show', $sale) }}" class="text-indigo-600 hover:text-indigo-900 font-medium">
-                                        #{{ str_pad($sale->id, 5, '0', STR_PAD_LEFT) }}
-                                    </a>
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $entry['type'] === 'income' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
+                                        {{ ucfirst($entry['type']) }}
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    {{ Str::limit($entry['title'], 30) }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    {{ $sale->sale_date->format('M d, Y') }}
+                                    {{ $entry['date']->format('M d, Y') }}
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    {{ $sale->items->count() }} items
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-green-600 text-right">
-                                    {{ rwf($sale->total_amount) }}
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-right {{ $entry['type'] === 'income' ? 'text-green-600' : 'text-red-600' }}">
+                                    {{ $entry['type'] === 'income' ? '+' : '-' }}{{ format_currency($entry['amount']) }}
                                 </td>
                             </tr>
                             @empty
                             <tr>
                                 <td colspan="4" class="px-6 py-8 text-center text-gray-500">
-                                    No sales recorded yet
+                                    No entries recorded yet
                                 </td>
                             </tr>
                             @endforelse

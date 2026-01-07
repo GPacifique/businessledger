@@ -10,7 +10,7 @@ class RoleMiddleware
 {
     /**
      * Handle an incoming request.
-     * Usage: ->middleware(RoleMiddleware::class.':shop_admin,manager')
+     * Usage: ->middleware(RoleMiddleware::class.':business_admin,manager')
      */
     public function handle(Request $request, Closure $next, ...$roles): Response
     {
@@ -44,7 +44,7 @@ class RoleMiddleware
     {
         $route = match ($user->role) {
             'system_admin' => 'admin.dashboard',
-            'shop_admin' => 'shop.dashboard',
+            'business_admin' => 'business.dashboard',
             'seller' => 'seller.dashboard',
             'accountant' => 'accountant.dashboard',
             default => 'dashboard',

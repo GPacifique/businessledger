@@ -22,7 +22,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
         'role',
-        'shop_id',
+        'business_id',
         'account_status',
     ];
 
@@ -49,14 +49,19 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
-    public function shop()
+    public function business()
     {
-        return $this->belongsTo(Shop::class);
+        return $this->belongsTo(Business::class);
     }
 
-    public function sales()
+    public function incomes()
     {
-        return $this->hasMany(Sale::class, 'created_by');
+        return $this->hasMany(Income::class, 'created_by');
+    }
+
+    public function expenses()
+    {
+        return $this->hasMany(Expense::class, 'created_by');
     }
 
     public function isSystemAdmin(): bool
@@ -64,9 +69,17 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->role === 'system_admin';
     }
 
+    public function isBusinessAdmin(): bool
+    {
+        return $this->role === 'business_admin';
+    }
+
+    /**
+     * Alias for isBusinessAdmin for backward compatibility
+     */
     public function isShopAdmin(): bool
     {
-        return $this->role === 'shop_admin';
+        return $this->isBusinessAdmin();
     }
 
     public function isManager(): bool
@@ -77,5 +90,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function isSeller(): bool
     {
         return $this->role === 'seller';
+    }
+
+    public function isAccountant(): bool
+    {
+        return $this->role === 'accountant';
     }
 }

@@ -8,8 +8,8 @@
                     </svg>
                 </div>
                 <div>
-                    <h2 class="font-bold text-xl text-gray-800 leading-tight">Account Status</h2>
-                    <p class="text-sm text-gray-500">Shop under review</p>
+                    <h2 class="font-bold text-xl text-gray-800 leading-tight">{{ __('messages.Account Status') }}</h2>
+                    <p class="text-sm text-gray-500">{{ __('messages.Business under review') }}</p>
                 </div>
             </div>
         </div>
@@ -40,8 +40,8 @@
                                 </svg>
                             </div>
                         </div>
-                        <h2 class="text-3xl font-bold text-white mb-2">Shop Under Review</h2>
-                        <p class="text-yellow-100 text-lg">Your registration is being processed</p>
+                        <h2 class="text-3xl font-bold text-white mb-2">{{ __('messages.Business Under Review') }}</h2>
+                        <p class="text-yellow-100 text-lg">{{ __('messages.Your registration is being processed') }}</p>
                     </div>
                 </div>
 
@@ -54,14 +54,14 @@
                                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
                                 <span class="relative inline-flex rounded-full h-3 w-3 bg-yellow-500"></span>
                             </span>
-                            Pending Approval
+                            {{ __('messages.Pending Approval') }}
                         </span>
                     </div>
 
                     <!-- Message -->
                     <div class="text-center mb-8">
                         <p class="text-gray-600 leading-relaxed">
-                            Your shop registration is currently being reviewed by our team. 
+                            Your business registration is currently being reviewed by our team.
                             You will be notified once your account has been approved.
                         </p>
                     </div>
@@ -75,27 +75,27 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <h4 class="font-semibold text-yellow-800">Review Time</h4>
-                                <p class="text-sm text-yellow-700 mt-1">
-                                    This process typically takes <strong>1-2 business days</strong>. 
+                                <h4 class="font-semibold text-yellow-800">{{ __('messages.Review Time') }}</h4>
+                                <p class="text-sm text-yellow-700 mt-1">>
+                                    This process typically takes <strong>1-2 business days</strong>.
                                     Please ensure your contact information is accurate.
                                 </p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Shop Details -->
+                    <!-- Business Details -->
                     <div class="bg-gray-50 rounded-2xl p-6">
-                        <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">Shop Details</h4>
+                        <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">{{ __('messages.Business Details') }}</h4>
                         <div class="space-y-4">
                             <div class="flex justify-between items-center py-3 border-b border-gray-200">
                                 <span class="text-gray-500 flex items-center">
                                     <svg class="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                                     </svg>
-                                    Shop Name
+                                    {{ __('messages.Business Name') }}
                                 </span>
-                                <span class="font-semibold text-gray-900">{{ $shop->name ?? 'Not registered' }}</span>
+                                <span class="font-semibold text-gray-900">{{ $business->name ?? __('messages.Not registered') }}</span>
                             </div>
                             <div class="flex justify-between items-center py-3 border-b border-gray-200">
                                 <span class="text-gray-500 flex items-center">
@@ -106,7 +106,7 @@
                                 </span>
                                 <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-800">
                                     <span class="w-1.5 h-1.5 rounded-full bg-yellow-500 mr-1.5 animate-pulse"></span>
-                                    {{ ucfirst($shop->status ?? 'pending') }}
+                                    {{ ucfirst($business->status ?? 'pending') }}
                                 </span>
                             </div>
                             <div class="flex justify-between items-center py-3">
@@ -116,7 +116,7 @@
                                     </svg>
                                     Submitted
                                 </span>
-                                <span class="font-semibold text-gray-900">{{ $shop?->created_at?->diffForHumans() ?? 'N/A' }}</span>
+                                <span class="font-semibold text-gray-900">{{ $business?->created_at?->diffForHumans() ?? 'N/A' }}</span>
                             </div>
                         </div>
                     </div>
@@ -126,8 +126,8 @@
                 <div class="px-8 pb-8">
                     <div class="border-t border-gray-100 pt-6 text-center">
                         <p class="text-sm text-gray-500">
-                            Need help? Contact us at 
-                            <a href="mailto:support@shopledger.com" class="text-indigo-600 hover:text-indigo-800 font-medium">support@shopledger.com</a>
+                            Need help? Contact us at
+                            <a href="mailto:support@businessledger.com" class="text-indigo-600 hover:text-indigo-800 font-medium">support@businessledger.com</a>
                         </p>
                     </div>
                 </div>

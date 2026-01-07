@@ -1,249 +1,175 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between items-center">
-            <div class="flex items-center space-x-4">
-                <div class="h-12 w-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
-                    </svg>
-                </div>
-                <div>
-                    <h2 class="font-bold text-xl text-gray-800 leading-tight">Seller Dashboard</h2>
-                    <p class="text-sm text-gray-500">{{ $shop->name }}</p>
-                </div>
-            </div>
-            <div class="text-right hidden md:block">
-                <p class="text-xs text-gray-500">Welcome back</p>
-                <p class="text-sm font-semibold text-gray-700">{{ auth()->user()->name }}</p>
-            </div>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ $business->name ?? 'Dashboard' }}
+            </h2>
+            <span class="px-3 py-1 text-sm bg-blue-100 text-blue-800 rounded-full">
+                {{ __('messages.Staff') }}
+            </span>
         </div>
     </x-slot>
 
-    <div class="py-8">
+    <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <!-- Quick Sale CTA -->
-            <div class="mb-8 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-2xl shadow-2xl overflow-hidden animate-fade-in">
-                <div class="relative px-6 py-8 sm:px-10 sm:py-12">
-                    <div class="absolute inset-0 opacity-10">
-                        <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-                            <defs>
-                                <pattern id="dots" width="10" height="10" patternUnits="userSpaceOnUse">
-                                    <circle cx="1" cy="1" r="1" fill="white"/>
-                                </pattern>
-                            </defs>
-                            <rect width="100" height="100" fill="url(#dots)"/>
-                        </svg>
-                    </div>
-                    <div class="relative flex flex-col md:flex-row md:items-center md:justify-between">
-                        <div class="text-white mb-6 md:mb-0">
-                            <h3 class="text-3xl font-bold mb-2">Ready to make a sale? 🛒</h3>
-                            <p class="text-blue-100 text-lg">Create new sales quickly and easily.</p>
+            <!-- Quick Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- Today's Income -->
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-green-100 text-green-600">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-gray-500">{{ __("messages.Today's Income") }}</p>
+                                <p class="text-2xl font-semibold text-gray-900">{{ format_currency($todayIncome ?? 0) }}</p>
+                            </div>
                         </div>
-                        <a href="{{ route('sales.create') }}" class="inline-flex items-center px-8 py-4 bg-white text-indigo-600 rounded-xl font-bold text-lg hover:bg-indigo-50 transition-all transform hover:scale-105 shadow-xl hover:shadow-2xl group">
-                            <svg class="w-6 h-6 mr-3 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-                            </svg>
-                            New Sale
-                            <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                            </svg>
-                        </a>
+                    </div>
+                </div>
+
+                <!-- Today's Expenses -->
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-red-100 text-red-600">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-gray-500">{{ __("messages.Today's Expenses") }}</p>
+                                <p class="text-2xl font-semibold text-gray-900">{{ format_currency($todayExpenses ?? 0) }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- My Entries This Week -->
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-blue-100 text-blue-600">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                                </svg>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-gray-500">{{ __('messages.My Entries (Week)') }}</p>
+                                <p class="text-2xl font-semibold text-gray-900">{{ $weeklyEntries ?? 0 }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Net Balance Today -->
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full {{ ($todayBalance ?? 0) >= 0 ? 'bg-green-100 text-green-600' : 'bg-orange-100 text-orange-600' }}">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
+                                </svg>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-gray-500">{{ __("messages.Today's Balance") }}</p>
+                                <p class="text-2xl font-semibold {{ ($todayBalance ?? 0) >= 0 ? 'text-green-600' : 'text-orange-600' }}">{{ format_currency($todayBalance ?? 0) }}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Today's Stats -->
+            <!-- Quick Actions -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <!-- Today's Sales Amount -->
-                <div class="stat-card group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100" style="animation-delay: 0.1s">
+                <a href="{{ route('incomes.create') }}" class="bg-white overflow-hidden shadow-sm sm:rounded-lg hover:shadow-md transition-shadow border-l-4 border-green-500">
                     <div class="p-6">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="h-16 w-16 rounded-2xl bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
-                                <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-green-100">
+                                <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                                 </svg>
                             </div>
-                            <div class="text-right">
-                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                    <svg class="w-3 h-3 mr-1 animate-pulse" fill="currentColor" viewBox="0 0 8 8">
-                                        <circle cx="4" cy="4" r="3"/>
-                                    </svg>
-                                    Live
-                                </span>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold text-gray-900">{{ __('messages.Add Income') }}</h4>
+                                <p class="text-gray-500">{{ __('messages.Record a new income entry') }}</p>
                             </div>
                         </div>
-                        <h3 class="text-sm font-medium text-gray-500 mb-2">Today's Sales</h3>
-                        <p class="text-3xl font-bold text-gray-900 mb-2" id="todaySales">{{ rwf($todaySales) }}</p>
-                        <div class="flex items-center text-sm text-green-600">
-                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="font-medium">Revenue earned today</span>
-                        </div>
                     </div>
-                    <div class="h-1.5 bg-gradient-to-r from-green-400 to-emerald-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                </div>
+                </a>
 
-                <!-- Today's Transactions -->
-                <div class="stat-card group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100" style="animation-delay: 0.2s">
+                <a href="{{ route('expenses.create') }}" class="bg-white overflow-hidden shadow-sm sm:rounded-lg hover:shadow-md transition-shadow border-l-4 border-red-500">
                     <div class="p-6">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="h-16 w-16 rounded-2xl bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
-                                <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-red-100">
+                                <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
                                 </svg>
                             </div>
-                            <div class="text-right">
-                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                    Today
-                                </span>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold text-gray-900">{{ __('messages.Add Expense') }}</h4>
+                                <p class="text-gray-500">{{ __('messages.Record a new expense entry') }}</p>
                             </div>
                         </div>
-                        <h3 class="text-sm font-medium text-gray-500 mb-2">Transactions</h3>
-                        <p class="text-3xl font-bold text-gray-900 mb-2" id="todayCount">{{ $todaySalesCount }}</p>
-                        <div class="flex items-center text-sm text-blue-600">
-                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                            <span class="font-medium">Sales completed</span>
-                        </div>
                     </div>
-                    <div class="h-1.5 bg-gradient-to-r from-blue-400 to-indigo-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                </div>
+                </a>
             </div>
 
-            <!-- Recent Sales -->
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-8 animate-slide-up" style="animation-delay: 0.3s">
-                <div class="px-6 py-5 border-b border-gray-100 bg-gradient-to-r from-gray-50 to-white flex justify-between items-center">
-                    <div class="flex items-center">
-                        <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center mr-3">
-                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
-                            </svg>
+            <!-- Recent Entries -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Recent Income -->
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-semibold text-gray-900">{{ __('messages.Recent Income') }}</h3>
+                            <a href="{{ route('incomes.index') }}" class="text-sm text-indigo-600 hover:text-indigo-800">{{ __('messages.View All') }}</a>
                         </div>
-                        <div>
-                            <h3 class="text-lg font-semibold text-gray-900">My Recent Sales</h3>
-                            <p class="text-xs text-gray-500">Your latest transactions</p>
-                        </div>
+                        @if(isset($recentIncomes) && $recentIncomes->count() > 0)
+                            <div class="space-y-3">
+                                @foreach($recentIncomes as $income)
+                                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                        <div>
+                                            <p class="font-medium text-gray-900">{{ $income->title }}</p>
+                                            <p class="text-sm text-gray-500">{{ $income->category->name ?? 'Uncategorized' }} • {{ $income->date->format('M d, Y') }}</p>
+                                        </div>
+                                        <span class="text-green-600 font-semibold">+{{ format_currency($income->amount) }}</span>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @else
+                            <p class="text-gray-500 text-center py-4">{{ __('messages.No recent income recorded') }}</p>
+                        @endif
                     </div>
-                    <a href="{{ route('sales.index') }}" class="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-800 group">
-                        View all
-                        <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                        </svg>
-                    </a>
                 </div>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Sale ID</th>
-                                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Date</th>
-                                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Items</th>
-                                <th class="px-6 py-4 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Total</th>
-                                <th class="px-6 py-4 text-center text-xs font-semibold text-gray-500 uppercase tracking-wider">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-100">
-                            @forelse($recentSales as $sale)
-                            <tr class="hover:bg-gradient-to-r hover:from-gray-50 hover:to-white transition-all duration-200">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center">
-                                        <div class="h-8 w-8 rounded-lg bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center mr-3">
-                                            <span class="text-xs font-bold text-green-600">#</span>
-                                        </div>
-                                        <span class="font-semibold text-gray-900">{{ str_pad($sale->id, 5, '0', STR_PAD_LEFT) }}</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="flex flex-col">
-                                        <span class="text-sm font-medium text-gray-900">{{ $sale->sale_date->format('M d, Y') }}</span>
-                                        <span class="text-xs text-gray-500">{{ $sale->sale_date->format('h:i A') }}</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
-                                        {{ $sale->items->count() }} items
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-right">
-                                    <span class="text-lg font-bold text-green-600">{{ rwf($sale->total_amount) }}</span>
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    <a href="{{ route('sales.show', $sale) }}" class="inline-flex items-center px-3 py-1.5 bg-indigo-50 text-indigo-600 rounded-lg text-sm font-medium hover:bg-indigo-100 transition-colors">
-                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                                        </svg>
-                                        View
-                                    </a>
-                                </td>
-                            </tr>
-                            @empty
-                            <tr>
-                                <td colspan="5" class="px-6 py-16 text-center">
-                                    <div class="flex flex-col items-center">
-                                        <div class="h-20 w-20 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center mb-4">
-                                            <svg class="h-10 w-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
-                                            </svg>
-                                        </div>
-                                        <h4 class="text-lg font-semibold text-gray-900 mb-1">No sales yet</h4>
-                                        <p class="text-gray-500 mb-4">Start by creating your first sale</p>
-                                        <a href="{{ route('sales.create') }}" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-lg font-medium hover:from-indigo-600 hover:to-purple-700 transition-all transform hover:scale-105">
-                                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-                                            </svg>
-                                            Create Sale
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                </div>
-            </div>
 
-            <!-- Helpful Tips -->
-            <div class="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-6 border border-amber-200">
-                <div class="flex items-start">
-                    <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center flex-shrink-0">
-                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-                        </svg>
-                    </div>
-                    <div class="ml-4">
-                        <h4 class="text-sm font-semibold text-amber-800">Pro Tip</h4>
-                        <p class="text-sm text-amber-700 mt-1">Use keyboard shortcut <kbd class="px-2 py-0.5 bg-white rounded text-xs font-mono shadow-sm">Ctrl + N</kbd> to quickly create a new sale from anywhere!</p>
+                <!-- Recent Expenses -->
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-semibold text-gray-900">{{ __('messages.Recent Expenses') }}</h3>
+                            <a href="{{ route('expenses.index') }}" class="text-sm text-indigo-600 hover:text-indigo-800">{{ __('messages.View All') }}</a>
+                        </div>
+                        @if(isset($recentExpenses) && $recentExpenses->count() > 0)
+                            <div class="space-y-3">
+                                @foreach($recentExpenses as $expense)
+                                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                        <div>
+                                            <p class="font-medium text-gray-900">{{ $expense->title }}</p>
+                                            <p class="text-sm text-gray-500">{{ $expense->category->name ?? 'Uncategorized' }} • {{ $expense->date->format('M d, Y') }}</p>
+                                        </div>
+                                        <span class="text-red-600 font-semibold">-{{ format_currency($expense->amount) }}</span>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @else
+                            <p class="text-gray-500 text-center py-4">{{ __('messages.No recent expenses recorded') }}</p>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Custom Styles -->
-    <style>
-        @keyframes fade-in {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes slide-up {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in { animation: fade-in 0.6s ease-out forwards; }
-        .animate-slide-up { animation: slide-up 0.6s ease-out forwards; }
-        .stat-card { animation: fade-in 0.5s ease-out forwards; opacity: 0; }
-    </style>
-
-    <script>
-        // Keyboard shortcut for quick sale
-        document.addEventListener('keydown', function(e) {
-            if (e.ctrlKey && e.key === 'n') {
-                e.preventDefault();
-                window.location.href = '{{ route("sales.create") }}';
-            }
-        });
-    </script>
 </x-app-layout>

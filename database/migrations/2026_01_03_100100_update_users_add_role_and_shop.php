@@ -8,8 +8,8 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->enum('role', ['system_admin', 'shop_admin', 'manager', 'seller', 'accountant', 'user'])->default('user');
-            $table->foreignId('shop_id')->nullable()->constrained('shops')->nullOnDelete();
+            $table->enum('role', ['system_admin', 'business_admin', 'manager', 'seller', 'accountant', 'user'])->default('user');
+            $table->foreignId('business_id')->nullable()->constrained('businesses')->nullOnDelete();
             $table->enum('account_status', ['active', 'suspended'])->default('active');
         });
     }
@@ -18,7 +18,7 @@ return new class extends Migration {
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('role');
-            $table->dropConstrainedForeignId('shop_id');
+            $table->dropConstrainedForeignId('business_id');
             $table->dropColumn('account_status');
         });
     }

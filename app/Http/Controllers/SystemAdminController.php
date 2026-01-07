@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Shop;
+use App\Models\Business;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -11,58 +11,58 @@ class SystemAdminController extends Controller
 {
     public function dashboard()
     {
-        $totalShops = Shop::count();
-        $pendingShops = Shop::where('status', 'pending')->count();
-        $approvedShops = Shop::where('status', 'approved')->count();
+        $totalBusinesses = Business::count();
+        $pendingBusinesses = Business::where('status', 'pending')->count();
+        $approvedBusinesses = Business::where('status', 'approved')->count();
         $totalUsers = User::count();
-        $unassignedUsers = User::whereNull('shop_id')->where('role', 'user')->count();
+        $unassignedUsers = User::whereNull('business_id')->where('role', 'user')->count();
 
-        $pendingShopsList = Shop::where('status', 'pending')
+        $pendingBusinessesList = Business::where('status', 'pending')
             ->with('users')
             ->orderByDesc('created_at')
             ->take(10)
             ->get();
 
-        $recentShops = Shop::with('users')
+        $recentBusinesses = Business::with('users')
             ->orderByDesc('created_at')
             ->take(10)
             ->get();
 
         return view('dashboard.admin', compact(
-            'totalShops', 'pendingShops', 'approvedShops', 'totalUsers',
-            'pendingShopsList', 'recentShops', 'unassignedUsers'
+            'totalBusinesses', 'pendingBusinesses', 'approvedBusinesses', 'totalUsers',
+            'pendingBusinessesList', 'recentBusinesses', 'unassignedUsers'
         ));
     }
 
-    public function approveShop(Shop $shop)
+    public function approveBusiness(Business $business)
     {
-        $shop->status = 'approved';
-        $shop->approved_by = auth()->id();
-        $shop->approved_at = now();
-        $shop->save();
+        $business->status = 'approved';
+        $business->approved_by = auth()->id();
+        $business->approved_at = now();
+        $business->save();
 
-        return back()->with('success', 'Shop approved successfully.');
+        return back()->with('success', 'Business approved successfully.');
     }
 
-    public function rejectShop(Shop $shop)
+    public function rejectBusiness(Business $business)
     {
-        $shop->status = 'rejected';
-        $shop->save();
+        $business->status = 'rejected';
+        $business->save();
 
-        return back()->with('success', 'Shop rejected.');
+        return back()->with('success', 'Business rejected.');
     }
 
-    public function createShop()
+    public function createBusiness()
     {
-        $unassignedUsers = User::whereNull('shop_id')
+        $unassignedUsers = User::whereNull('business_id')
             ->where('role', 'user')
             ->orderBy('name')
             ->get();
 
-        return view('admin.shops.create', compact('unassignedUsers'));
+        return view('admin.businesses.create', compact('unassignedUsers'));
     }
 
-    public function storeShop(Request $request)
+    public function storeBusiness(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -72,7 +72,7 @@ class SystemAdminController extends Controller
             'status' => 'required|in:pending,approved',
         ]);
 
-        $shop = Shop::create([
+        $business = Business::create([
             'name' => $request->name,
             'slug' => Str::slug($request->name) . '-' . Str::random(5),
             'address' => $request->address,
@@ -83,18 +83,18 @@ class SystemAdminController extends Controller
             'approved_at' => $request->status === 'approved' ? now() : null,
         ]);
 
-        // Assign user as shop_admin
+        // Assign user as business_admin
         $user = User::findOrFail($request->user_id);
-        $user->shop_id = $shop->id;
-        $user->role = 'shop_admin';
+        $user->business_id = $business->id;
+        $user->role = 'business_admin';
         $user->save();
 
-        return redirect()->route('admin.dashboard')->with('success', 'Shop created and assigned to ' . $user->name . ' successfully.');
+        return redirect()->route('admin.dashboard')->with('success', 'Business created and assigned to ' . $user->name . ' successfully.');
     }
 
     public function listUsers()
     {
-        $users = User::with('shop')
+        $users = User::with('business')
             ->orderByDesc('created_at')
             ->paginate(20);
 

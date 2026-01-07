@@ -1,19 +1,21 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ShopAdminController;
-use App\Http\Controllers\ShopController;
+use App\Http\Controllers\BusinessAdminController;
 use App\Http\Controllers\StaffController;
-use App\Http\Controllers\SupplierController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\PurchaseController;
-use App\Http\Controllers\SaleController;
-use App\Http\Controllers\StatsController;
+use App\Http\Controllers\IncomeController;
+use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\AccountantController;
 use App\Http\Controllers\SystemAdminController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Support\Facades\Route;
+
+// Language switch route
+Route::get('language/{locale}', [LanguageController::class, 'switch'])->name('language.switch');
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,9 +29,9 @@ Route::get('/dashboard', function () {
         return redirect()->route('admin.dashboard');
     }
 
-    // Shop admin dashboard
-    if ($user->role === 'shop_admin') {
-        return redirect()->route('shop.dashboard');
+    // Business admin dashboard
+    if ($user->role === 'business_admin') {
+        return redirect()->route('business.dashboard');
     }
 
     // Seller dashboard
@@ -42,9 +44,9 @@ Route::get('/dashboard', function () {
         return redirect()->route('accountant.dashboard');
     }
 
-    // User with pending shop or no shop - show under review
-    $shop = $user->shop;
-    return view('dashboard.user', compact('shop'));
+    // User with pending business or no business - show under review
+    $business = $user->business;
+    return view('dashboard.user', compact('business'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -55,16 +57,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // System Admin Routes - Only accessible by system_admin
     Route::middleware(RoleMiddleware::class.':system_admin')->group(function () {
         Route::get('/admin/dashboard', [SystemAdminController::class, 'dashboard'])->name('admin.dashboard');
-        Route::post('/admin/shops/{shop}/approve', [SystemAdminController::class, 'approveShop'])->name('admin.shops.approve');
-        Route::post('/admin/shops/{shop}/reject', [SystemAdminController::class, 'rejectShop'])->name('admin.shops.reject');
-        Route::get('/admin/shops/create', [SystemAdminController::class, 'createShop'])->name('admin.shops.create');
-        Route::post('/admin/shops', [SystemAdminController::class, 'storeShop'])->name('admin.shops.store');
+        Route::post('/admin/businesses/{business}/approve', [SystemAdminController::class, 'approveBusiness'])->name('admin.businesses.approve');
+        Route::post('/admin/businesses/{business}/reject', [SystemAdminController::class, 'rejectBusiness'])->name('admin.businesses.reject');
+        Route::get('/admin/businesses/create', [SystemAdminController::class, 'createBusiness'])->name('admin.businesses.create');
+        Route::post('/admin/businesses', [SystemAdminController::class, 'storeBusiness'])->name('admin.businesses.store');
         Route::get('/admin/users', [SystemAdminController::class, 'listUsers'])->name('admin.users.index');
     });
 
-    // Shop Admin Routes - Only accessible by shop_admin
-    Route::middleware(RoleMiddleware::class.':shop_admin')->group(function () {
-        Route::get('/shop/dashboard', [ShopAdminController::class, 'dashboard'])->name('shop.dashboard');
+    // Business Admin Routes - Only accessible by business_admin
+    Route::middleware(RoleMiddleware::class.':business_admin')->group(function () {
+        Route::get('/business/dashboard', [BusinessAdminController::class, 'dashboard'])->name('business.dashboard');
     });
 
     // Seller Routes - Only accessible by seller
@@ -77,16 +79,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/accountant/dashboard', [AccountantController::class, 'dashboard'])->name('accountant.dashboard');
     });
 
-    // Resource routes for shop admin
-    Route::resource('products', ProductController::class);
-    Route::resource('suppliers', SupplierController::class);
-    Route::resource('purchases', PurchaseController::class)->only(['index', 'create', 'store', 'show', 'destroy']);
-    Route::get('purchases/{purchase}/download', [PurchaseController::class, 'downloadPdf'])->name('purchases.download');
-    Route::resource('sales', SaleController::class)->only(['index', 'create', 'store', 'show', 'destroy']);
+    // Resource routes for business operations
+    Route::resource('incomes', IncomeController::class);
+    Route::resource('expenses', ExpenseController::class);
+    Route::resource('categories', CategoryController::class)->except(['show']);
+    Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
     Route::resource('staff', StaffController::class);
-
-    // Stats
-    Route::get('/stats', [StatsController::class, 'summary'])->name('stats.summary');
 });
 
 require __DIR__.'/auth.php';

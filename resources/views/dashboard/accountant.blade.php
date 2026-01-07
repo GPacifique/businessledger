@@ -1,273 +1,263 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between items-center">
-            <div class="flex items-center space-x-4">
-                <div class="h-12 w-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-                    </svg>
-                </div>
-                <div>
-                    <h2 class="font-bold text-xl text-gray-800 leading-tight">Accountant Dashboard</h2>
-                    <p class="text-sm text-gray-500">{{ $shop->name }}</p>
-                </div>
-            </div>
-            <div class="text-right hidden md:block">
-                <p class="text-xs text-gray-500">Financial Overview</p>
-                <p class="text-sm font-semibold text-gray-700" id="current-date"></p>
-            </div>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ $business->name ?? __('messages.Dashboard') }} - {{ __('messages.Financial Overview') }}
+            </h2>
+            <span class="px-3 py-1 text-sm bg-purple-100 text-purple-800 rounded-full">
+                {{ __('messages.Accountant') }}
+            </span>
         </div>
     </x-slot>
 
-    <div class="py-8">
+    <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <!-- Period Stats -->
+            <!-- Financial Summary Cards -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <!-- Today -->
-                <div class="period-card group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100" style="animation-delay: 0.1s">
+                <!-- Today's Income -->
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6">
-                        <div class="flex items-center justify-between mb-4">
-                            <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Today</h4>
-                            <div class="h-8 w-8 rounded-lg bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center">
-                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"/>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">{{ __("messages.Today's Income") }}</p>
+                                <p class="text-2xl font-bold text-green-600">{{ format_currency($todayIncome ?? 0) }}</p>
+                            </div>
+                            <div class="p-3 bg-green-100 rounded-full">
+                                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
                                 </svg>
                             </div>
                         </div>
-                        <div class="space-y-3">
-                            <div class="flex justify-between items-center p-3 bg-green-50 rounded-xl">
-                                <span class="text-sm text-gray-600 flex items-center">
-                                    <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
-                                    </svg>
-                                    Sales
-                                </span>
-                                <span class="font-bold text-green-600">{{ rwf($todaySales) }}</span>
-                            </div>
-                            <div class="flex justify-between items-center p-3 bg-red-50 rounded-xl">
-                                <span class="text-sm text-gray-600 flex items-center">
-                                    <svg class="w-4 h-4 mr-2 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-                                    </svg>
-                                    Purchases
-                                </span>
-                                <span class="font-bold text-red-600">{{ rwf($todayPurchases) }}</span>
-                            </div>
-                            <div class="flex justify-between items-center p-4 bg-gradient-to-r {{ ($todaySales - $todayPurchases) >= 0 ? 'from-emerald-500 to-green-600' : 'from-red-500 to-rose-600' }} rounded-xl text-white">
-                                <span class="text-sm font-medium">Net</span>
-                                <span class="text-lg font-bold">{{ rwf($todaySales - $todayPurchases) }}</span>
-                            </div>
-                        </div>
                     </div>
-                    <div class="h-1 bg-gradient-to-r from-blue-400 to-indigo-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                 </div>
 
-                <!-- This Week -->
-                <div class="period-card group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100" style="animation-delay: 0.2s">
+                <!-- Today's Expenses -->
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6">
-                        <div class="flex items-center justify-between mb-4">
-                            <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">This Week</h4>
-                            <div class="h-8 w-8 rounded-lg bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center">
-                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">{{ __("messages.Today's Expenses") }}</p>
+                                <p class="text-2xl font-bold text-red-600">{{ format_currency($todayExpenses ?? 0) }}</p>
+                            </div>
+                            <div class="p-3 bg-red-100 rounded-full">
+                                <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 13l-5 5m0 0l-5-5m5 5V6"></path>
                                 </svg>
                             </div>
                         </div>
-                        <div class="space-y-3">
-                            <div class="flex justify-between items-center p-3 bg-green-50 rounded-xl">
-                                <span class="text-sm text-gray-600 flex items-center">
-                                    <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
-                                    </svg>
-                                    Sales
-                                </span>
-                                <span class="font-bold text-green-600">{{ rwf($weeklySales) }}</span>
-                            </div>
-                            <div class="flex justify-between items-center p-3 bg-red-50 rounded-xl">
-                                <span class="text-sm text-gray-600 flex items-center">
-                                    <svg class="w-4 h-4 mr-2 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-                                    </svg>
-                                    Purchases
-                                </span>
-                                <span class="font-bold text-red-600">{{ rwf($weeklyPurchases) }}</span>
-                            </div>
-                            <div class="flex justify-between items-center p-4 bg-gradient-to-r {{ ($weeklySales - $weeklyPurchases) >= 0 ? 'from-emerald-500 to-green-600' : 'from-red-500 to-rose-600' }} rounded-xl text-white">
-                                <span class="text-sm font-medium">Net</span>
-                                <span class="text-lg font-bold">{{ rwf($weeklySales - $weeklyPurchases) }}</span>
-                            </div>
-                        </div>
                     </div>
-                    <div class="h-1 bg-gradient-to-r from-purple-400 to-pink-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                 </div>
 
-                <!-- This Month -->
-                <div class="period-card group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100" style="animation-delay: 0.3s">
+                <!-- Monthly Income -->
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6">
-                        <div class="flex items-center justify-between mb-4">
-                            <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">This Month</h4>
-                            <div class="h-8 w-8 rounded-lg bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center">
-                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">{{ __('messages.Monthly Income') }}</p>
+                                <p class="text-2xl font-bold text-green-600">{{ format_currency($monthIncome ?? 0) }}</p>
+                            </div>
+                            <div class="p-3 bg-green-100 rounded-full">
+                                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                                 </svg>
                             </div>
                         </div>
-                        <div class="space-y-3">
-                            <div class="flex justify-between items-center p-3 bg-green-50 rounded-xl">
-                                <span class="text-sm text-gray-600 flex items-center">
-                                    <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
-                                    </svg>
-                                    Sales
-                                </span>
-                                <span class="font-bold text-green-600">{{ rwf($monthSales) }}</span>
-                            </div>
-                            <div class="flex justify-between items-center p-3 bg-red-50 rounded-xl">
-                                <span class="text-sm text-gray-600 flex items-center">
-                                    <svg class="w-4 h-4 mr-2 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-                                    </svg>
-                                    Purchases
-                                </span>
-                                <span class="font-bold text-red-600">{{ rwf($monthPurchases) }}</span>
-                            </div>
-                            <div class="flex justify-between items-center p-4 bg-gradient-to-r {{ $monthProfit >= 0 ? 'from-emerald-500 to-green-600' : 'from-red-500 to-rose-600' }} rounded-xl text-white">
-                                <span class="text-sm font-medium">Profit</span>
-                                <span class="text-lg font-bold">{{ rwf($monthProfit) }}</span>
-                            </div>
-                        </div>
                     </div>
-                    <div class="h-1 bg-gradient-to-r from-orange-400 to-red-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                 </div>
 
-                <!-- This Year -->
-                <div class="period-card group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100" style="animation-delay: 0.4s">
+                <!-- Monthly Expenses -->
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6">
-                        <div class="flex items-center justify-between mb-4">
-                            <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">This Year</h4>
-                            <div class="h-8 w-8 rounded-lg bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center">
-                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">{{ __('messages.Monthly Expenses') }}</p>
+                                <p class="text-2xl font-bold text-red-600">{{ format_currency($monthExpenses ?? 0) }}</p>
+                            </div>
+                            <div class="p-3 bg-red-100 rounded-full">
+                                <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
                                 </svg>
                             </div>
                         </div>
-                        <div class="space-y-3">
-                            <div class="flex justify-between items-center p-3 bg-green-50 rounded-xl">
-                                <span class="text-sm text-gray-600 flex items-center">
-                                    <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
-                                    </svg>
-                                    Sales
-                                </span>
-                                <span class="font-bold text-green-600">{{ rwf($yearSales) }}</span>
-                            </div>
-                            <div class="flex justify-between items-center p-3 bg-red-50 rounded-xl">
-                                <span class="text-sm text-gray-600 flex items-center">
-                                    <svg class="w-4 h-4 mr-2 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-                                    </svg>
-                                    Purchases
-                                </span>
-                                <span class="font-bold text-red-600">{{ rwf($yearPurchases) }}</span>
-                            </div>
-                            <div class="flex justify-between items-center p-4 bg-gradient-to-r {{ ($yearSales - $yearPurchases) >= 0 ? 'from-emerald-500 to-green-600' : 'from-red-500 to-rose-600' }} rounded-xl text-white">
-                                <span class="text-sm font-medium">Net</span>
-                                <span class="text-lg font-bold">{{ rwf($yearSales - $yearPurchases) }}</span>
-                            </div>
-                        </div>
                     </div>
-                    <div class="h-1 bg-gradient-to-r from-emerald-400 to-teal-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                 </div>
             </div>
 
-            <!-- Quick Links -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <a href="{{ route('sales.index') }}" class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 p-6">
-                    <div class="flex items-center">
-                        <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
-                            <svg class="h-7 w-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            <!-- Profit/Loss Summary -->
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-8">
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-6">{{ __('messages.Profit & Loss Summary') }}</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="text-center p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-xl">
+                            <p class="text-sm text-gray-600 mb-2">{{ __('messages.Total Income') }}</p>
+                            <p class="text-3xl font-bold text-green-600">{{ format_currency($totalIncome ?? 0) }}</p>
+                            <p class="text-xs text-gray-500 mt-2">{{ __('messages.All time') }}</p>
+                        </div>
+                        <div class="text-center p-6 bg-gradient-to-br from-red-50 to-red-100 rounded-xl">
+                            <p class="text-sm text-gray-600 mb-2">{{ __('messages.Total Expenses') }}</p>
+                            <p class="text-3xl font-bold text-red-600">{{ format_currency($totalExpenses ?? 0) }}</p>
+                            <p class="text-xs text-gray-500 mt-2">{{ __('messages.All time') }}</p>
+                        </div>
+                        <div class="text-center p-6 bg-gradient-to-br {{ ($netProfit ?? 0) >= 0 ? 'from-blue-50 to-blue-100' : 'from-orange-50 to-orange-100' }} rounded-xl">
+                            <p class="text-sm text-gray-600 mb-2">Net {{ ($netProfit ?? 0) >= 0 ? 'Profit' : 'Loss' }}</p>
+                            <p class="text-3xl font-bold {{ ($netProfit ?? 0) >= 0 ? 'text-blue-600' : 'text-orange-600' }}">{{ format_currency(abs($netProfit ?? 0)) }}</p>
+                            <p class="text-xs text-gray-500 mt-2">All time</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <a href="{{ route('incomes.index') }}" class="bg-white overflow-hidden shadow-sm sm:rounded-lg hover:shadow-md transition-shadow">
+                    <div class="p-6 text-center">
+                        <div class="mx-auto w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-3">
+                            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                         </div>
-                        <div class="ml-4">
-                            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-green-600 transition">View Sales</h3>
-                            <p class="text-sm text-gray-500">All sales records</p>
-                        </div>
-                        <svg class="w-5 h-5 ml-auto text-gray-400 group-hover:text-green-500 transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                        </svg>
+                        <h4 class="font-medium text-gray-900">Income Records</h4>
+                        <p class="text-sm text-gray-500">View all income</p>
                     </div>
                 </a>
 
-                <a href="{{ route('purchases.index') }}" class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 p-6">
-                    <div class="flex items-center">
-                        <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-red-400 to-rose-600 flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
-                            <svg class="h-7 w-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                <a href="{{ route('expenses.index') }}" class="bg-white overflow-hidden shadow-sm sm:rounded-lg hover:shadow-md transition-shadow">
+                    <div class="p-6 text-center">
+                        <div class="mx-auto w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-3">
+                            <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
                             </svg>
                         </div>
-                        <div class="ml-4">
-                            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-red-600 transition">View Purchases</h3>
-                            <p class="text-sm text-gray-500">All purchase records</p>
-                        </div>
-                        <svg class="w-5 h-5 ml-auto text-gray-400 group-hover:text-red-500 transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                        </svg>
+                        <h4 class="font-medium text-gray-900">Expense Records</h4>
+                        <p class="text-sm text-gray-500">View all expenses</p>
                     </div>
                 </a>
 
-                <a href="{{ route('stats.summary') }}" class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 p-6">
-                    <div class="flex items-center">
-                        <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-indigo-400 to-purple-600 flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
-                            <svg class="h-7 w-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                <a href="{{ route('categories.index') }}" class="bg-white overflow-hidden shadow-sm sm:rounded-lg hover:shadow-md transition-shadow">
+                    <div class="p-6 text-center">
+                        <div class="mx-auto w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-3">
+                            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
                             </svg>
                         </div>
-                        <div class="ml-4">
-                            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-indigo-600 transition">Detailed Reports</h3>
-                            <p class="text-sm text-gray-500">Full analytics</p>
+                        <h4 class="font-medium text-gray-900">Categories</h4>
+                        <p class="text-sm text-gray-500">Manage categories</p>
+                    </div>
+                </a>
+
+                <a href="{{ route('reports.index') }}" class="bg-white overflow-hidden shadow-sm sm:rounded-lg hover:shadow-md transition-shadow">
+                    <div class="p-6 text-center">
+                        <div class="mx-auto w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-3">
+                            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
                         </div>
-                        <svg class="w-5 h-5 ml-auto text-gray-400 group-hover:text-indigo-500 transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                        </svg>
+                        <h4 class="font-medium text-gray-900">Reports</h4>
+                        <p class="text-sm text-gray-500">Financial reports</p>
                     </div>
                 </a>
             </div>
 
-            <!-- Info Banner -->
-            <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-6 border border-indigo-200">
-                <div class="flex items-start">
-                    <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center flex-shrink-0">
-                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
+            <!-- Recent Transactions -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Recent Income -->
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-semibold text-gray-900">Recent Income</h3>
+                            <a href="{{ route('incomes.index') }}" class="text-sm text-indigo-600 hover:text-indigo-800">View All</a>
+                        </div>
+                        @if(isset($recentIncomes) && $recentIncomes->count() > 0)
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead>
+                                        <tr>
+                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Date</th>
+                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Title</th>
+                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Category</th>
+                                            <th class="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase">Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200">
+                                        @foreach($recentIncomes as $income)
+                                            <tr>
+                                                <td class="px-4 py-3 text-sm text-gray-500">{{ $income->date->format('M d') }}</td>
+                                                <td class="px-4 py-3 text-sm text-gray-900">{{ Str::limit($income->title, 20) }}</td>
+                                                <td class="px-4 py-3 text-sm text-gray-500">{{ $income->category->name ?? '-' }}</td>
+                                                <td class="px-4 py-3 text-sm text-green-600 text-right font-medium">+{{ format_currency($income->amount) }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        @else
+                            <p class="text-gray-500 text-center py-4">No recent income</p>
+                        @endif
                     </div>
-                    <div class="ml-4">
-                        <h4 class="text-sm font-semibold text-indigo-800">Financial Overview</h4>
-                        <p class="text-sm text-indigo-600 mt-1">As an accountant, you have view-only access to all financial data. For detailed reports and analytics, use the "Detailed Reports" section.</p>
+                </div>
+
+                <!-- Recent Expenses -->
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-semibold text-gray-900">Recent Expenses</h3>
+                            <a href="{{ route('expenses.index') }}" class="text-sm text-indigo-600 hover:text-indigo-800">View All</a>
+                        </div>
+                        @if(isset($recentExpenses) && $recentExpenses->count() > 0)
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead>
+                                        <tr>
+                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Date</th>
+                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Title</th>
+                                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Category</th>
+                                            <th class="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase">Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200">
+                                        @foreach($recentExpenses as $expense)
+                                            <tr>
+                                                <td class="px-4 py-3 text-sm text-gray-500">{{ $expense->date->format('M d') }}</td>
+                                                <td class="px-4 py-3 text-sm text-gray-900">{{ Str::limit($expense->title, 20) }}</td>
+                                                <td class="px-4 py-3 text-sm text-gray-500">{{ $expense->category->name ?? '-' }}</td>
+                                                <td class="px-4 py-3 text-sm text-red-600 text-right font-medium">-{{ format_currency($expense->amount) }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        @else
+                            <p class="text-gray-500 text-center py-4">No recent expenses</p>
+                        @endif
                     </div>
+                </div>
+            </div>
+
+            <!-- Category Breakdown -->
+            <div class="mt-8 bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Category Overview (This Month)</h3>
+                    @if(isset($categoryStats) && count($categoryStats) > 0)
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            @foreach($categoryStats as $category)
+                                <div class="p-4 bg-gray-50 rounded-lg">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="font-medium text-gray-900">{{ $category['name'] }}</span>
+                                        <span class="text-xs px-2 py-1 rounded-full {{ $category['type'] === 'income' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
+                                            {{ ucfirst($category['type']) }}
+                                        </span>
+                                    </div>
+                                    <p class="text-lg font-semibold {{ $category['type'] === 'income' ? 'text-green-600' : 'text-red-600' }}">
+                                        {{ format_currency($category['total']) }}
+                                    </p>
+                                </div>
+                            @endforeach
+                        </div>
+                    @else
+                        <p class="text-gray-500 text-center py-4">No category data available</p>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Custom Styles -->
-    <style>
-        @keyframes fade-in {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .period-card { animation: fade-in 0.5s ease-out forwards; opacity: 0; }
-    </style>
-
-    <script>
-        // Update current date
-        function updateDate() {
-            const now = new Date();
-            document.getElementById('current-date').textContent = now.toLocaleDateString('en-US', { 
-                weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' 
-            });
-        }
-        updateDate();
-    </script>
 </x-app-layout>

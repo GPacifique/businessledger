@@ -1,7 +1,12 @@
 <x-guest-layout>
     <div class="text-center mb-8">
-        <h2 class="text-2xl font-bold text-gray-800">Create Account</h2>
-        <p class="text-gray-500 mt-1">Start managing your shop today</p>
+        <div class="mx-auto w-16 h-16 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg shadow-emerald-500/30 animate-pulse">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
+            </svg>
+        </div>
+        <h2 class="text-2xl font-bold bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">Create Account</h2>
+        <p class="text-gray-500 mt-1">Start tracking your finances today</p>
     </div>
 
     <form method="POST" action="{{ route('register') }}">
@@ -9,57 +14,81 @@
 
         <!-- Name -->
         <div>
-            <x-input-label for="name" :value="__('Full Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="John Doe" />
+            <x-input-label for="name" :value="__('Full Name')" class="text-gray-700 font-semibold" />
+            <div class="relative mt-1">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                </div>
+                <x-text-input id="name" class="pl-10 block w-full rounded-xl border-gray-200 focus:border-emerald-500 focus:ring-emerald-500 transition-all duration-300" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="John Doe" />
+            </div>
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
         <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" placeholder="you@example.com" />
+            <x-input-label for="email" :value="__('Email')" class="text-gray-700 font-semibold" />
+            <div class="relative mt-1">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path>
+                    </svg>
+                </div>
+                <x-text-input id="email" class="pl-10 block w-full rounded-xl border-gray-200 focus:border-emerald-500 focus:ring-emerald-500 transition-all duration-300" type="email" name="email" :value="old('email')" required autocomplete="username" placeholder="you@example.com" />
+            </div>
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password"
-                            placeholder="••••••••" />
-
+            <x-input-label for="password" :value="__('Password')" class="text-gray-700 font-semibold" />
+            <div class="relative mt-1">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                    </svg>
+                </div>
+                <x-text-input id="password" class="pl-10 block w-full rounded-xl border-gray-200 focus:border-emerald-500 focus:ring-emerald-500 transition-all duration-300"
+                                type="password"
+                                name="password"
+                                required autocomplete="new-password"
+                                placeholder="••••••••" />
+            </div>
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
         <!-- Confirm Password -->
         <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password"
-                            placeholder="••••••••" />
-
+            <x-input-label for="password_confirmation" :value="__('Confirm Password')" class="text-gray-700 font-semibold" />
+            <div class="relative mt-1">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                </div>
+                <x-text-input id="password_confirmation" class="pl-10 block w-full rounded-xl border-gray-200 focus:border-emerald-500 focus:ring-emerald-500 transition-all duration-300"
+                                type="password"
+                                name="password_confirmation" required autocomplete="new-password"
+                                placeholder="••••••••" />
+            </div>
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
         <div class="mt-6">
-            <x-primary-button class="w-full justify-center py-3">
+            <button type="submit" class="w-full justify-center py-3 inline-flex items-center px-6 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 border border-transparent rounded-xl font-semibold text-base text-white hover:from-emerald-600 hover:via-teal-600 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all duration-300 shadow-lg shadow-emerald-500/25 hover:shadow-xl hover:-translate-y-0.5">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
                 </svg>
                 {{ __('Create Account') }}
-            </x-primary-button>
+            </button>
         </div>
     </form>
 
     <div class="mt-6 text-center">
         <p class="text-gray-600">
             Already have an account?
-            <a href="{{ route('login') }}" class="text-indigo-600 hover:text-indigo-800 font-semibold">
+            <a href="{{ route('login') }}" class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent font-bold hover:from-purple-600 hover:to-pink-600 transition-all duration-300">
                 Sign in
             </a>
         </p>
@@ -68,30 +97,38 @@
     <!-- Features Summary -->
     <div class="mt-6 pt-6 border-t border-gray-200">
         <p class="text-xs text-gray-500 text-center mb-3">What you'll get:</p>
-        <div class="grid grid-cols-2 gap-2 text-xs text-gray-600">
-            <div class="flex items-center">
-                <svg class="w-4 h-4 text-green-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                Sales Tracking
+        <div class="grid grid-cols-2 gap-3 text-xs">
+            <div class="flex items-center bg-gradient-to-r from-emerald-50 to-teal-50 px-3 py-2 rounded-lg border border-emerald-100">
+                <div class="p-1 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-md mr-2">
+                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <span class="font-medium text-emerald-700">Income Tracking</span>
             </div>
-            <div class="flex items-center">
-                <svg class="w-4 h-4 text-green-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                Inventory
+            <div class="flex items-center bg-gradient-to-r from-rose-50 to-pink-50 px-3 py-2 rounded-lg border border-rose-100">
+                <div class="p-1 bg-gradient-to-br from-rose-400 to-pink-500 rounded-md mr-2">
+                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <span class="font-medium text-rose-700">Expense Tracking</span>
             </div>
-            <div class="flex items-center">
-                <svg class="w-4 h-4 text-green-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                Staff Roles
+            <div class="flex items-center bg-gradient-to-r from-cyan-50 to-blue-50 px-3 py-2 rounded-lg border border-cyan-100">
+                <div class="p-1 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-md mr-2">
+                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <span class="font-medium text-cyan-700">Balance Reports</span>
             </div>
-            <div class="flex items-center">
-                <svg class="w-4 h-4 text-green-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                Profit Reports
+            <div class="flex items-center bg-gradient-to-r from-amber-50 to-orange-50 px-3 py-2 rounded-lg border border-amber-100">
+                <div class="p-1 bg-gradient-to-br from-amber-400 to-orange-500 rounded-md mr-2">
+                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <span class="font-medium text-amber-700">Profit/Loss View</span>
             </div>
         </div>
     </div>
