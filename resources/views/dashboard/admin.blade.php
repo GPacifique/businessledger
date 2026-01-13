@@ -211,12 +211,12 @@
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="text-lg font-bold text-yellow-800">Shops Awaiting Approval</h3>
-                                <p class="text-xs text-yellow-600">{{ $pendingBusinesses }} shop(s) need your attention</p>
+                                <h3 class="text-lg font-bold text-yellow-800">{{ __('messages.Shops Awaiting Approval') }}</h3>
+                                <p class="text-xs text-yellow-600">{{ $pendingBusinesses }} {{ __('messages.shop(s) need your attention') }}</p>
                             </div>
                         </div>
                         <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-bold bg-yellow-100 text-yellow-800">
-                            {{ $pendingBusinesses }} pending
+                            {{ $pendingBusinesses }} {{ __('messages.pending') }}
                         </span>
                     </div>
                 </div>
@@ -224,10 +224,10 @@
                     <table class="min-w-full">
                         <thead class="bg-gray-50">
                             <tr>
-                                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Shop Details</th>
-                                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Owner</th>
-                                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Submitted</th>
-                                <th class="px-6 py-4 text-center text-xs font-semibold text-gray-500 uppercase tracking-wider">Actions</th>
+                                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">{{ __('messages.Shop Details') }}</th>
+                                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">{{ __('messages.Owner') }}</th>
+                                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">{{ __('messages.Submitted') }}</th>
+                                <th class="px-6 py-4 text-center text-xs font-semibold text-gray-500 uppercase tracking-wider">{{ __('messages.Actions') }}</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-100">
@@ -268,7 +268,7 @@
                                                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                                                 </svg>
-                                                Approve
+                                                {{ __('messages.Approve') }}
                                             </button>
                                         </form>
                                         <form action="{{ route('admin.businesses.reject', $business) }}" method="POST" class="inline">
@@ -277,7 +277,7 @@
                                                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                                                 </svg>
-                                                Reject
+                                                {{ __('messages.Reject') }}
                                             </button>
                                         </form>
                                     </div>
@@ -298,8 +298,8 @@
                         </svg>
                     </div>
                     <div>
-                        <h4 class="text-lg font-bold text-green-800">All caught up! ✨</h4>
-                        <p class="text-sm text-green-600">No pending business approvals at the moment.</p>
+                        <h4 class="text-lg font-bold text-green-800">{{ __('messages.All caught up!') }} ✨</h4>
+                        <p class="text-sm text-green-600">{{ __('messages.No pending business approvals at the moment.') }}</p>
                     </div>
                 </div>
             </div>
@@ -316,8 +316,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="text-lg font-semibold text-gray-900">Recent Businesses</h3>
-                                <p class="text-xs text-gray-500">Latest registered shops</p>
+                                <h3 class="text-lg font-semibold text-gray-900">{{ __('messages.Recent Businesses') }}</h3>
+                                <p class="text-xs text-gray-500">{{ __('messages.Latest registered shops') }}</p>
                             </div>
                         </div>
                     </div>
@@ -326,11 +326,11 @@
                     <table class="min-w-full">
                         <thead class="bg-gray-50">
                             <tr>
-                                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Shop</th>
-                                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
-                                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Users</th>
-                                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Created</th>
-                                <th class="px-6 py-4 text-center text-xs font-semibold text-gray-500 uppercase tracking-wider">Actions</th>
+                                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">{{ __('messages.Shop') }}</th>
+                                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">{{ __('messages.Status') }}</th>
+                                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">{{ __('messages.Users') }}</th>
+                                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">{{ __('messages.Created') }}</th>
+                                <th class="px-6 py-4 text-center text-xs font-semibold text-gray-500 uppercase tracking-wider">{{ __('messages.Actions') }}</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-100">
@@ -408,7 +408,7 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5"/>
                                             </svg>
                                         </div>
-                                        <p class="text-gray-500">No businesses registered yet</p>
+                                        <p class="text-gray-500">{{ __('messages.No businesses registered yet') }}</p>
                                     </div>
                                 </td>
                             </tr>
@@ -429,7 +429,7 @@
                             </svg>
                         </div>
                     </div>
-                    <p class="text-green-100 text-sm font-medium mb-1">Total Business Income</p>
+                    <p class="text-green-100 text-sm font-medium mb-1">{{ __('messages.Total Business Income') }}</p>
                     <p class="text-3xl font-bold">{{ number_format($totalPlatformIncome, 0) }} <span class="text-lg">RWF</span></p>
                 </div>
 
@@ -442,7 +442,7 @@
                             </svg>
                         </div>
                     </div>
-                    <p class="text-red-100 text-sm font-medium mb-1">Total Business Expenses</p>
+                    <p class="text-red-100 text-sm font-medium mb-1">{{ __('messages.Total Business Expenses') }}</p>
                     <p class="text-3xl font-bold">{{ number_format($totalPlatformExpenses, 0) }} <span class="text-lg">RWF</span></p>
                 </div>
 
@@ -455,7 +455,7 @@
                             </svg>
                         </div>
                     </div>
-                    <p class="text-indigo-100 text-sm font-medium mb-1">Total Business Balance</p>
+                    <p class="text-indigo-100 text-sm font-medium mb-1">{{ __('messages.Total Business Balance') }}</p>
                     <p class="text-3xl font-bold">{{ number_format($totalPlatformBalance, 0) }} <span class="text-lg">RWF</span></p>
                 </div>
             </div>
@@ -472,8 +472,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="text-lg font-semibold text-gray-900">Income by Business</h3>
-                                <p class="text-xs text-gray-500">Top performing businesses</p>
+                                <h3 class="text-lg font-semibold text-gray-900">{{ __('messages.Income by Business') }}</h3>
+                                <p class="text-xs text-gray-500">{{ __('messages.Top performing businesses') }}</p>
                             </div>
                         </div>
                     </div>
@@ -493,7 +493,7 @@
                             </a>
                         @empty
                             <div class="p-8 text-center text-gray-500">
-                                <p>No income data available</p>
+                                <p>{{ __('messages.No income data available') }}</p>
                             </div>
                         @endforelse
                     </div>
@@ -509,8 +509,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="text-lg font-semibold text-gray-900">Expenses by Business</h3>
-                                <p class="text-xs text-gray-500">Highest spending businesses</p>
+                                <h3 class="text-lg font-semibold text-gray-900">{{ __('messages.Expenses by Business') }}</h3>
+                                <p class="text-xs text-gray-500">{{ __('messages.Highest spending businesses') }}</p>
                             </div>
                         </div>
                     </div>
@@ -530,7 +530,7 @@
                             </a>
                         @empty
                             <div class="p-8 text-center text-gray-500">
-                                <p>No expense data available</p>
+                                <p>{{ __('messages.No expense data available') }}</p>
                             </div>
                         @endforelse
                     </div>
@@ -546,8 +546,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="text-lg font-semibold text-gray-900">Balance by Business</h3>
-                                <p class="text-xs text-gray-500">Net profit/loss ranking</p>
+                                <h3 class="text-lg font-semibold text-gray-900">{{ __('messages.Balance by Business') }}</h3>
+                                <p class="text-xs text-gray-500">{{ __('messages.Net profit/loss ranking') }}</p>
                             </div>
                         </div>
                     </div>
@@ -560,14 +560,14 @@
                                     </div>
                                     <div>
                                         <p class="font-medium text-gray-900 text-sm">{{ Str::limit($business->name, 20) }}</p>
-                                        <p class="text-xs text-gray-500">{{ $business->balance >= 0 ? 'Profitable' : 'Loss' }}</p>
+                                        <p class="text-xs text-gray-500">{{ $business->balance >= 0 ? __('messages.Profitable') : __('messages.Loss') }}</p>
                                     </div>
                                 </div>
                                 <span class="text-lg font-bold {{ $business->balance >= 0 ? 'text-indigo-600' : 'text-red-600' }}">{{ number_format($business->balance, 0) }}</span>
                             </a>
                         @empty
                             <div class="p-8 text-center text-gray-500">
-                                <p>No balance data available</p>
+                                <p>{{ __('messages.No balance data available') }}</p>
                             </div>
                         @endforelse
                     </div>

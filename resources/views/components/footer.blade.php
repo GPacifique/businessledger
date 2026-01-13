@@ -52,7 +52,7 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold text-white">Murenzi Properties</h3>
+                            <h3 class="text-xl font-bold text-white">EDI Properties</h3>
                             <p class="text-emerald-200 text-xs">Real Estate & Investments</p>
                         </div>
                     </div>
@@ -109,7 +109,7 @@
             <!-- Bottom Bar -->
             <div class="mt-10 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between">
                 <p class="text-emerald-200 text-sm mb-4 md:mb-0">
-                    © {{ date('Y') }} Murenzi Properties. Made with ❤️ in Rwanda
+                    © {{ date('Y') }} EDI Properties. Made with ❤️ in Rwanda
                 </p>
                 <div class="flex items-center space-x-4">
                     <span class="text-emerald-300 text-xs flex items-center">
@@ -158,7 +158,7 @@
                     </svg>
                 </div>
                 <div>
-                    <span class="text-gray-800 font-bold">Murenzi Properties</span>
+                    <span class="text-gray-800 font-bold">EDI Properties</span>
                     <span class="text-gray-400 mx-2">|</span>
                     <span class="text-gray-500 text-sm">Real Estate & Investments</span>
                 </div>

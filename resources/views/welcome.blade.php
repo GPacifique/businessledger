@@ -111,22 +111,27 @@
                                 </div>
                                 <div class="grid grid-cols-2 gap-4">
                                     <div class="bg-gradient-to-br from-emerald-400 to-green-600 rounded-xl p-4 text-white">
-                                        <p class="text-xs opacity-80">Featured</p>
+                                        <p class="text-xs opacity-80">{{ __('messages.Featured') }}</p>
                                         <p class="text-xl font-bold">{{ config('landing.company.name') }}</p>
                                     </div>
                                     <div class="bg-gradient-to-br from-red-400 to-rose-600 rounded-xl p-4 text-white">
-                                        <p class="text-xs opacity-80">Quality</p>
-                                        <p class="text-xl font-bold">Premium</p>
+                                        <p class="text-xs opacity-80">{{ __('messages.Quality') }}</p>
+                                        <p class="text-xl font-bold">{{ __('messages.Premium') }}</p>
                                     </div>
                                 </div>
                                 <div class="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl p-4 border border-emerald-100">
-                                    <p class="text-xs text-gray-500">Location</p>
+                                    <p class="text-xs text-gray-500">{{ __('messages.Location') }}</p>
                                     <p class="text-xl font-bold text-emerald-600">{{ config('landing.company.location') }}</p>
                                 </div>
-                                <div class="space-y-2">
-                                    <div class="flex items-center justify-between text-sm">
-                                        <span class="text-gray-600">Trust Level</span>
-                                        <span class="text-emerald-600 font-semibold">Verified</span>
+                        <div class="flex items-start space-x-4">
+                            <div class="h-8 w-8 rounded-full bg-purple-100 flex items-center justify-center mr-2">
+                                <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <span class="text-gray-600">{{ __('messages.Trust Level') }}</span>
+                                <span class="text-emerald-600 font-semibold">{{ __('messages.Verified') }}</span>
                                     </div>
                                     <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
                                         <div class="h-full w-[100%] bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full"></div>
@@ -214,9 +219,9 @@
 <section id="properties" class="py-20 lg:py-32 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <x-landing.section-title
-            badge="Featured Listings"
-            title="Discover Our Properties"
-            subtitle="Explore our carefully curated selection of premium properties available for investment and living"
+            badge="{{ __('messages.Featured Listings') }}"
+            title="{{ __('messages.Discover Our Properties') }}"
+            subtitle="{{ __('messages.Explore properties description') }}"
             class="mb-16"
         />
 
@@ -236,24 +241,24 @@
                                          alt="Luxury Modern Villa"
                                          class="w-full h-full object-cover">
                                     <div class="absolute top-4 right-4 bg-emerald-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                                        Featured
+                                        {{ __('messages.Featured') }}
                                     </div>
                                 </div>
                                 <div>
-                                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Luxury Modern Villa</h3>
-                                    <p class="text-gray-600 text-lg mb-6">A stunning contemporary villa with breathtaking views, modern amenities, and premium finishes throughout.</p>
+                                    <h3 class="text-3xl font-bold text-gray-900 mb-4">{{ __('messages.Luxury Modern Villa') }}</h3>
+                                    <p class="text-gray-600 text-lg mb-6">{{ __('messages.Villa description') }}</p>
                                     <div class="grid grid-cols-3 gap-4 mb-8">
                                         <div class="bg-emerald-50 p-4 rounded-lg">
                                             <p class="text-emerald-600 font-bold text-xl">4</p>
-                                            <p class="text-gray-600 text-sm">Bedrooms</p>
+                                            <p class="text-gray-600 text-sm">{{ __('messages.Bedrooms') }}</p>
                                         </div>
                                         <div class="bg-emerald-50 p-4 rounded-lg">
                                             <p class="text-emerald-600 font-bold text-xl">3</p>
-                                            <p class="text-gray-600 text-sm">Bathrooms</p>
+                                            <p class="text-gray-600 text-sm">{{ __('messages.Bathrooms') }}</p>
                                         </div>
                                         <div class="bg-emerald-50 p-4 rounded-lg">
                                             <p class="text-emerald-600 font-bold text-xl">2500</p>
-                                            <p class="text-gray-600 text-sm">Sq. Meters</p>
+                                            <p class="text-gray-600 text-sm">{{ __('messages.Sq. Meters') }}</p>
                                         </div>
                                     </div>
                                     <div class="flex items-end gap-2 mb-6">
@@ -261,7 +266,7 @@
                                         <span class="text-gray-600 mb-1">USD</span>
                                     </div>
                                     <a href="#contact" class="inline-flex items-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors">
-                                        Learn More
+                                        {{ __('messages.Learn More') }}
                                         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                                     </a>
                                 </div>
@@ -276,24 +281,24 @@
                                          alt="Urban Penthouse"
                                          class="w-full h-full object-cover">
                                     <div class="absolute top-4 right-4 bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                                        Luxury
+                                        {{ __('messages.Luxury') }}
                                     </div>
                                 </div>
                                 <div>
-                                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Urban Penthouse</h3>
-                                    <p class="text-gray-600 text-lg mb-6">Elegant penthouse in the heart of the city with panoramic views, smart home automation, and exclusive amenities.</p>
+                                    <h3 class="text-3xl font-bold text-gray-900 mb-4">{{ __('messages.Urban Penthouse') }}</h3>
+                                    <p class="text-gray-600 text-lg mb-6">{{ __('messages.Penthouse description') }}</p>
                                     <div class="grid grid-cols-3 gap-4 mb-8">
                                         <div class="bg-blue-50 p-4 rounded-lg">
                                             <p class="text-blue-600 font-bold text-xl">3</p>
-                                            <p class="text-gray-600 text-sm">Bedrooms</p>
+                                            <p class="text-gray-600 text-sm">{{ __('messages.Bedrooms') }}</p>
                                         </div>
                                         <div class="bg-blue-50 p-4 rounded-lg">
                                             <p class="text-blue-600 font-bold text-xl">2.5</p>
-                                            <p class="text-gray-600 text-sm">Bathrooms</p>
+                                            <p class="text-gray-600 text-sm">{{ __('messages.Bathrooms') }}</p>
                                         </div>
                                         <div class="bg-blue-50 p-4 rounded-lg">
                                             <p class="text-blue-600 font-bold text-xl">1800</p>
-                                            <p class="text-gray-600 text-sm">Sq. Meters</p>
+                                            <p class="text-gray-600 text-sm">{{ __('messages.Sq. Meters') }}</p>
                                         </div>
                                     </div>
                                     <div class="flex items-end gap-2 mb-6">
@@ -301,7 +306,7 @@
                                         <span class="text-gray-600 mb-1">USD</span>
                                     </div>
                                     <a href="#contact" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-                                        Learn More
+                                        {{ __('messages.Learn More') }}
                                         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                                     </a>
                                 </div>
@@ -316,24 +321,24 @@
                                          alt="Beachfront Estate"
                                          class="w-full h-full object-cover">
                                     <div class="absolute top-4 right-4 bg-teal-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                                        Exclusive
+                                        {{ __('messages.Exclusive') }}
                                     </div>
                                 </div>
                                 <div>
-                                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Beachfront Estate</h3>
-                                    <p class="text-gray-600 text-lg mb-6">Exclusive waterfront property with private beach access, resort-style amenities, and sustainable features.</p>
+                                    <h3 class="text-3xl font-bold text-gray-900 mb-4">{{ __('messages.Beachfront Estate') }}</h3>
+                                    <p class="text-gray-600 text-lg mb-6">{{ __('messages.Estate description') }}</p>
                                     <div class="grid grid-cols-3 gap-4 mb-8">
                                         <div class="bg-teal-50 p-4 rounded-lg">
                                             <p class="text-teal-600 font-bold text-xl">5</p>
-                                            <p class="text-gray-600 text-sm">Bedrooms</p>
+                                            <p class="text-gray-600 text-sm">{{ __('messages.Bedrooms') }}</p>
                                         </div>
                                         <div class="bg-teal-50 p-4 rounded-lg">
                                             <p class="text-teal-600 font-bold text-xl">4</p>
-                                            <p class="text-gray-600 text-sm">Bathrooms</p>
+                                            <p class="text-gray-600 text-sm">{{ __('messages.Bathrooms') }}</p>
                                         </div>
                                         <div class="bg-teal-50 p-4 rounded-lg">
                                             <p class="text-teal-600 font-bold text-xl">3500</p>
-                                            <p class="text-gray-600 text-sm">Sq. Meters</p>
+                                            <p class="text-gray-600 text-sm">{{ __('messages.Sq. Meters') }}</p>
                                         </div>
                                     </div>
                                     <div class="flex items-end gap-2 mb-6">
@@ -341,7 +346,7 @@
                                         <span class="text-gray-600 mb-1">USD</span>
                                     </div>
                                     <a href="#contact" class="inline-flex items-center px-6 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-700 transition-colors">
-                                        Learn More
+                                        {{ __('messages.Learn More') }}
                                         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                                     </a>
                                 </div>
@@ -353,12 +358,12 @@
                 <!-- Navigation Buttons -->
                 <button @click="prevSlide()"
                         class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 bg-emerald-600 text-white p-3 rounded-full hover:bg-emerald-700 transition-colors shadow-lg z-10 hidden lg:flex items-center justify-center"
-                        aria-label="Previous property">
+                        aria-label="{{ __('messages.Previous property') }}">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
                 </button>
                 <button @click="nextSlide()"
                         class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 bg-emerald-600 text-white p-3 rounded-full hover:bg-emerald-700 transition-colors shadow-lg z-10 hidden lg:flex items-center justify-center"
-                        aria-label="Next property">
+                        aria-label="{{ __('messages.Next property') }}">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                 </button>
 
@@ -460,9 +465,9 @@
             {{-- Left Content --}}
             <div>
                 <x-landing.section-title
-                    badge="Get In Touch"
-                    title="Have Questions? <span class='text-emerald-600'>Contact Us</span>"
-                    subtitle="We're here to help. Reach out to us for support, questions, or just to say hello."
+                    badge="{{ __('messages.Get In Touch') }}"
+                    title="{{ __('messages.Have Questions?') }} <span class='text-emerald-600'>{{ __('messages.Contact Us') }}</span>"
+                    subtitle="{{ __('messages.We are here to help') }}"
                     align="left"
                 />
 
@@ -475,7 +480,7 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-900">Email Us</h3>
+                            <h3 class="text-lg font-semibold text-gray-900">{{ __('messages.Email Us') }}</h3>
                             <a href="mailto:{{ config('landing.company.email') }}" class="text-emerald-600 hover:text-emerald-700 transition-colors">{{ config('landing.company.email') }}</a>
                         </div>
                     </div>
@@ -488,7 +493,7 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-900">Call Us</h3>
+                            <h3 class="text-lg font-semibold text-gray-900">{{ __('messages.Call Us') }}</h3>
                             <a href="tel:{{ config('landing.company.phone') }}" class="text-emerald-600 hover:text-emerald-700 transition-colors">{{ config('landing.company.phone') }}</a>
                         </div>
                     </div>
@@ -502,7 +507,7 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-900">Visit Us</h3>
+                            <h3 class="text-lg font-semibold text-gray-900">{{ __('messages.Visit Us') }}</h3>
                             <p class="text-gray-600">{{ config('landing.company.location') }}</p>
                         </div>
                     </div>
@@ -515,7 +520,7 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-900">Business Hours</h3>
+                            <h3 class="text-lg font-semibold text-gray-900">{{ __('messages.Business Hours') }}</h3>
                             <p class="text-gray-600">{{ config('landing.company.business_hours') }}</p>
                         </div>
                     </div>
@@ -530,7 +535,7 @@
                     @csrf
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
-                            <label for="first_name" class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                            <label for="first_name" class="block text-sm font-medium text-gray-700 mb-2">{{ __('messages.First Name') }}</label>
                             <input
                                 type="text"
                                 id="first_name"
@@ -541,7 +546,7 @@
                             >
                         </div>
                         <div>
-                            <label for="last_name" class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                            <label for="last_name" class="block text-sm font-medium text-gray-700 mb-2">{{ __('messages.Last Name') }}</label>
                             <input
                                 type="text"
                                 id="last_name"
@@ -554,7 +559,7 @@
                     </div>
 
                     <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">{{ __('messages.Email Address') }}</label>
                         <input
                             type="email"
                             id="email"
@@ -566,7 +571,7 @@
                     </div>
 
                     <div>
-                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number (Optional)</label>
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">{{ __('messages.Phone Number (Optional)') }}</label>
                         <input
                             type="tel"
                             id="phone"
@@ -577,31 +582,31 @@
                     </div>
 
                     <div>
-                        <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                        <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">{{ __('messages.Subject') }}</label>
                         <select
                             id="subject"
                             name="subject"
                             required
                             class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                         >
-                            <option value="">Select a subject</option>
-                            <option value="general">General Inquiry</option>
-                            <option value="support">Technical Support</option>
-                            <option value="billing">Billing Question</option>
-                            <option value="partnership">Partnership Opportunity</option>
-                            <option value="feedback">Feedback</option>
+                            <option value="">{{ __('messages.Select a subject') }}</option>
+                            <option value="general">{{ __('messages.General Inquiry') }}</option>
+                            <option value="support">{{ __('messages.Technical Support') }}</option>
+                            <option value="billing">{{ __('messages.Billing Question') }}</option>
+                            <option value="partnership">{{ __('messages.Partnership Opportunity') }}</option>
+                            <option value="feedback">{{ __('messages.Feedback') }}</option>
                         </select>
                     </div>
 
                     <div>
-                        <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-2">{{ __('messages.Message') }}</label>
                         <textarea
                             id="message"
                             name="message"
                             rows="5"
                             required
                             class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors resize-none"
-                            placeholder="How can we help you?"
+                            placeholder="{{ __('messages.How can we help you?') }}"
                         ></textarea>
                     </div>
 
@@ -612,7 +617,7 @@
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
                         </svg>
-                        Send Message
+                        {{ __('messages.Send Message') }}
                     </button>
                 </form>
             </div>

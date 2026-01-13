@@ -32,7 +32,7 @@
                     </svg>
                 </div>
                 <div>
-                    <span :class="scrolled ? 'text-gray-900' : 'text-white'" class="text-xl font-bold font-display transition-colors duration-300">Murenzi Properties</span>
+                    <span :class="scrolled ? 'text-gray-900' : 'text-white'" class="text-xl font-bold font-display transition-colors duration-300">EDI Properties</span>
                     <p :class="scrolled ? 'text-emerald-600' : 'text-emerald-200'" class="text-xs font-medium transition-colors duration-300">Real Estate & Investments</p>
                 </div>
             </a>

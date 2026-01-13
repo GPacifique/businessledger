@@ -9,11 +9,11 @@
 
 return [
     'company' => [
-        'name' => env('COMPANY_NAME', 'Murenzi Properties'),
+        'name' => env('COMPANY_NAME', 'EDI Properties'),
         'tagline' => env('COMPANY_TAGLINE', 'Premium Real Estate & Property Management'),
         'description' => env('COMPANY_DESCRIPTION', 'Your trusted partner in land, houses, farms, and premium property investments'),
         'phone' => env('COMPANY_PHONE', '+250 786 163 963'),
-        'email' => env('COMPANY_EMAIL', 'info@murenziproperties.rw'),
+        'email' => env('COMPANY_EMAIL', 'info@ediproperties.rw'),
         'location' => env('COMPANY_LOCATION', 'Kigali, Rwanda'),
         'business_hours' => env('COMPANY_HOURS', 'Monday - Saturday: 8:00 AM - 6:00 PM'),
         'whatsapp' => env('COMPANY_WHATSAPP', '+250786163963'),
@@ -154,10 +154,10 @@ return [
     'testimonials' => [
         'badge' => 'Client Testimonials',
         'heading' => 'Trusted by <span class="text-primary">Satisfied Clients</span>',
-        'subheading' => 'See what our clients have to say about their property investments with Murenzi Properties.',
+        'subheading' => 'See what our clients have to say about their property investments with EDI Properties.',
         'items' => [
             [
-                'quote' => 'Found my dream home through Murenzi Properties! The process was smooth and transparent. Highly recommend!',
+                'quote' => 'Found my dream home through EDI Properties! The process was smooth and transparent. Highly recommend!',
                 'author' => 'Jean Muigai',
                 'role' => 'Homeowner',
                 'company' => 'Kigali Resident',
@@ -289,7 +289,7 @@ return [
 
     'cta' => [
         'heading' => 'Ready to Find Your Property?',
-        'subheading' => 'Join hundreds of satisfied clients who have found their perfect investment with Murenzi Properties.',
+        'subheading' => 'Join hundreds of satisfied clients who have found their perfect investment with EDI Properties.',
         'cta_text' => 'Get Started Today',
         'benefits' => [
             'Free Property Consultation',

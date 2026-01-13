@@ -6,7 +6,7 @@
             </svg>
         </div>
         <h2 class="text-2xl font-bold bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">Welcome Back!</h2>
-        <p class="text-gray-500 mt-1">Sign in to Murenzi Properties</p>
+        <p class="text-gray-500 mt-1">Sign in to EDI Properties</p>
     </div>
 
     <!-- Session Status -->

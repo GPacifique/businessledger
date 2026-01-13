@@ -133,7 +133,7 @@
                                     <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
                                         <div>
                                             <p class="font-medium text-gray-900">{{ $income->title }}</p>
-                                            <p class="text-sm text-gray-500">{{ $income->category->name ?? 'Uncategorized' }} • {{ $income->date->format('M d, Y') }}</p>
+                                            <p class="text-sm text-gray-500">{{ $income->category->name ?? __('messages.Uncategorized') }} • {{ $income->date->format('M d, Y') }}</p>
                                         </div>
                                         <span class="text-green-600 font-semibold">+{{ format_currency($income->amount) }}</span>
                                     </div>
@@ -158,7 +158,7 @@
                                     <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
                                         <div>
                                             <p class="font-medium text-gray-900">{{ $expense->title }}</p>
-                                            <p class="text-sm text-gray-500">{{ $expense->category->name ?? 'Uncategorized' }} • {{ $expense->date->format('M d, Y') }}</p>
+                                            <p class="text-sm text-gray-500">{{ $expense->category->name ?? __('messages.Uncategorized') }} • {{ $expense->date->format('M d, Y') }}</p>
                                         </div>
                                         <span class="text-red-600 font-semibold">-{{ format_currency($expense->amount) }}</span>
                                     </div>

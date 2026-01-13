@@ -12,7 +12,7 @@
                         </svg>
                     </div>
                     <div>
-                        <span class="text-xl font-bold text-white font-display">Murenzi Properties</span>
+                        <span class="text-xl font-bold text-white font-display">EDI Properties</span>
                         <p class="text-emerald-400 text-xs font-medium">Real Estate & Investments</p>
                     </div>
                 </a>
