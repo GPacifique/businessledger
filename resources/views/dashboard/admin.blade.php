@@ -261,7 +261,7 @@
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <div class="flex items-center justify-center space-x-2">
+                                    <div class="flex items-center justify-center space-x-2" onclick="event.stopPropagation();">
                                         <form action="{{ route('admin.businesses.approve', $business) }}" method="POST" class="inline">
                                             @csrf
                                             <button type="submit" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-lg text-sm font-medium hover:from-green-600 hover:to-emerald-700 transition-all transform hover:scale-105 shadow-sm hover:shadow-md">
@@ -379,7 +379,7 @@
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <div class="flex items-center justify-center space-x-2">
+                                    <div class="flex items-center justify-center space-x-2" onclick="event.stopPropagation();">
                                         <a href="{{ route('admin.businesses.edit', $business) }}" class="inline-flex items-center px-3 py-1.5 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors duration-200">
                                             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>

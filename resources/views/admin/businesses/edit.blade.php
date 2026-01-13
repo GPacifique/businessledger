@@ -131,18 +131,14 @@
 
                     <!-- Submit Buttons -->
                     <div class="flex items-center justify-between pt-6 border-t border-gray-100">
-                        <form action="{{ route('admin.businesses.destroy', $business) }}" method="POST" class="inline" onsubmit="return confirm('Are you sure you want to delete this business? This action cannot be undone.');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="px-4 py-2 bg-red-100 text-red-700 rounded-xl font-medium hover:bg-red-200 transition">
-                                <span class="flex items-center">
-                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
-                                    </svg>
-                                    {{ __('messages.Delete') }}
-                                </span>
-                            </button>
-                        </form>
+                        <button type="button" onclick="document.getElementById('delete-form').submit();" class="px-4 py-2 bg-red-100 text-red-700 rounded-xl font-medium hover:bg-red-200 transition">
+                            <span class="flex items-center">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                </svg>
+                                {{ __('messages.Delete') }}
+                            </span>
+                        </button>
                         <div class="flex space-x-3">
                             <a href="{{ route('admin.dashboard') }}"
                                 class="px-6 py-2.5 border border-gray-300 text-gray-700 rounded-xl font-medium hover:bg-gray-50 transition">
@@ -159,6 +155,12 @@
                             </button>
                         </div>
                     </div>
+                </form>
+
+                <!-- Delete Form (outside the update form) -->
+                <form id="delete-form" action="{{ route('admin.businesses.destroy', $business) }}" method="POST" class="hidden" onsubmit="return confirm('Are you sure you want to delete this business? This action cannot be undone.');">
+                    @csrf
+                    @method('DELETE')
                 </form>
             </div>
         </div>
