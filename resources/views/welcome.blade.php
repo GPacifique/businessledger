@@ -1,376 +1,675 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.landing')
 
-        <title>{{ config('app.name', 'BusinessLedger') }} - Income & Expense Management</title>
+@section('title', config('landing.company.name') . ' - ' . config('landing.company.tagline'))
 
-        <!-- SEO Meta Tags -->
-        <meta name="description" content="BusinessLedger - The smart way to track your business income and expenses. Manage your finances, monitor cash flow, and make better business decisions.">
-        <meta name="keywords" content="income tracking, expense management, business finance, cash flow, profit tracking, financial reports, Rwanda, RWF, business accounting">
-        <meta name="author" content="BusinessLedger">
-        <meta name="robots" content="index, follow">
+@section('content')
+{{-- ========================================
+    HERO SECTION
+======================================== --}}
+<section id="hero" class="relative min-h-screen flex items-center bg-gradient-to-br from-emerald-900 via-teal-900 to-cyan-900 overflow-hidden">
+    {{-- Background Pattern --}}
+    <div class="absolute inset-0 opacity-10">
+        <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+                <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                    <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5"/>
+                </pattern>
+            </defs>
+            <rect width="100" height="100" fill="url(#grid)"/>
+        </svg>
+    </div>
 
-        <!-- Open Graph / Facebook -->
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="{{ url('/') }}">
-        <meta property="og:title" content="BusinessLedger - Smart Income & Expense Management">
-        <meta property="og:description" content="Track your business income and expenses effortlessly. Get insights into your cash flow and profitability.">
-        <meta property="og:image" content="{{ asset('images/og-image.png') }}">
-        <meta property="og:image:width" content="1200">
-        <meta property="og:image:height" content="630">
-        <meta property="og:site_name" content="BusinessLedger">
+    {{-- Floating Decorative Elements --}}
+    <div class="absolute top-20 left-20 w-32 h-32 bg-emerald-400/20 rounded-full blur-3xl animate-pulse" aria-hidden="true"></div>
+    <div class="absolute bottom-40 right-20 w-48 h-48 bg-teal-400/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;" aria-hidden="true"></div>
+    <div class="absolute top-1/3 right-1/4 w-24 h-24 bg-green-400/20 rounded-full blur-2xl animate-pulse" style="animation-delay: 2s;" aria-hidden="true"></div>
+    <div class="absolute bottom-20 left-1/4 w-36 h-36 bg-cyan-400/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 1.5s;" aria-hidden="true"></div>
 
-        <!-- Twitter -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:url" content="{{ url('/') }}">
-        <meta name="twitter:title" content="BusinessLedger - Smart Income & Expense Management">
-        <meta name="twitter:description" content="Track your business income and expenses effortlessly. Get insights into your cash flow and profitability.">
-        <meta name="twitter:image" content="{{ asset('images/og-image.png') }}">
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-40">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {{-- Left Content --}}
+            <div class="text-white">
+                <div class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm mb-6 border border-white/20">
+                    <span class="h-2 w-2 rounded-full bg-green-400 mr-2 animate-pulse" aria-hidden="true"></span>
+                    {{ config('landing.hero.badge', 'Welcome') }}
+                </div>
 
-        <!-- Favicon -->
-        <link rel="icon" type="image/svg+xml" href="{{ asset('images/logo.svg') }}">
-        <link rel="apple-touch-icon" href="{{ asset('images/logo.svg') }}">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 font-display">
+                    {!! config('landing.hero.main_heading', 'Welcome') !!}
+                </h1>
 
-        <!-- Theme Color -->
-        <meta name="theme-color" content="#059669">
-        <meta name="msapplication-TileColor" content="#059669">
+                <p class="text-xl text-emerald-100 mb-8 leading-relaxed max-w-xl">
+                    {{ config('landing.hero.subheading', '') }}
+                </p>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700,800&display=swap" rel="stylesheet" />
+                <div class="flex flex-col sm:flex-row gap-4 mb-12">
+                    <a href="{{ route('properties.index') }}" class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-emerald-400 to-teal-500 text-gray-900 rounded-xl font-bold text-lg hover:from-emerald-300 hover:to-teal-400 transition-all duration-300 transform hover:scale-105 shadow-xl shadow-emerald-500/25">
+                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                        {{ config('landing.hero.cta_primary_text', 'Get Started') }}
+                    </a>
+                    <a href="#services" class="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-bold text-lg hover:bg-white/20 transition-all duration-300 border border-white/20">
+                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        {{ config('landing.hero.cta_secondary_text', 'Learn More') }}
+                    </a>
+                </div>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="antialiased font-sans">
-        <div class="min-h-screen bg-gradient-to-br from-emerald-900 via-teal-900 to-cyan-900 relative overflow-hidden">
-            <!-- Background Pattern -->
+                {{-- Stats --}}
+                <div class="grid grid-cols-3 gap-6">
+                    @foreach(config('landing.hero.stats', []) as $stat)
+                        <x-landing.stat-card value="{{ $stat['value'] }}" label="{{ $stat['label'] }}" :light="true" />
+                    @endforeach
+                </div>
+            </div>
+
+            {{-- Right Content - Feature Cards --}}
+            <div class="grid grid-cols-2 gap-4" role="list" aria-label="Key features">
+                @foreach(config('landing.features', []) as $feature)
+                    <x-landing.feature-card
+                        iconBg="{{ $feature['icon_bg'] }}"
+                        title="{{ $feature['title'] }}"
+                        description="{{ $feature['description'] }}"
+                        :class="$loop->odd ? 'lg:mt-0' : 'mt-8'"
+                    >
+                        <x-slot name="icon">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </x-slot>
+                    </x-landing.feature-card>
+                @endforeach
+            </div>
+
+    {{-- Scroll Indicator --}}
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <a href="#about" class="text-white/60 hover:text-white transition-colors" aria-label="Scroll to about section">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+        </a>
+    </div>
+</section>
+{{-- ========================================
+    ABOUT SECTION
+======================================== --}}
+<section id="about" class="py-20 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {{-- Left Content - Image/Visual --}}
+            <div class="relative">
+                <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl">
+                    <div class="aspect-w-4 aspect-h-3 bg-gradient-to-br from-emerald-400 to-teal-600 p-8 lg:p-12">
+                        <div class="bg-white/95 backdrop-blur rounded-xl shadow-xl p-6 lg:p-8">
+                            {{-- Mock Dashboard Preview --}}
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <div class="h-3 w-24 bg-gray-200 rounded"></div>
+                                    <div class="h-3 w-16 bg-emerald-200 rounded"></div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="bg-gradient-to-br from-emerald-400 to-green-600 rounded-xl p-4 text-white">
+                                        <p class="text-xs opacity-80">Featured</p>
+                                        <p class="text-xl font-bold">{{ config('landing.company.name') }}</p>
+                                    </div>
+                                    <div class="bg-gradient-to-br from-red-400 to-rose-600 rounded-xl p-4 text-white">
+                                        <p class="text-xs opacity-80">Quality</p>
+                                        <p class="text-xl font-bold">Premium</p>
+                                    </div>
+                                </div>
+                                <div class="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl p-4 border border-emerald-100">
+                                    <p class="text-xs text-gray-500">Location</p>
+                                    <p class="text-xl font-bold text-emerald-600">{{ config('landing.company.location') }}</p>
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="flex items-center justify-between text-sm">
+                                        <span class="text-gray-600">Trust Level</span>
+                                        <span class="text-emerald-600 font-semibold">Verified</span>
+                                    </div>
+                                    <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
+                                        <div class="h-full w-[100%] bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{-- Decorative Elements --}}
+                <div class="absolute -top-4 -right-4 w-24 h-24 bg-emerald-200 rounded-full opacity-50 blur-xl" aria-hidden="true"></div>
+                <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-teal-200 rounded-full opacity-50 blur-xl" aria-hidden="true"></div>
+            </div>
+
+            {{-- Right Content --}}
+            <div>
+                <x-landing.section-title
+                    badge="{{ config('landing.about.badge', 'About Us') }}"
+                    title="{!! config('landing.about.heading', 'Welcome') !!}"
+                    subtitle="{{ config('landing.about.subheading', '') }}"
+                    align="left"
+                />
+
+                <div class="mt-10 space-y-6">
+                    @foreach(config('landing.about.benefits', []) as $benefit)
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 h-12 w-12 rounded-xl bg-emerald-100 flex items-center justify-center">
+                                <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900 font-display">{{ $benefit['title'] }}</h3>
+                                <p class="text-gray-600 mt-1">{{ $benefit['description'] }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <div class="mt-10">
+                    <a href="#contact" class="inline-flex items-center px-6 py-3 bg-emerald-600 text-white rounded-xl font-semibold hover:bg-emerald-700 transition-all duration-300 hover:scale-105 shadow-lg shadow-emerald-500/25">
+                        {{ config('landing.about.cta_text', 'Learn More') }}
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{-- ========================================
+    SERVICES SECTION
+======================================== --}}
+<section id="services" class="py-20 lg:py-32 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <x-landing.section-title
+            badge="{{ config('landing.services.badge') }}"
+            title="{!! config('landing.services.heading') !!}"
+            subtitle="{{ config('landing.services.subheading') }}"
+            class="mb-16"
+        />
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach(config('landing.services.items', []) as $service)
+                <x-landing.card
+                    title="{{ $service['title'] }}"
+                    description="{{ $service['description'] }}"
+                    iconColor="{{ $service['icon_color'] }}"
+                >
+                    <x-slot name="icon">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </x-slot>
+                </x-landing.card>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+{{-- ========================================
+    PROPERTIES CAROUSEL SECTION
+======================================== --}}
+<section id="properties" class="py-20 lg:py-32 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <x-landing.section-title
+            badge="Featured Listings"
+            title="Discover Our Properties"
+            subtitle="Explore our carefully curated selection of premium properties available for investment and living"
+            class="mb-16"
+        />
+
+        <div class="relative">
+            <!-- Carousel Container -->
+            <div x-data="propertyCarousel()" class="relative">
+                <!-- Slides -->
+                <div class="overflow-hidden rounded-2xl">
+                    <div class="flex transition-transform duration-500 ease-out"
+                         :style="`transform: translateX(-${currentSlide * 100}%)`">
+
+                        <!-- Property 1 -->
+                        <div class="min-w-full">
+                            <div class="grid lg:grid-cols-2 gap-8 items-center">
+                                <div class="relative aspect-video rounded-xl overflow-hidden shadow-2xl">
+                                    <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80"
+                                         alt="Luxury Modern Villa"
+                                         class="w-full h-full object-cover">
+                                    <div class="absolute top-4 right-4 bg-emerald-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                                        Featured
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Luxury Modern Villa</h3>
+                                    <p class="text-gray-600 text-lg mb-6">A stunning contemporary villa with breathtaking views, modern amenities, and premium finishes throughout.</p>
+                                    <div class="grid grid-cols-3 gap-4 mb-8">
+                                        <div class="bg-emerald-50 p-4 rounded-lg">
+                                            <p class="text-emerald-600 font-bold text-xl">4</p>
+                                            <p class="text-gray-600 text-sm">Bedrooms</p>
+                                        </div>
+                                        <div class="bg-emerald-50 p-4 rounded-lg">
+                                            <p class="text-emerald-600 font-bold text-xl">3</p>
+                                            <p class="text-gray-600 text-sm">Bathrooms</p>
+                                        </div>
+                                        <div class="bg-emerald-50 p-4 rounded-lg">
+                                            <p class="text-emerald-600 font-bold text-xl">2500</p>
+                                            <p class="text-gray-600 text-sm">Sq. Meters</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-end gap-2 mb-6">
+                                        <span class="text-4xl font-bold text-emerald-600">$850K</span>
+                                        <span class="text-gray-600 mb-1">USD</span>
+                                    </div>
+                                    <a href="#contact" class="inline-flex items-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-colors">
+                                        Learn More
+                                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Property 2 -->
+                        <div class="min-w-full">
+                            <div class="grid lg:grid-cols-2 gap-8 items-center">
+                                <div class="relative aspect-video rounded-xl overflow-hidden shadow-2xl">
+                                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"
+                                         alt="Urban Penthouse"
+                                         class="w-full h-full object-cover">
+                                    <div class="absolute top-4 right-4 bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                                        Luxury
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Urban Penthouse</h3>
+                                    <p class="text-gray-600 text-lg mb-6">Elegant penthouse in the heart of the city with panoramic views, smart home automation, and exclusive amenities.</p>
+                                    <div class="grid grid-cols-3 gap-4 mb-8">
+                                        <div class="bg-blue-50 p-4 rounded-lg">
+                                            <p class="text-blue-600 font-bold text-xl">3</p>
+                                            <p class="text-gray-600 text-sm">Bedrooms</p>
+                                        </div>
+                                        <div class="bg-blue-50 p-4 rounded-lg">
+                                            <p class="text-blue-600 font-bold text-xl">2.5</p>
+                                            <p class="text-gray-600 text-sm">Bathrooms</p>
+                                        </div>
+                                        <div class="bg-blue-50 p-4 rounded-lg">
+                                            <p class="text-blue-600 font-bold text-xl">1800</p>
+                                            <p class="text-gray-600 text-sm">Sq. Meters</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-end gap-2 mb-6">
+                                        <span class="text-4xl font-bold text-blue-600">$1.2M</span>
+                                        <span class="text-gray-600 mb-1">USD</span>
+                                    </div>
+                                    <a href="#contact" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                                        Learn More
+                                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Property 3 -->
+                        <div class="min-w-full">
+                            <div class="grid lg:grid-cols-2 gap-8 items-center">
+                                <div class="relative aspect-video rounded-xl overflow-hidden shadow-2xl">
+                                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80"
+                                         alt="Beachfront Estate"
+                                         class="w-full h-full object-cover">
+                                    <div class="absolute top-4 right-4 bg-teal-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                                        Exclusive
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Beachfront Estate</h3>
+                                    <p class="text-gray-600 text-lg mb-6">Exclusive waterfront property with private beach access, resort-style amenities, and sustainable features.</p>
+                                    <div class="grid grid-cols-3 gap-4 mb-8">
+                                        <div class="bg-teal-50 p-4 rounded-lg">
+                                            <p class="text-teal-600 font-bold text-xl">5</p>
+                                            <p class="text-gray-600 text-sm">Bedrooms</p>
+                                        </div>
+                                        <div class="bg-teal-50 p-4 rounded-lg">
+                                            <p class="text-teal-600 font-bold text-xl">4</p>
+                                            <p class="text-gray-600 text-sm">Bathrooms</p>
+                                        </div>
+                                        <div class="bg-teal-50 p-4 rounded-lg">
+                                            <p class="text-teal-600 font-bold text-xl">3500</p>
+                                            <p class="text-gray-600 text-sm">Sq. Meters</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-end gap-2 mb-6">
+                                        <span class="text-4xl font-bold text-teal-600">$2.5M</span>
+                                        <span class="text-gray-600 mb-1">USD</span>
+                                    </div>
+                                    <a href="#contact" class="inline-flex items-center px-6 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-700 transition-colors">
+                                        Learn More
+                                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <button @click="prevSlide()"
+                        class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 bg-emerald-600 text-white p-3 rounded-full hover:bg-emerald-700 transition-colors shadow-lg z-10 hidden lg:flex items-center justify-center"
+                        aria-label="Previous property">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <button @click="nextSlide()"
+                        class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 bg-emerald-600 text-white p-3 rounded-full hover:bg-emerald-700 transition-colors shadow-lg z-10 hidden lg:flex items-center justify-center"
+                        aria-label="Next property">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </button>
+
+                <!-- Dots Indicators -->
+                <div class="flex justify-center gap-3 mt-8">
+                    <template x-for="(dot, index) in 3" :key="index">
+                        <button @click="currentSlide = index"
+                                :class="{'bg-emerald-600': currentSlide === index, 'bg-gray-300': currentSlide !== index}"
+                                class="w-3 h-3 rounded-full transition-colors"
+                                :aria-label="`Go to property ${index + 1}`">
+                        </button>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{-- ========================================
+    TESTIMONIALS SECTION
+======================================== --}}
+<section id="testimonials" class="py-20 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <x-landing.section-title
+            badge="{{ config('landing.testimonials.badge', 'Testimonials') }}"
+            title="{!! config('landing.testimonials.heading', 'What Clients Say') !!}"
+            subtitle="{{ config('landing.testimonials.subheading', '') }}"
+            class="mb-16"
+        />
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach(config('landing.testimonials.items', []) as $testimonial)
+                <x-landing.testimonial-card
+                    quote="{{ $testimonial['quote'] }}"
+                    author="{{ $testimonial['author'] }}"
+                    role="{{ $testimonial['role'] }}"
+                    company="{{ $testimonial['company'] }}"
+                    :rating="$testimonial['rating']"
+                />
+            @endforeach
+        </div>
+    </div>
+</section>
+
+{{-- ========================================
+    CTA SECTION
+======================================== --}}
+<section class="py-20 lg:py-24 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gradient-to-r from-emerald-600 to-teal-600 rounded-3xl p-8 sm:p-12 lg:p-16 text-center shadow-2xl shadow-emerald-500/20 relative overflow-hidden">
+            {{-- Background Pattern --}}
             <div class="absolute inset-0 opacity-10">
-                <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
                     <defs>
-                        <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                        <pattern id="cta-grid" width="10" height="10" patternUnits="userSpaceOnUse">
                             <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5"/>
                         </pattern>
                     </defs>
-                    <rect width="100" height="100" fill="url(#grid)"/>
+                    <rect width="100" height="100" fill="url(#cta-grid)"/>
                 </svg>
             </div>
 
-            <!-- Floating Decorative Elements -->
-            <div class="absolute top-20 left-20 w-32 h-32 bg-emerald-400/20 rounded-full blur-3xl animate-pulse"></div>
-            <div class="absolute bottom-40 right-20 w-48 h-48 bg-teal-400/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
-            <div class="absolute top-1/3 right-1/4 w-24 h-24 bg-green-400/20 rounded-full blur-2xl animate-pulse" style="animation-delay: 2s;"></div>
-            <div class="absolute bottom-20 left-1/4 w-36 h-36 bg-cyan-400/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 1.5s;"></div>
+            <div class="relative z-10">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4 font-display">
+                    {{ config('landing.cta.heading', 'Ready to Get Started?') }}
+                </h2>
+                <p class="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">
+                    {{ config('landing.cta.subheading', '') }}
+                </p>
 
-            <!-- Navigation -->
-            <nav class="relative z-10 px-6 py-4 lg:px-12">
-                <div class="flex items-center justify-between max-w-7xl mx-auto">
-                    <!-- Logo -->
-                    <div class="flex items-center space-x-3">
-                        <div class="bg-white/20 backdrop-blur-sm p-3 rounded-xl">
-                            <svg class="w-10 h-10 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke-linecap="round" stroke-linejoin="round"/>
+                <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 bg-white text-emerald-700 rounded-xl font-bold text-lg hover:bg-emerald-50 transition-all duration-300 transform hover:scale-105 shadow-xl">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                    {{ config('landing.cta.cta_text', 'Get Started') }}
+                </a>
+
+                <div class="flex items-center justify-center flex-wrap gap-6 mt-8 text-sm text-emerald-100">
+                    @foreach(config('landing.cta.benefits', []) as $benefit)
+                        <span class="flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-emerald-300" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            {{ $benefit }}
+                        </span>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{-- ========================================
+    CONTACT SECTION
+======================================== --}}
+<section id="contact" class="py-20 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
+            {{-- Left Content --}}
+            <div>
+                <x-landing.section-title
+                    badge="Get In Touch"
+                    title="Have Questions? <span class='text-emerald-600'>Contact Us</span>"
+                    subtitle="We're here to help. Reach out to us for support, questions, or just to say hello."
+                    align="left"
+                />
+
+                <div class="mt-10 space-y-6">
+                    {{-- Email --}}
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 h-12 w-12 rounded-xl bg-emerald-100 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                             </svg>
                         </div>
                         <div>
-                            <h1 class="text-2xl font-extrabold text-white tracking-tight">BusinessLedger</h1>
-                            <p class="text-emerald-200 text-xs">Income & Expense Tracker</p>
+                            <h3 class="text-lg font-semibold text-gray-900">Email Us</h3>
+                            <a href="mailto:{{ config('landing.company.email') }}" class="text-emerald-600 hover:text-emerald-700 transition-colors">{{ config('landing.company.email') }}</a>
                         </div>
                     </div>
 
-                    <!-- Auth Links -->
-                    @if (Route::has('login'))
-                        <div class="flex items-center space-x-4">
-                            @auth
-                                <a href="{{ url('/dashboard') }}" class="px-6 py-2.5 bg-white/20 backdrop-blur-sm text-white rounded-xl font-semibold hover:bg-white/30 transition">
-                                    Dashboard
-                                </a>
-                            @else
-                                <a href="{{ route('login') }}" class="px-6 py-2.5 text-white font-semibold hover:text-emerald-200 transition">
-                                    Log in
-                                </a>
-                                @if (Route::has('register'))
-                                    <a href="{{ route('register') }}" class="px-6 py-2.5 bg-white text-emerald-900 rounded-xl font-semibold hover:bg-emerald-100 transition transform hover:scale-105 shadow-lg">
-                                        Get Started
-                                    </a>
-                                @endif
-                            @endauth
+                    {{-- Phone --}}
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 h-12 w-12 rounded-xl bg-emerald-100 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                            </svg>
                         </div>
-                    @endif
-                </div>
-            </nav>
-
-            <!-- Hero Section -->
-            <div class="relative z-10 px-6 lg:px-12 py-20 lg:py-32">
-                <div class="max-w-7xl mx-auto">
-                    <div class="grid lg:grid-cols-2 gap-12 items-center">
-                        <!-- Left Content -->
-                        <div class="text-white">
-                            <div class="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm mb-6">
-                                <span class="h-2 w-2 rounded-full bg-green-400 mr-2 animate-pulse"></span>
-                                Track Every Franc Coming In & Going Out
-                            </div>
-
-                            <h2 class="text-4xl lg:text-6xl font-extrabold leading-tight mb-6">
-                                Master Your
-                                <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
-                                    Business Finances
-                                </span>
-                            </h2>
-
-                            <p class="text-xl text-emerald-200 mb-8 leading-relaxed">
-                                Stop guessing where your money goes. BusinessLedger helps you track every income and expense, categorize transactions, and see your true profit in real-time.
-                            </p>
-
-                            <div class="flex flex-col sm:flex-row gap-4 mb-12">
-                                <a href="{{ route('register') }}" class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-emerald-400 to-teal-500 text-gray-900 rounded-xl font-bold text-lg hover:from-emerald-300 hover:to-teal-400 transition transform hover:scale-105 shadow-xl">
-                                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-                                    </svg>
-                                    Start Tracking Free
-                                </a>
-                                <a href="#features" class="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-bold text-lg hover:bg-white/20 transition">
-                                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-                                    </svg>
-                                    See Features
-                                </a>
-                            </div>
-
-                            <!-- Stats -->
-                            <div class="grid grid-cols-3 gap-6">
-                                <div class="text-center">
-                                    <p class="text-3xl font-extrabold text-emerald-400">100%</p>
-                                    <p class="text-emerald-200 text-sm">Visibility</p>
-                                </div>
-                                <div class="text-center">
-                                    <p class="text-3xl font-extrabold text-emerald-400">Real-time</p>
-                                    <p class="text-emerald-200 text-sm">Balance Updates</p>
-                                </div>
-                                <div class="text-center">
-                                    <p class="text-3xl font-extrabold text-emerald-400">Easy</p>
-                                    <p class="text-emerald-200 text-sm">To Use</p>
-                                </div>
-                            </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Call Us</h3>
+                            <a href="tel:{{ config('landing.company.phone') }}" class="text-emerald-600 hover:text-emerald-700 transition-colors">{{ config('landing.company.phone') }}</a>
                         </div>
+                    </div>
 
-                        <!-- Right Content - Feature Cards -->
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 transform hover:scale-105 transition border border-white/20">
-                                <div class="h-12 w-12 rounded-xl bg-green-500 flex items-center justify-center mb-4">
-                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                    </svg>
-                                </div>
-                                <h3 class="text-white font-bold text-lg mb-2">Track Income</h3>
-                                <p class="text-emerald-200 text-sm">Record all money coming into your business</p>
-                            </div>
+                    {{-- Location --}}
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 h-12 w-12 rounded-xl bg-emerald-100 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Visit Us</h3>
+                            <p class="text-gray-600">{{ config('landing.company.location') }}</p>
+                        </div>
+                    </div>
 
-                            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 transform hover:scale-105 transition border border-white/20 mt-8">
-                                <div class="h-12 w-12 rounded-xl bg-red-500 flex items-center justify-center mb-4">
-                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
-                                    </svg>
-                                </div>
-                                <h3 class="text-white font-bold text-lg mb-2">Track Expenses</h3>
-                                <p class="text-emerald-200 text-sm">Monitor every franc spent</p>
-                            </div>
-
-                            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 transform hover:scale-105 transition border border-white/20">
-                                <div class="h-12 w-12 rounded-xl bg-blue-500 flex items-center justify-center mb-4">
-                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/>
-                                    </svg>
-                                </div>
-                                <h3 class="text-white font-bold text-lg mb-2">See Profit/Loss</h3>
-                                <p class="text-emerald-200 text-sm">Know your true financial position</p>
-                            </div>
-
-                            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 transform hover:scale-105 transition border border-white/20 mt-8">
-                                <div class="h-12 w-12 rounded-xl bg-purple-500 flex items-center justify-center mb-4">
-                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                                    </svg>
-                                </div>
-                                <h3 class="text-white font-bold text-lg mb-2">Smart Reports</h3>
-                                <p class="text-emerald-200 text-sm">Daily, weekly, monthly summaries</p>
-                            </div>
+                    {{-- Hours --}}
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 h-12 w-12 rounded-xl bg-emerald-100 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Business Hours</h3>
+                            <p class="text-gray-600">{{ config('landing.company.business_hours') }}</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Features Section -->
-            <div id="features" class="relative z-10 px-6 lg:px-12 py-20 bg-white/5 backdrop-blur-sm">
-                <div class="max-w-7xl mx-auto">
-                    <div class="text-center mb-16">
-                        <h3 class="text-3xl lg:text-4xl font-extrabold text-white mb-4">Take Control of Your Money</h3>
-                        <p class="text-emerald-200 text-lg max-w-2xl mx-auto">Everything you need to manage your business finances in one place</p>
-                    </div>
+            {{-- Right Content - Contact Form --}}
+            <div class="bg-gray-50 rounded-2xl p-8 lg:p-10">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6 font-display">{{ config('landing.contact.form_heading', 'Send Us a Message') }}</h3>
 
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Income Management -->
-                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-emerald-400/50 transition">
-                            <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center mb-6">
-                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/>
-                                </svg>
-                            </div>
-                            <h4 class="text-xl font-bold text-white mb-3">Income Categories</h4>
-                            <p class="text-emerald-200">Organize income by source: Sales, Services, Investments, Rent, and more. Know where your money comes from.</p>
+                <form action="{{ route('contact.submit') }}" method="POST" class="space-y-6">
+                    @csrf
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="first_name" class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                            <input
+                                type="text"
+                                id="first_name"
+                                name="first_name"
+                                required
+                                class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                                placeholder="John"
+                            >
                         </div>
-
-                        <!-- Expense Management -->
-                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-red-400/50 transition">
-                            <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-red-400 to-rose-600 flex items-center justify-center mb-6">
-                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
-                                </svg>
-                            </div>
-                            <h4 class="text-xl font-bold text-white mb-3">Expense Categories</h4>
-                            <p class="text-emerald-200">Track expenses by type: Rent, Salaries, Utilities, Supplies, Transport, Marketing, and custom categories.</p>
-                        </div>
-
-                        <!-- Dashboard -->
-                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-blue-400/50 transition">
-                            <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center mb-6">
-                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-                                </svg>
-                            </div>
-                            <h4 class="text-xl font-bold text-white mb-3">Financial Dashboard</h4>
-                            <p class="text-emerald-200">See your total income, expenses, and net balance at a glance. Visual charts show trends over time.</p>
-                        </div>
-
-                        <!-- Recurring Transactions -->
-                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-purple-400/50 transition">
-                            <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-purple-400 to-violet-600 flex items-center justify-center mb-6">
-                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
-                                </svg>
-                            </div>
-                            <h4 class="text-xl font-bold text-white mb-3">Recurring Expenses</h4>
-                            <p class="text-emerald-200">Mark recurring expenses like rent, salaries, and subscriptions. Never forget a regular payment.</p>
-                        </div>
-
-                        <!-- Multi-Business -->
-                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-cyan-400/50 transition">
-                            <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-cyan-400 to-teal-600 flex items-center justify-center mb-6">
-                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                                </svg>
-                            </div>
-                            <h4 class="text-xl font-bold text-white mb-3">Multiple Businesses</h4>
-                            <p class="text-emerald-200">Manage finances for multiple businesses separately. Each business has its own ledger.</p>
-                        </div>
-
-                        <!-- Reports -->
-                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-yellow-400/50 transition">
-                            <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-600 flex items-center justify-center mb-6">
-                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                                </svg>
-                            </div>
-                            <h4 class="text-xl font-bold text-white mb-3">Financial Reports</h4>
-                            <p class="text-emerald-200">Generate profit & loss statements, expense breakdowns, and income summaries. Export to PDF.</p>
+                        <div>
+                            <label for="last_name" class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                            <input
+                                type="text"
+                                id="last_name"
+                                name="last_name"
+                                required
+                                class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                                placeholder="Doe"
+                            >
                         </div>
                     </div>
-                </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                            placeholder="john@example.com"
+                        >
+                    </div>
+
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number (Optional)</label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                            placeholder="+250 7XX XXX XXX"
+                        >
+                    </div>
+
+                    <div>
+                        <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                        <select
+                            id="subject"
+                            name="subject"
+                            required
+                            class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                        >
+                            <option value="">Select a subject</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="support">Technical Support</option>
+                            <option value="billing">Billing Question</option>
+                            <option value="partnership">Partnership Opportunity</option>
+                            <option value="feedback">Feedback</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="5"
+                            required
+                            class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors resize-none"
+                            placeholder="How can we help you?"
+                        ></textarea>
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="w-full px-8 py-4 bg-emerald-600 text-white rounded-xl font-semibold hover:bg-emerald-700 transition-all duration-300 transform hover:scale-[1.02] shadow-lg shadow-emerald-500/25 flex items-center justify-center"
+                    >
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                        </svg>
+                        Send Message
+                    </button>
+                </form>
             </div>
-
-            <!-- How It Works Section -->
-            <div class="relative z-10 px-6 lg:px-12 py-20">
-                <div class="max-w-5xl mx-auto">
-                    <div class="text-center mb-16">
-                        <h3 class="text-3xl lg:text-4xl font-extrabold text-white mb-4">Simple as 1-2-3</h3>
-                        <p class="text-emerald-200 text-lg">Start managing your finances in minutes</p>
-                    </div>
-
-                    <div class="grid md:grid-cols-3 gap-8">
-                        <div class="text-center">
-                            <div class="h-16 w-16 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-white">1</div>
-                            <h4 class="text-xl font-bold text-white mb-3">Create Your Account</h4>
-                            <p class="text-emerald-200">Sign up for free and set up your business profile in under a minute.</p>
-                        </div>
-
-                        <div class="text-center">
-                            <div class="h-16 w-16 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-white">2</div>
-                            <h4 class="text-xl font-bold text-white mb-3">Add Transactions</h4>
-                            <p class="text-emerald-200">Record your income and expenses as they happen. Categorize each transaction.</p>
-                        </div>
-
-                        <div class="text-center">
-                            <div class="h-16 w-16 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-white">3</div>
-                            <h4 class="text-xl font-bold text-white mb-3">See Your Profit</h4>
-                            <p class="text-emerald-200">View your dashboard to see income, expenses, and profit at any time.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CTA Section -->
-            <div class="relative z-10 px-6 lg:px-12 py-20">
-                <div class="max-w-4xl mx-auto text-center">
-                    <div class="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-sm rounded-3xl p-12 border border-white/20">
-                        <h3 class="text-3xl lg:text-4xl font-extrabold text-white mb-4">Know Your Numbers, Grow Your Business</h3>
-                        <p class="text-xl text-emerald-200 mb-8">Join business owners who use BusinessLedger to track every franc and make smarter financial decisions.</p>
-
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                            <a href="{{ route('register') }}" class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-emerald-400 to-teal-500 text-gray-900 rounded-xl font-bold text-lg hover:from-emerald-300 hover:to-teal-400 transition transform hover:scale-105 shadow-xl">
-                                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-                                </svg>
-                                Start Tracking Now - It's Free
-                            </a>
-                        </div>
-
-                        <div class="flex items-center justify-center flex-wrap gap-6 text-sm text-emerald-200">
-                            <span class="flex items-center">
-                                <svg class="w-5 h-5 mr-1 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                </svg>
-                                Free Forever Plan
-                            </span>
-                            <span class="flex items-center">
-                                <svg class="w-5 h-5 mr-1 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                </svg>
-                                No Credit Card Required
-                            </span>
-                            <span class="flex items-center">
-                                <svg class="w-5 h-5 mr-1 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                </svg>
-                                RWF Currency Support
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Footer -->
-            <footer class="relative z-10 px-6 lg:px-12 py-8 border-t border-white/10">
-                <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between text-emerald-200 text-sm">
-                    <p>&copy; {{ date('Y') }} BusinessLedger. Track Your Finances, Grow Your Business.</p>
-                    <div class="flex items-center space-x-4 mt-4 md:mt-0">
-                        <a href="#" class="hover:text-white transition">Privacy</a>
-                        <a href="#" class="hover:text-white transition">Terms</a>
-                        <a href="#" class="hover:text-white transition">Contact</a>
-                    </div>
-                </div>
-            </footer>
         </div>
+    </div>
+</section>
 
-        <!-- Floating WhatsApp Button -->
-        <a href="https://wa.me/250786163963?text=Hello%2C%20I%20need%20help%20with%20BusinessLedger" target="_blank" class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 group">
-            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-            <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-900 text-white text-sm px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                Need help?
-            </span>
-        </a>
-    </body>
-</html>
+@push('scripts')
+<script>
+function propertyCarousel() {
+    return {
+        currentSlide: 0,
+        autoplayInterval: null,
+
+        init() {
+            // Start autoplay when component initializes
+            this.startAutoplay();
+
+            // Pause autoplay on hover
+            this.$el.addEventListener('mouseenter', () => this.stopAutoplay());
+            this.$el.addEventListener('mouseleave', () => this.startAutoplay());
+        },
+
+        nextSlide() {
+            this.currentSlide = (this.currentSlide + 1) % 3;
+            this.resetAutoplay();
+        },
+
+        prevSlide() {
+            this.currentSlide = (this.currentSlide - 1 + 3) % 3;
+            this.resetAutoplay();
+        },
+
+        startAutoplay() {
+            this.autoplayInterval = setInterval(() => {
+                this.currentSlide = (this.currentSlide + 1) % 3;
+            }, 5000); // Change slide every 5 seconds
+        },
+
+        stopAutoplay() {
+            if (this.autoplayInterval) {
+                clearInterval(this.autoplayInterval);
+                this.autoplayInterval = null;
+            }
+        },
+
+        resetAutoplay() {
+            this.stopAutoplay();
+            this.startAutoplay();
+        },
+
+        destroy() {
+            this.stopAutoplay();
+        }
+    }
+}
+</script>
+@endpush
+
+@endsection

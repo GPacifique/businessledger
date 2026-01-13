@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 shadow-lg">
+<nav x-data="{ open: false }" class="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 shadow-lg">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -7,11 +7,11 @@
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}" class="flex items-center space-x-2">
                         <div class="bg-white/20 backdrop-blur-sm p-2 rounded-xl">
-                            <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke-linecap="round" stroke-linejoin="round"/>
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
                             </svg>
                         </div>
-                        <span class="text-white font-bold text-lg hidden sm:block">BusinessLedger</span>
+                        <span class="text-white font-bold text-lg hidden sm:block">Murenzi Properties</span>
                     </a>
                 </div>
 
@@ -55,6 +55,12 @@
                             </svg>
                             {{ __('messages.Staff') }}
                         </a>
+                        <a href="{{ route('admin.contact-submissions.index') }}" class="inline-flex items-center px-4 py-2 my-2 rounded-lg text-sm font-medium transition-all duration-200 {{ request()->routeIs('admin.contact-submissions.*') ? 'bg-white/20 text-white shadow-inner' : 'text-white/80 hover:bg-white/10 hover:text-white' }}">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            Inquiries
+                        </a>
                     @endif
 
                     @if(Auth::user()->isSeller() || Auth::user()->isAccountant())
@@ -94,7 +100,7 @@
 
                     <x-slot name="content">
                         @foreach($languages as $code => $lang)
-                            <x-dropdown-link :href="route('language.switch', $code)" class="{{ app()->getLocale() === $code ? 'bg-gradient-to-r from-indigo-50 to-purple-50 text-indigo-700' : '' }}">
+                            <x-dropdown-link :href="route('language.switch', $code)" class="{{ app()->getLocale() === $code ? 'bg-gradient-to-r from-emerald-50 to-teal-50 text-emerald-700' : '' }}">
                                 <span class="mr-2">{{ $lang['flag'] }}</span>
                                 {{ $lang['native'] }}
                             </x-dropdown-link>
@@ -106,7 +112,7 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 ms-2 text-sm leading-4 font-medium rounded-lg text-white bg-white/10 hover:bg-white/20 focus:outline-none transition ease-in-out duration-150">
-                            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center mr-2 text-white font-bold text-xs">
+                            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center mr-2 text-white font-bold text-xs">
                                 {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
                             </div>
                             <div>{{ Auth::user()->name }}</div>
@@ -121,7 +127,7 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')" class="flex items-center">
-                            <svg class="w-4 h-4 mr-2 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-4 h-4 mr-2 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                             </svg>
                             {{ __('messages.Profile') }}
@@ -157,7 +163,7 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden bg-gradient-to-b from-purple-700 to-indigo-800">
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden bg-gradient-to-b from-teal-700 to-emerald-800">
         <div class="pt-2 pb-3 space-y-1 px-4">
             <a href="{{ route('dashboard') }}" class="flex items-center px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 {{ request()->routeIs('dashboard') ? 'bg-white/20 text-white' : 'text-white/80 hover:bg-white/10 hover:text-white' }}">
                 <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">

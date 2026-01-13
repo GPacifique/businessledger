@@ -1,12 +1,12 @@
 <x-guest-layout>
     <div class="text-center mb-8">
-        <div class="mx-auto w-16 h-16 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg shadow-emerald-500/30 animate-pulse">
+        <div class="mx-auto w-16 h-16 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg shadow-emerald-500/30">
             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
             </svg>
         </div>
         <h2 class="text-2xl font-bold bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">Create Account</h2>
-        <p class="text-gray-500 mt-1">Start tracking your finances today</p>
+        <p class="text-gray-500 mt-1">Join Murenzi Properties today</p>
     </div>
 
     <form method="POST" action="{{ route('register') }}">
@@ -144,7 +144,7 @@
     <div class="mt-6 text-center">
         <p class="text-gray-600">
             Already have an account?
-            <a href="{{ route('login') }}" class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent font-bold hover:from-purple-600 hover:to-pink-600 transition-all duration-300">
+            <a href="{{ route('login') }}" class="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent font-bold hover:from-teal-600 hover:to-cyan-600 transition-all duration-300">
                 Sign in
             </a>
         </p>
@@ -160,15 +160,7 @@
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                     </svg>
                 </div>
-                <span class="font-medium text-emerald-700">Income Tracking</span>
-            </div>
-            <div class="flex items-center bg-gradient-to-r from-rose-50 to-pink-50 px-3 py-2 rounded-lg border border-rose-100">
-                <div class="p-1 bg-gradient-to-br from-rose-400 to-pink-500 rounded-md mr-2">
-                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                </div>
-                <span class="font-medium text-rose-700">Expense Tracking</span>
+                <span class="font-medium text-emerald-700">Property Listings</span>
             </div>
             <div class="flex items-center bg-gradient-to-r from-cyan-50 to-blue-50 px-3 py-2 rounded-lg border border-cyan-100">
                 <div class="p-1 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-md mr-2">
@@ -176,7 +168,15 @@
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                     </svg>
                 </div>
-                <span class="font-medium text-cyan-700">Balance Reports</span>
+                <span class="font-medium text-cyan-700">Saved Favorites</span>
+            </div>
+            <div class="flex items-center bg-gradient-to-r from-teal-50 to-emerald-50 px-3 py-2 rounded-lg border border-teal-100">
+                <div class="p-1 bg-gradient-to-br from-teal-400 to-emerald-500 rounded-md mr-2">
+                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <span class="font-medium text-teal-700">Direct Contact</span>
             </div>
             <div class="flex items-center bg-gradient-to-r from-amber-50 to-orange-50 px-3 py-2 rounded-lg border border-amber-100">
                 <div class="p-1 bg-gradient-to-br from-amber-400 to-orange-500 rounded-md mr-2">
@@ -184,7 +184,7 @@
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                     </svg>
                 </div>
-                <span class="font-medium text-amber-700">Profit/Loss View</span>
+                <span class="font-medium text-amber-700">Investment Tips</span>
             </div>
         </div>
     </div>

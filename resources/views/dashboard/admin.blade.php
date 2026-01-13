@@ -24,7 +24,7 @@
             <!-- Stats Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
                 <!-- Total Shops -->
-                <div class="stat-card group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100" style="animation-delay: 0.1s">
+                <a href="#recent-shops" class="stat-card group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 cursor-pointer" style="animation-delay: 0.1s">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-4">
                             <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-indigo-400 to-purple-600 flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
@@ -40,10 +40,10 @@
                         </div>
                     </div>
                     <div class="h-1 bg-gradient-to-r from-indigo-400 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                </div>
+                </a>
 
                 <!-- Pending Approval -->
-                <div class="stat-card group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 {{ $pendingBusinesses > 0 ? 'ring-2 ring-yellow-400 ring-opacity-50' : '' }}" style="animation-delay: 0.2s">
+                <a href="{{ $pendingBusinesses > 0 ? '#pending-section' : '#recent-shops' }}" class="stat-card group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 {{ $pendingBusinesses > 0 ? 'ring-2 ring-yellow-400 ring-opacity-50' : '' }} cursor-pointer" style="animation-delay: 0.2s">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-4">
                             <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg {{ $pendingBusinesses > 0 ? 'animate-pulse' : '' }}">
@@ -64,10 +64,10 @@
                         </div>
                     </div>
                     <div class="h-1 bg-gradient-to-r from-yellow-400 to-orange-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                </div>
+                </a>
 
                 <!-- Approved Shops -->
-                <div class="stat-card group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100" style="animation-delay: 0.3s">
+                <a href="#recent-shops" class="stat-card group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 cursor-pointer" style="animation-delay: 0.3s">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-4">
                             <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
@@ -83,10 +83,10 @@
                         </div>
                     </div>
                     <div class="h-1 bg-gradient-to-r from-green-400 to-emerald-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                </div>
+                </a>
 
                 <!-- Total Users -->
-                <div class="stat-card group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100" style="animation-delay: 0.4s">
+                <a href="{{ route('admin.users.index') }}" class="stat-card group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 cursor-pointer" style="animation-delay: 0.4s">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-4">
                             <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-purple-400 to-pink-600 flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
@@ -102,10 +102,10 @@
                         </div>
                     </div>
                     <div class="h-1 bg-gradient-to-r from-purple-400 to-pink-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                </div>
+                </a>
 
                 <!-- Unassigned Users -->
-                <div class="stat-card group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100" style="animation-delay: 0.5s">
+                <a href="{{ route('admin.users.index') }}" class="stat-card group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 cursor-pointer" style="animation-delay: 0.5s">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-4">
                             <div class="h-14 w-14 rounded-2xl bg-gradient-to-br from-cyan-400 to-teal-600 flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
@@ -121,7 +121,7 @@
                         </div>
                     </div>
                     <div class="h-1 bg-gradient-to-r from-cyan-400 to-teal-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                </div>
+                </a>
             </div>
 
             <!-- Quick Actions -->
@@ -201,7 +201,7 @@
 
             <!-- pending businesss Section -->
             @if($pendingBusinesses > 0)
-            <div class="bg-white rounded-2xl shadow-sm border border-yellow-200 overflow-hidden mb-8 animate-slide-up">
+            <div id="pending-section" class="bg-white rounded-2xl shadow-sm border border-yellow-200 overflow-hidden mb-8 animate-slide-up scroll-mt-20">
                 <div class="px-6 py-5 border-b border-yellow-200 bg-gradient-to-r from-yellow-50 to-orange-50">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
@@ -232,7 +232,7 @@
                         </thead>
                         <tbody class="divide-y divide-gray-100">
                             @foreach($pendingBusinessesList as $business)
-                            <tr class="hover:bg-gradient-to-r hover:from-yellow-50 hover:to-orange-50 transition-all duration-200">
+                            <tr class="hover:bg-gradient-to-r hover:from-yellow-50 hover:to-orange-50 transition-all duration-200 cursor-pointer" onclick="window.location.href='{{ route('admin.businesses.show', $business) }}'" style="pointer-events: auto;">
                                 <td class="px-6 py-4">
                                     <div class="flex items-center">
                                         <div class="h-12 w-12 rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center mr-4">
@@ -306,7 +306,7 @@
             @endif
 
             <!-- Recent Businesses -->
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden animate-slide-up" style="animation-delay: 0.3s">
+            <div id="recent-shops" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden animate-slide-up scroll-mt-20" style="animation-delay: 0.3s">
                 <div class="px-6 py-5 border-b border-gray-100 bg-gradient-to-r from-gray-50 to-white">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
@@ -335,7 +335,7 @@
                         </thead>
                         <tbody class="divide-y divide-gray-100">
                             @forelse($recentBusinesses as $business)
-                            <tr class="hover:bg-gradient-to-r hover:from-gray-50 hover:to-white transition-all duration-200">
+                            <tr class="hover:bg-gradient-to-r hover:from-gray-50 hover:to-white transition-all duration-200 cursor-pointer" onclick="window.location.href='{{ route('admin.businesses.show', $business) }}'" style="pointer-events: auto;">
                                 <td class="px-6 py-4">
                                     <div class="flex items-center">
                                         <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center mr-3">
@@ -415,6 +415,162 @@
                             @endforelse
                         </tbody>
                     </table>
+                </div>
+            </div>
+
+            <!-- Overall Financial Summary -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8 mt-8">
+                <!-- Total Income -->
+                <div class="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-6 text-white shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="h-12 w-12 rounded-xl bg-white/20 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-green-100 text-sm font-medium mb-1">Total Business Income</p>
+                    <p class="text-3xl font-bold">{{ number_format($totalPlatformIncome, 0) }} <span class="text-lg">RWF</span></p>
+                </div>
+
+                <!-- Total Expenses -->
+                <div class="bg-gradient-to-br from-red-500 to-rose-600 rounded-2xl p-6 text-white shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="h-12 w-12 rounded-xl bg-white/20 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-red-100 text-sm font-medium mb-1">Total Business Expenses</p>
+                    <p class="text-3xl font-bold">{{ number_format($totalPlatformExpenses, 0) }} <span class="text-lg">RWF</span></p>
+                </div>
+
+                <!-- Total Balance -->
+                <div class="bg-gradient-to-br {{ $totalPlatformBalance >= 0 ? 'from-indigo-500 to-purple-600' : 'from-orange-500 to-red-600' }} rounded-2xl p-6 text-white shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="h-12 w-12 rounded-xl bg-white/20 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-indigo-100 text-sm font-medium mb-1">Total Business Balance</p>
+                    <p class="text-3xl font-bold">{{ number_format($totalPlatformBalance, 0) }} <span class="text-lg">RWF</span></p>
+                </div>
+            </div>
+
+            <!-- Financial Data by Business -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                <!-- Incomes by Business -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div class="px-6 py-4 border-b border-gray-100 bg-gradient-to-r from-green-50 to-emerald-50">
+                        <div class="flex items-center">
+                            <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center mr-3">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900">Income by Business</h3>
+                                <p class="text-xs text-gray-500">Top performing businesses</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divide-y divide-gray-100 max-h-80 overflow-y-auto">
+                        @forelse($businessesWithFinancials->sortByDesc('incomes_sum_amount')->take(10) as $business)
+                            <a href="{{ route('admin.businesses.show', $business) }}" class="flex items-center justify-between p-4 hover:bg-green-50 transition cursor-pointer">
+                                <div class="flex items-center">
+                                    <div class="h-10 w-10 rounded-lg bg-green-100 flex items-center justify-center mr-3">
+                                        <span class="text-sm font-bold text-green-600">{{ strtoupper(substr($business->name, 0, 2)) }}</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-gray-900 text-sm">{{ Str::limit($business->name, 20) }}</p>
+                                        <p class="text-xs text-gray-500">{{ $business->users->count() }} users</p>
+                                    </div>
+                                </div>
+                                <span class="text-lg font-bold text-green-600">{{ number_format($business->incomes_sum_amount ?? 0, 0) }}</span>
+                            </a>
+                        @empty
+                            <div class="p-8 text-center text-gray-500">
+                                <p>No income data available</p>
+                            </div>
+                        @endforelse
+                    </div>
+                </div>
+
+                <!-- Expenses by Business -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div class="px-6 py-4 border-b border-gray-100 bg-gradient-to-r from-red-50 to-rose-50">
+                        <div class="flex items-center">
+                            <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center mr-3">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 13l-5 5m0 0l-5-5m5 5V6"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900">Expenses by Business</h3>
+                                <p class="text-xs text-gray-500">Highest spending businesses</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divide-y divide-gray-100 max-h-80 overflow-y-auto">
+                        @forelse($businessesWithFinancials->sortByDesc('expenses_sum_amount')->take(10) as $business)
+                            <a href="{{ route('admin.businesses.show', $business) }}" class="flex items-center justify-between p-4 hover:bg-red-50 transition cursor-pointer">
+                                <div class="flex items-center">
+                                    <div class="h-10 w-10 rounded-lg bg-red-100 flex items-center justify-center mr-3">
+                                        <span class="text-sm font-bold text-red-600">{{ strtoupper(substr($business->name, 0, 2)) }}</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-gray-900 text-sm">{{ Str::limit($business->name, 20) }}</p>
+                                        <p class="text-xs text-gray-500">{{ $business->users->count() }} users</p>
+                                    </div>
+                                </div>
+                                <span class="text-lg font-bold text-red-600">{{ number_format($business->expenses_sum_amount ?? 0, 0) }}</span>
+                            </a>
+                        @empty
+                            <div class="p-8 text-center text-gray-500">
+                                <p>No expense data available</p>
+                            </div>
+                        @endforelse
+                    </div>
+                </div>
+
+                <!-- Balance by Business -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div class="px-6 py-4 border-b border-gray-100 bg-gradient-to-r from-indigo-50 to-purple-50">
+                        <div class="flex items-center">
+                            <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center mr-3">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-900">Balance by Business</h3>
+                                <p class="text-xs text-gray-500">Net profit/loss ranking</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divide-y divide-gray-100 max-h-80 overflow-y-auto">
+                        @forelse($businessesWithFinancials->sortByDesc('balance')->take(10) as $business)
+                            <a href="{{ route('admin.businesses.show', $business) }}" class="flex items-center justify-between p-4 hover:bg-indigo-50 transition cursor-pointer">
+                                <div class="flex items-center">
+                                    <div class="h-10 w-10 rounded-lg {{ $business->balance >= 0 ? 'bg-indigo-100' : 'bg-red-100' }} flex items-center justify-center mr-3">
+                                        <span class="text-sm font-bold {{ $business->balance >= 0 ? 'text-indigo-600' : 'text-red-600' }}">{{ strtoupper(substr($business->name, 0, 2)) }}</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-gray-900 text-sm">{{ Str::limit($business->name, 20) }}</p>
+                                        <p class="text-xs text-gray-500">{{ $business->balance >= 0 ? 'Profitable' : 'Loss' }}</p>
+                                    </div>
+                                </div>
+                                <span class="text-lg font-bold {{ $business->balance >= 0 ? 'text-indigo-600' : 'text-red-600' }}">{{ number_format($business->balance, 0) }}</span>
+                            </a>
+                        @empty
+                            <div class="p-8 text-center text-gray-500">
+                                <p>No balance data available</p>
+                            </div>
+                        @endforelse
+                    </div>
                 </div>
             </div>
         </div>

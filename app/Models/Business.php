@@ -54,6 +54,39 @@ class Business extends Model
         return $this->hasMany(Expense::class);
     }
 
+    public function subscriptions(): HasMany
+    {
+        return $this->hasMany(Subscription::class);
+    }
+
+    public function activeSubscription()
+    {
+        return $this->hasOne(Subscription::class)
+            ->where('status', 'active')
+            ->where('ends_at', '>', now())
+            ->latest();
+    }
+
+    public function hasActiveSubscription(): bool
+    {
+        return $this->activeSubscription()->exists();
+    }
+
+    public function getSubscriptionStatusAttribute(): string
+    {
+        $subscription = $this->activeSubscription;
+
+        if (!$subscription) {
+            return 'no_subscription';
+        }
+
+        if ($subscription->isExpiringSoon()) {
+            return 'expiring_soon';
+        }
+
+        return 'active';
+    }
+
     public function getTotalIncomeAttribute(): float
     {
         return $this->incomes()->sum('amount');

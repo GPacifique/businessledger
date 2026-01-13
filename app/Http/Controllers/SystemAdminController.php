@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Business;
 use App\Models\User;
+use App\Models\Income;
+use App\Models\Expense;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class SystemAdminController extends Controller
 {
@@ -28,9 +31,26 @@ class SystemAdminController extends Controller
             ->take(10)
             ->get();
 
+        // Financial data by business
+        $businessesWithFinancials = Business::where('status', 'approved')
+            ->withSum('incomes', 'amount')
+            ->withSum('expenses', 'amount')
+            ->orderByDesc('incomes_sum_amount')
+            ->get()
+            ->map(function ($business) {
+                $business->balance = ($business->incomes_sum_amount ?? 0) - ($business->expenses_sum_amount ?? 0);
+                return $business;
+            });
+
+        // Total platform financials
+        $totalPlatformIncome = Income::sum('amount');
+        $totalPlatformExpenses = Expense::sum('amount');
+        $totalPlatformBalance = $totalPlatformIncome - $totalPlatformExpenses;
+
         return view('dashboard.admin', compact(
             'totalBusinesses', 'pendingBusinesses', 'approvedBusinesses', 'totalUsers',
-            'pendingBusinessesList', 'recentBusinesses', 'unassignedUsers'
+            'pendingBusinessesList', 'recentBusinesses', 'unassignedUsers',
+            'businessesWithFinancials', 'totalPlatformIncome', 'totalPlatformExpenses', 'totalPlatformBalance'
         ));
     }
 
@@ -182,5 +202,225 @@ class SystemAdminController extends Controller
         $user->delete();
 
         return redirect()->route('admin.users.index')->with('success', 'User deleted successfully.');
+    }
+
+    public function showBusinessFinancials(Business $business)
+    {
+        // Get date range for current month
+        $startOfMonth = now()->startOfMonth();
+        $endOfMonth = now()->endOfMonth();
+        $startOfYear = now()->startOfYear();
+        $endOfYear = now()->endOfYear();
+
+        // Total incomes and expenses (all time)
+        $totalIncome = $business->incomes()->sum('amount');
+        $totalExpenses = $business->expenses()->sum('amount');
+        $netProfit = $totalIncome - $totalExpenses;
+
+        // This month's data
+        $monthlyIncome = $business->incomes()
+            ->whereBetween('date', [$startOfMonth, $endOfMonth])
+            ->sum('amount');
+        $monthlyExpenses = $business->expenses()
+            ->whereBetween('date', [$startOfMonth, $endOfMonth])
+            ->sum('amount');
+        $monthlyProfit = $monthlyIncome - $monthlyExpenses;
+
+        // This year's data
+        $yearlyIncome = $business->incomes()
+            ->whereBetween('date', [$startOfYear, $endOfYear])
+            ->sum('amount');
+        $yearlyExpenses = $business->expenses()
+            ->whereBetween('date', [$startOfYear, $endOfYear])
+            ->sum('amount');
+        $yearlyProfit = $yearlyIncome - $yearlyExpenses;
+
+        // Recent transactions
+        $recentIncomes = $business->incomes()
+            ->with('category', 'createdBy')
+            ->orderByDesc('date')
+            ->take(10)
+            ->get();
+
+        $recentExpenses = $business->expenses()
+            ->with('category', 'createdBy')
+            ->orderByDesc('date')
+            ->take(10)
+            ->get();
+
+        // Monthly data for charts (last 6 months)
+        $monthlyData = [];
+        for ($i = 5; $i >= 0; $i--) {
+            $month = now()->subMonths($i);
+            $monthStart = $month->copy()->startOfMonth();
+            $monthEnd = $month->copy()->endOfMonth();
+
+            $monthlyData[] = [
+                'month' => $month->format('M Y'),
+                'income' => $business->incomes()->whereBetween('date', [$monthStart, $monthEnd])->sum('amount'),
+                'expenses' => $business->expenses()->whereBetween('date', [$monthStart, $monthEnd])->sum('amount'),
+            ];
+        }
+
+        // Income by category
+        $incomeByCategory = $business->incomes()
+            ->with('category')
+            ->selectRaw('category_id, SUM(amount) as total')
+            ->groupBy('category_id')
+            ->get()
+            ->map(function ($item) {
+                return [
+                    'category' => $item->category->name ?? 'Uncategorized',
+                    'total' => $item->total,
+                ];
+            });
+
+        // Expenses by category
+        $expensesByCategory = $business->expenses()
+            ->with('category')
+            ->selectRaw('category_id, SUM(amount) as total')
+            ->groupBy('category_id')
+            ->get()
+            ->map(function ($item) {
+                return [
+                    'category' => $item->category->name ?? 'Uncategorized',
+                    'total' => $item->total,
+                ];
+            });
+
+        // Users in business
+        $businessUsers = $business->users()->get();
+
+        // Subscription info
+        $subscription = $business->activeSubscription;
+
+        return view('admin.businesses.financials', compact(
+            'business',
+            'totalIncome',
+            'totalExpenses',
+            'netProfit',
+            'monthlyIncome',
+            'monthlyExpenses',
+            'monthlyProfit',
+            'yearlyIncome',
+            'yearlyExpenses',
+            'yearlyProfit',
+            'recentIncomes',
+            'recentExpenses',
+            'monthlyData',
+            'incomeByCategory',
+            'expensesByCategory',
+            'businessUsers',
+            'subscription'
+        ));
+    }
+
+    public function downloadBalanceSheet(Business $business)
+    {
+        // Get date range
+        $startOfMonth = now()->startOfMonth();
+        $endOfMonth = now()->endOfMonth();
+        $startOfYear = now()->startOfYear();
+        $endOfYear = now()->endOfYear();
+
+        // Total incomes and expenses (all time)
+        $totalIncome = $business->incomes()->sum('amount');
+        $totalExpenses = $business->expenses()->sum('amount');
+        $netProfit = $totalIncome - $totalExpenses;
+
+        // This month's data
+        $monthlyIncome = $business->incomes()
+            ->whereBetween('date', [$startOfMonth, $endOfMonth])
+            ->sum('amount');
+        $monthlyExpenses = $business->expenses()
+            ->whereBetween('date', [$startOfMonth, $endOfMonth])
+            ->sum('amount');
+        $monthlyProfit = $monthlyIncome - $monthlyExpenses;
+
+        // This year's data
+        $yearlyIncome = $business->incomes()
+            ->whereBetween('date', [$startOfYear, $endOfYear])
+            ->sum('amount');
+        $yearlyExpenses = $business->expenses()
+            ->whereBetween('date', [$startOfYear, $endOfYear])
+            ->sum('amount');
+        $yearlyProfit = $yearlyIncome - $yearlyExpenses;
+
+        // Income by category
+        $incomeByCategory = $business->incomes()
+            ->with('category')
+            ->selectRaw('category_id, SUM(amount) as total')
+            ->groupBy('category_id')
+            ->get()
+            ->map(function ($item) {
+                return [
+                    'category' => $item->category->name ?? 'Uncategorized',
+                    'total' => $item->total,
+                ];
+            });
+
+        // Expenses by category
+        $expensesByCategory = $business->expenses()
+            ->with('category')
+            ->selectRaw('category_id, SUM(amount) as total')
+            ->groupBy('category_id')
+            ->get()
+            ->map(function ($item) {
+                return [
+                    'category' => $item->category->name ?? 'Uncategorized',
+                    'total' => $item->total,
+                ];
+            });
+
+        // Monthly data for last 6 months
+        $monthlyData = [];
+        for ($i = 5; $i >= 0; $i--) {
+            $month = now()->subMonths($i);
+            $monthStart = $month->copy()->startOfMonth();
+            $monthEnd = $month->copy()->endOfMonth();
+
+            $monthlyData[] = [
+                'month' => $month->format('M Y'),
+                'income' => $business->incomes()->whereBetween('date', [$monthStart, $monthEnd])->sum('amount'),
+                'expenses' => $business->expenses()->whereBetween('date', [$monthStart, $monthEnd])->sum('amount'),
+            ];
+        }
+
+        // Recent transactions
+        $recentIncomes = $business->incomes()
+            ->with('category')
+            ->orderByDesc('date')
+            ->take(10)
+            ->get();
+
+        $recentExpenses = $business->expenses()
+            ->with('category')
+            ->orderByDesc('date')
+            ->take(10)
+            ->get();
+
+        $pdf = Pdf::loadView('admin.businesses.balance-sheet-pdf', compact(
+            'business',
+            'totalIncome',
+            'totalExpenses',
+            'netProfit',
+            'monthlyIncome',
+            'monthlyExpenses',
+            'monthlyProfit',
+            'yearlyIncome',
+            'yearlyExpenses',
+            'yearlyProfit',
+            'incomeByCategory',
+            'expensesByCategory',
+            'monthlyData',
+            'recentIncomes',
+            'recentExpenses'
+        ));
+
+        $pdf->setPaper('a4', 'portrait');
+
+        $filename = Str::slug($business->name) . '-balance-sheet-' . now()->format('Y-m-d') . '.pdf';
+
+        return $pdf->download($filename);
     }
 }

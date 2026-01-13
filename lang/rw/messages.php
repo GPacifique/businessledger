@@ -184,4 +184,8 @@ return [
     'French' => 'Igifaransa',
     'Kinyarwanda' => 'Ikinyarwanda',
     'Swahili' => 'Igiswahili',
+
+    // Dashboard Messages
+    'Welcome back!' => 'Murakaza neza!',
+    "Here's what's happening with your business today." => "Ibi nibyo bibera mu bucuruzi bwawe uyu munsi.",
 ];

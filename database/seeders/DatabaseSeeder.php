@@ -21,6 +21,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // Seed subscription plans first
+        $this->call(SubscriptionPlanSeeder::class);
+
         // Create System Admin first (no business required)
         $systemAdmin = User::create([
             'name' => 'System Admin',
