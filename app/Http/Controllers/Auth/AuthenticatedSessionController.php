@@ -28,7 +28,22 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        // Redirect based on user role
+        return redirect()->intended($this->getRedirectRouteForUser($request->user()));
+    }
+
+    /**
+     * Get the appropriate redirect route based on user role.
+     */
+    protected function getRedirectRouteForUser($user): string
+    {
+        return match ($user->role) {
+            'system_admin' => route('admin.dashboard', absolute: false),
+            'business_admin' => route('business.dashboard', absolute: false),
+            'seller' => route('seller.dashboard', absolute: false),
+            'accountant' => route('accountant.dashboard', absolute: false),
+            default => route('dashboard', absolute: false),
+        };
     }
 
     /**

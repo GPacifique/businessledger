@@ -5,13 +5,30 @@ namespace App\Http\Controllers;
 use App\Models\ContactSubmission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        // Get chart data
+        $user = Auth::user();
+
+        // Redirect users to their role-specific dashboards
+        return match ($user->role) {
+            'system_admin' => redirect()->route('admin.dashboard'),
+            'business_admin' => redirect()->route('business.dashboard'),
+            'seller' => redirect()->route('seller.dashboard'),
+            'accountant' => redirect()->route('accountant.dashboard'),
+            default => $this->showUserDashboard(),
+        };
+    }
+
+    /**
+     * Show the default user dashboard with contact submissions data
+     */
+    protected function showUserDashboard()
+    {
         $chartData = $this->getChartData();
 
         return view('dashboard', $chartData);
