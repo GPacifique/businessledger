@@ -424,4 +424,82 @@ return [
     'Profitable' => 'Profitable',
     'Loss' => 'Loss',
     'Today' => 'Today',
+
+    // Accountant Dashboard
+    'Income Records' => 'Income Records',
+    'View all income' => 'View all income',
+    'Expense Records' => 'Expense Records',
+    'View all expenses' => 'View all expenses',
+    'Financial reports' => 'Financial reports',
+    'Category Overview' => 'Category Overview',
+    'No category data available' => 'No category data available',
+
+    // User Dashboard
+    'Your business registration is currently being reviewed by our team.' => 'Your business registration is currently being reviewed by our team.',
+    'You will be notified once your account has been approved.' => 'You will be notified once your account has been approved.',
+    'Review typically takes 1-2 business days.' => 'This process typically takes 1-2 business days. Please ensure your contact information is accurate.',
+    'Need help? Contact us at' => 'Need help? Contact us at',
+    'Review Progress' => 'Review Progress',
+
+    // Contact Page
+    'Chat with us' => 'Chat with us',
+    'Call Now' => 'Call Now',
+    'WhatsApp' => 'WhatsApp',
+    'Find Us' => 'Find Us',
+    'Visit our office in' => 'Visit our office in',
+    'Property Inquiry' => 'Property Inquiry',
+    'Schedule a Viewing' => 'Schedule a Viewing',
+    'Sell My Property' => 'Sell My Property',
+    'Investment Consultation' => 'Investment Consultation',
+    'Tell us about your property needs' => 'Tell us about your property needs...',
+
+    // About Page
+    'Our Story' => 'Our Story',
+    'Building Dreams Since' => 'Building Dreams Since',
+    'Verified Properties' => 'Verified Properties',
+    'Why Choose Us' => 'Why Choose Us',
+    'What Sets Us Apart' => 'What Sets Us Apart',
+    'We are committed to providing exceptional service' => 'We\'re committed to providing exceptional service and value to every client.',
+    'Our Values' => 'Our Values',
+    'Principles That Guide Us' => 'Principles That Guide Us',
+    'Integrity' => 'Integrity',
+    'Integrity description' => 'We operate with complete transparency and honesty in all dealings.',
+    'Client Focus' => 'Client Focus',
+    'Client Focus description' => 'Our clients\' success and satisfaction are our top priority.',
+    'Excellence' => 'Excellence',
+    'Excellence description' => 'We strive for excellence in every property and service we offer.',
+    'Community' => 'Community',
+    'Community description' => 'We contribute to building strong and thriving communities.',
+    'Ready to Start Your Property Journey?' => 'Ready to Start Your Property Journey?',
+    'Let us help you find the perfect property' => 'Let us help you find the perfect property for your needs.',
+    'Browse Properties' => 'Browse Properties',
+
+    // Services Page
+    'View Properties' => 'View Properties',
+    'Service Highlights' => 'Service Highlights',
+    'Complete Support at Every Step' => 'Complete Support at Every Step',
+    'Service Highlights description' => 'We provide comprehensive support throughout your property journey, from initial consultation to after-sale services.',
+    'Ready to Get Started?' => 'Ready to Get Started?',
+    'Contact us today' => 'Contact us today and let our experts help you find the perfect property for your needs.',
+    'Contact Us Now' => 'Contact Us Now',
+
+    // Testimonials Page
+    'Average Rating' => 'Average Rating',
+    'Join Our Satisfied Clients' => 'Join Our Satisfied Clients',
+    'Experience the difference' => 'Experience the difference with :company. Let us help you find your perfect property.',
+
+    // Auth Pages
+    'Welcome Back!' => 'Welcome Back!',
+    'Sign in to' => 'Sign in to',
+    'Remember me' => 'Remember me',
+    'Forgot password?' => 'Forgot password?',
+    'Sign In' => 'Sign In',
+    'Don\'t have an account?' => 'Don\'t have an account?',
+    'Register now' => 'Register now',
+    'Create Account' => 'Create Account',
+    'Join' => 'Join',
+    'Already have an account?' => 'Already have an account?',
+    'Sign in' => 'Sign in',
+    'Confirm Password' => 'Confirm Password',
+    'Name' => 'Name',
 ];

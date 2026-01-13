@@ -26,10 +26,8 @@
         <div class="flex items-center justify-between h-20">
             <!-- Logo -->
             <a href="{{ url('/') }}" class="flex items-center space-x-3 group">
-                <div :class="scrolled ? 'bg-emerald-600' : 'bg-white/20 backdrop-blur-sm'" class="p-2.5 rounded-xl transition-all duration-300 group-hover:scale-105">
-                    <svg class="w-8 h-8" :class="scrolled ? 'text-white' : 'text-white'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                <div class="p-1 rounded-xl transition-all duration-300 group-hover:scale-105">
+                    <img src="{{ asset('images/logo.jpeg') }}" alt="EDI Properties Logo" class="w-12 h-12 rounded-lg object-cover">
                 </div>
                 <div>
                     <span :class="scrolled ? 'text-gray-900' : 'text-white'" class="text-xl font-bold font-display transition-colors duration-300">EDI Properties</span>

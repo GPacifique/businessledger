@@ -99,9 +99,9 @@
                             <p class="text-xs text-gray-500 mt-2">{{ __('messages.All time') }}</p>
                         </div>
                         <div class="text-center p-6 bg-gradient-to-br {{ ($netProfit ?? 0) >= 0 ? 'from-blue-50 to-blue-100' : 'from-orange-50 to-orange-100' }} rounded-xl">
-                            <p class="text-sm text-gray-600 mb-2">Net {{ ($netProfit ?? 0) >= 0 ? 'Profit' : 'Loss' }}</p>
+                            <p class="text-sm text-gray-600 mb-2">{{ __('messages.Net') }} {{ ($netProfit ?? 0) >= 0 ? __('messages.Profitable') : __('messages.Loss') }}</p>
                             <p class="text-3xl font-bold {{ ($netProfit ?? 0) >= 0 ? 'text-blue-600' : 'text-orange-600' }}">{{ format_currency(abs($netProfit ?? 0)) }}</p>
-                            <p class="text-xs text-gray-500 mt-2">All time</p>
+                            <p class="text-xs text-gray-500 mt-2">{{ __('messages.All time') }}</p>
                         </div>
                     </div>
                 </div>
@@ -116,8 +116,8 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                         </div>
-                        <h4 class="font-medium text-gray-900">Income Records</h4>
-                        <p class="text-sm text-gray-500">View all income</p>
+                        <h4 class="font-medium text-gray-900">{{ __('messages.Income Records') }}</h4>
+                        <p class="text-sm text-gray-500">{{ __('messages.View all income') }}</p>
                     </div>
                 </a>
 
@@ -128,8 +128,8 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
                             </svg>
                         </div>
-                        <h4 class="font-medium text-gray-900">Expense Records</h4>
-                        <p class="text-sm text-gray-500">View all expenses</p>
+                        <h4 class="font-medium text-gray-900">{{ __('messages.Expense Records') }}</h4>
+                        <p class="text-sm text-gray-500">{{ __('messages.View all expenses') }}</p>
                     </div>
                 </a>
 
@@ -140,8 +140,8 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
                             </svg>
                         </div>
-                        <h4 class="font-medium text-gray-900">Categories</h4>
-                        <p class="text-sm text-gray-500">Manage categories</p>
+                        <h4 class="font-medium text-gray-900">{{ __('messages.Categories') }}</h4>
+                        <p class="text-sm text-gray-500">{{ __('messages.Manage categories') }}</p>
                     </div>
                 </a>
 
@@ -152,8 +152,8 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg>
                         </div>
-                        <h4 class="font-medium text-gray-900">Reports</h4>
-                        <p class="text-sm text-gray-500">Financial reports</p>
+                        <h4 class="font-medium text-gray-900">{{ __('messages.Reports') }}</h4>
+                        <p class="text-sm text-gray-500">{{ __('messages.Financial reports') }}</p>
                     </div>
                 </a>
             </div>
@@ -164,8 +164,8 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-4">
-                            <h3 class="text-lg font-semibold text-gray-900">Recent Income</h3>
-                            <a href="{{ route('incomes.index') }}" class="text-sm text-indigo-600 hover:text-indigo-800">View All</a>
+                            <h3 class="text-lg font-semibold text-gray-900">{{ __('messages.Recent Income') }}</h3>
+                            <a href="{{ route('incomes.index') }}" class="text-sm text-indigo-600 hover:text-indigo-800">{{ __('messages.View All') }}</a>
                         </div>
                         @if(isset($recentIncomes) && $recentIncomes->count() > 0)
                             <div class="overflow-x-auto">
@@ -191,7 +191,7 @@
                                 </table>
                             </div>
                         @else
-                            <p class="text-gray-500 text-center py-4">No recent income</p>
+                            <p class="text-gray-500 text-center py-4">{{ __('messages.No recent income recorded') }}</p>
                         @endif
                     </div>
                 </div>
@@ -200,8 +200,8 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-4">
-                            <h3 class="text-lg font-semibold text-gray-900">Recent Expenses</h3>
-                            <a href="{{ route('expenses.index') }}" class="text-sm text-indigo-600 hover:text-indigo-800">View All</a>
+                            <h3 class="text-lg font-semibold text-gray-900">{{ __('messages.Recent Expenses') }}</h3>
+                            <a href="{{ route('expenses.index') }}" class="text-sm text-indigo-600 hover:text-indigo-800">{{ __('messages.View All') }}</a>
                         </div>
                         @if(isset($recentExpenses) && $recentExpenses->count() > 0)
                             <div class="overflow-x-auto">
@@ -227,7 +227,7 @@
                                 </table>
                             </div>
                         @else
-                            <p class="text-gray-500 text-center py-4">No recent expenses</p>
+                            <p class="text-gray-500 text-center py-4">{{ __('messages.No recent expenses recorded') }}</p>
                         @endif
                     </div>
                 </div>
@@ -236,7 +236,7 @@
             <!-- Category Breakdown -->
             <div class="mt-8 bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Category Overview (This Month)</h3>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">{{ __('messages.Category Overview') }} ({{ __('messages.This Month') }})</h3>
                     @if(isset($categoryStats) && count($categoryStats) > 0)
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             @foreach($categoryStats as $category)
@@ -254,7 +254,7 @@
                             @endforeach
                         </div>
                     @else
-                        <p class="text-gray-500 text-center py-4">No category data available</p>
+                        <p class="text-gray-500 text-center py-4">{{ __('messages.No category data available') }}</p>
                     @endif
                 </div>
             </div>

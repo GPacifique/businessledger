@@ -31,8 +31,8 @@
         <meta name="twitter:image" content="{{ asset('images/og-image.png') }}">
 
         <!-- Favicon -->
-        <link rel="icon" type="image/svg+xml" href="{{ asset('images/logo.svg') }}">
-        <link rel="apple-touch-icon" href="{{ asset('images/logo.svg') }}">
+        <link rel="icon" type="image/jpeg" href="{{ asset('images/logo.jpeg') }}">
+        <link rel="apple-touch-icon" href="{{ asset('images/logo.jpeg') }}">
 
         <!-- Theme Color -->
         <meta name="theme-color" content="#10b981">
@@ -71,10 +71,8 @@
                     <!-- Logo & Tagline -->
                     <div>
                         <div class="flex items-center space-x-3 mb-4">
-                            <div class="bg-white/20 backdrop-blur-sm p-3 rounded-xl">
-                                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-                                </svg>
+                            <div class="p-1 rounded-xl">
+                                <img src="{{ asset('images/logo.jpeg') }}" alt="EDI Properties Logo" class="w-14 h-14 rounded-lg object-cover">
                             </div>
                             <div>
                                 <h1 class="text-3xl font-extrabold tracking-tight">EDI Properties</h1>
@@ -205,10 +203,8 @@
                 <!-- Mobile Logo -->
                 <div class="lg:hidden mb-8 text-center">
                     <div class="flex items-center justify-center space-x-2 mb-2">
-                        <div class="bg-emerald-600 p-2 rounded-xl">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-                            </svg>
+                        <div class="p-1 rounded-xl">
+                            <img src="{{ asset('images/logo.jpeg') }}" alt="EDI Properties Logo" class="w-12 h-12 rounded-lg object-cover">
                         </div>
                         <h1 class="text-2xl font-bold text-gray-800">EDI Properties</h1>
                     </div>

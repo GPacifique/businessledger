@@ -61,8 +61,8 @@
                     <!-- Message -->
                     <div class="text-center mb-8">
                         <p class="text-gray-600 leading-relaxed">
-                            Your business registration is currently being reviewed by our team.
-                            You will be notified once your account has been approved.
+                            {{ __('messages.Your business registration is currently being reviewed by our team.') }}
+                            {{ __('messages.You will be notified once your account has been approved.') }}
                         </p>
                     </div>
 
@@ -102,7 +102,7 @@
                                     <svg class="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                     </svg>
-                                    Status
+                                    {{ __('messages.Status') }}
                                 </span>
                                 <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-800">
                                     <span class="w-1.5 h-1.5 rounded-full bg-yellow-500 mr-1.5 animate-pulse"></span>
@@ -114,7 +114,7 @@
                                     <svg class="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                                     </svg>
-                                    Submitted
+                                    {{ __('messages.Submitted') }}
                                 </span>
                                 <span class="font-semibold text-gray-900">{{ $business?->created_at?->diffForHumans() ?? 'N/A' }}</span>
                             </div>
@@ -126,7 +126,7 @@
                 <div class="px-8 pb-8">
                     <div class="border-t border-gray-100 pt-6 text-center">
                         <p class="text-sm text-gray-500">
-                            Need help? Contact us at
+                            {{ __('messages.Need help? Contact us at') }}
                             <a href="mailto:support@businessledger.com" class="text-indigo-600 hover:text-indigo-800 font-medium">support@businessledger.com</a>
                         </p>
                     </div>
@@ -136,7 +136,7 @@
             <!-- Progress Indicator -->
             <div class="mt-8 px-4">
                 <div class="flex items-center justify-between mb-2">
-                    <span class="text-xs font-medium text-gray-500">Review Progress</span>
+                    <span class="text-xs font-medium text-gray-500">{{ __('messages.Review Progress') }}</span>
                     <span class="text-xs font-medium text-gray-500">Step 2 of 3</span>
                 </div>
                 <div class="h-2 bg-gray-200 rounded-full overflow-hidden">

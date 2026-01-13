@@ -31,10 +31,7 @@
         <meta name="twitter:image" content="{{ asset('images/og-image.png') }}">
 
         <!-- Favicon -->
-        <link rel="icon" type="image/svg+xml" href="{{ asset('images/logo.svg') }}">
-        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon-32.png') }}">
-        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon-16.png') }}">
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/apple-touch-icon.png') }}">
+        <link rel="icon" type=\"image/jpeg\" href=\"{{ asset('images/logo.jpeg') }}\">\n        <link rel=\"apple-touch-icon\" href=\"{{ asset('images/logo.jpeg') }}\">
 
         <!-- Theme Color -->
         <meta name="theme-color" content="#6366f1">

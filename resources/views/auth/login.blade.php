@@ -5,8 +5,8 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
             </svg>
         </div>
-        <h2 class="text-2xl font-bold bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">Welcome Back!</h2>
-        <p class="text-gray-500 mt-1">Sign in to EDI Properties</p>
+        <h2 class="text-2xl font-bold bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">{{ __('messages.Welcome Back!') }}</h2>
+        <p class="text-gray-500 mt-1">{{ __('messages.Sign in to') }} EDI Properties</p>
     </div>
 
     <!-- Session Status -->
@@ -51,12 +51,12 @@
         <div class="flex items-center justify-between mt-5">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox" class="rounded-md border-gray-300 text-emerald-600 shadow-sm focus:ring-emerald-500 transition-all duration-300" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                <span class="ms-2 text-sm text-gray-600">{{ __('messages.Remember me') }}</span>
             </label>
 
             @if (Route::has('password.request'))
                 <a class="text-sm bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent hover:from-teal-600 hover:to-cyan-600 font-semibold transition-all duration-300" href="{{ route('password.request') }}">
-                    {{ __('Forgot password?') }}
+                    {{ __('messages.Forgot password?') }}
                 </a>
             @endif
         </div>
@@ -66,16 +66,16 @@
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
                 </svg>
-                {{ __('Sign In') }}
+                {{ __('messages.Sign In') }}
             </button>
         </div>
     </form>
 
     <div class="mt-6 text-center">
         <p class="text-gray-600">
-            Don't have an account?
+            {{ __('messages.Don\'t have an account?') }}
             <a href="{{ route('register') }}" class="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent font-bold hover:from-teal-600 hover:to-cyan-600 transition-all duration-300">
-                Register now
+                {{ __('messages.Register now') }}
             </a>
         </p>
     </div>

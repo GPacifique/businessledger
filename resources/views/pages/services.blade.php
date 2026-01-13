@@ -80,7 +80,7 @@
                 <h3 class="text-xl font-bold text-gray-900 mb-3">{{ $service['title'] }}</h3>
                 <p class="text-gray-600 mb-6">{{ $service['description'] }}</p>
                 <a href="{{ route('properties.index') }}" class="inline-flex items-center {{ $color['text'] }} font-semibold hover:underline">
-                    View Properties
+                    {{ __('messages.View Properties') }}
                     <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                     </svg>
@@ -135,13 +135,13 @@
         <div class="grid lg:grid-cols-2 gap-12 items-center">
             <div>
                 <span class="inline-block px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-semibold mb-6">
-                    Service Highlights
+                    {{ __('messages.Service Highlights') }}
                 </span>
                 <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-                    Complete Support at <span class="text-emerald-600">Every Step</span>
+                    {{ __('messages.Complete Support at Every Step') }}
                 </h2>
                 <p class="text-gray-600 mb-8">
-                    We provide comprehensive support throughout your property journey, from initial consultation to after-sale services.
+                    {{ __('messages.Service Highlights description') }}
                 </p>
                 <div class="space-y-4">
                     @foreach(config('landing.process.highlights', []) as $highlight)
@@ -160,9 +160,9 @@
                 </div>
             </div>
             <div class="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl p-8 text-white">
-                <h3 class="text-2xl font-bold mb-6">Ready to Get Started?</h3>
+                <h3 class="text-2xl font-bold mb-6">{{ __('messages.Ready to Get Started?') }}</h3>
                 <p class="text-emerald-100 mb-8">
-                    Contact us today and let our experts help you find the perfect property for your needs.
+                    {{ __('messages.Contact us today') }}
                 </p>
                 <div class="space-y-4">
                     <a href="tel:{{ config('landing.company.phone') }}" class="flex items-center text-white hover:text-emerald-200 transition-colors">
@@ -186,7 +186,7 @@
                     </div>
                 </div>
                 <a href="{{ route('contact') }}" class="inline-flex items-center justify-center w-full mt-8 px-6 py-4 bg-white text-emerald-600 rounded-xl font-bold hover:bg-gray-100 transition-all">
-                    Contact Us Now
+                    {{ __('messages.Contact Us Now') }}
                 </a>
             </div>
         </div>

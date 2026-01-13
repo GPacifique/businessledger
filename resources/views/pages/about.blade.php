@@ -35,10 +35,10 @@
         <div class="grid lg:grid-cols-2 gap-12 items-center">
             <div>
                 <span class="inline-block px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-semibold mb-6">
-                    Our Story
+                    {{ __('messages.Our Story') }}
                 </span>
                 <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-                    Building Dreams Since <span class="text-emerald-600">2010</span>
+                    {{ __('messages.Building Dreams Since') }} <span class="text-emerald-600">2010</span>
                 </h2>
                 <div class="prose prose-lg text-gray-600">
                     <p>
@@ -63,7 +63,7 @@
                         @endforeach
                         <div class="text-center p-6 bg-white/10 rounded-xl backdrop-blur-sm">
                             <p class="text-4xl font-bold mb-2">100%</p>
-                            <p class="text-emerald-100">Verified Properties</p>
+                            <p class="text-emerald-100">{{ __('messages.Verified Properties') }}</p>
                         </div>
                     </div>
                 </div>
@@ -77,13 +77,13 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
             <span class="inline-block px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-semibold mb-6">
-                Why Choose Us
+                {{ __('messages.Why Choose Us') }}
             </span>
             <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                What Sets Us <span class="text-emerald-600">Apart</span>
+                {{ __('messages.What Sets Us Apart') }}
             </h2>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                We're committed to providing exceptional service and value to every client.
+                {{ __('messages.We are committed to providing exceptional service') }}
             </p>
         </div>
 
@@ -118,10 +118,10 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
             <span class="inline-block px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-semibold mb-6">
-                Our Values
+                {{ __('messages.Our Values') }}
             </span>
             <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                Principles That <span class="text-emerald-600">Guide Us</span>
+                {{ __('messages.Principles That Guide Us') }}
             </h2>
         </div>
 
@@ -132,8 +132,8 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
                 </div>
-                <h3 class="text-lg font-bold text-gray-900 mb-2">Integrity</h3>
-                <p class="text-gray-600 text-sm">We operate with complete transparency and honesty in all dealings.</p>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">{{ __('messages.Integrity') }}</h3>
+                <p class="text-gray-600 text-sm">{{ __('messages.Integrity description') }}</p>
             </div>
             <div class="text-center p-6">
                 <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -141,8 +141,8 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
                     </svg>
                 </div>
-                <h3 class="text-lg font-bold text-gray-900 mb-2">Client Focus</h3>
-                <p class="text-gray-600 text-sm">Our clients' success and satisfaction are our top priority.</p>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">{{ __('messages.Client Focus') }}</h3>
+                <p class="text-gray-600 text-sm">{{ __('messages.Client Focus description') }}</p>
             </div>
             <div class="text-center p-6">
                 <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -150,8 +150,8 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
                     </svg>
                 </div>
-                <h3 class="text-lg font-bold text-gray-900 mb-2">Excellence</h3>
-                <p class="text-gray-600 text-sm">We strive for excellence in every property and service we offer.</p>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">{{ __('messages.Excellence') }}</h3>
+                <p class="text-gray-600 text-sm">{{ __('messages.Excellence description') }}</p>
             </div>
             <div class="text-center p-6">
                 <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -159,8 +159,8 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
                     </svg>
                 </div>
-                <h3 class="text-lg font-bold text-gray-900 mb-2">Community</h3>
-                <p class="text-gray-600 text-sm">We contribute to building strong and thriving communities.</p>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">{{ __('messages.Community') }}</h3>
+                <p class="text-gray-600 text-sm">{{ __('messages.Community description') }}</p>
             </div>
         </div>
     </div>
@@ -169,20 +169,20 @@
 {{-- CTA Section --}}
 <section class="bg-gradient-to-r from-emerald-600 to-teal-600 py-16">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl font-bold text-white mb-4">Ready to Start Your Property Journey?</h2>
-        <p class="text-emerald-100 text-lg mb-8">Let us help you find the perfect property for your needs.</p>
+        <h2 class="text-3xl font-bold text-white mb-4">{{ __('messages.Ready to Start Your Property Journey?') }}</h2>
+        <p class="text-emerald-100 text-lg mb-8">{{ __('messages.Let us help you find the perfect property') }}</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="{{ route('properties.index') }}" class="inline-flex items-center justify-center px-8 py-4 bg-white text-emerald-600 rounded-xl font-bold hover:bg-gray-100 transition-all">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                 </svg>
-                Browse Properties
+                {{ __('messages.Browse Properties') }}
             </a>
             <a href="{{ route('contact') }}" class="inline-flex items-center justify-center px-8 py-4 bg-emerald-500/30 text-white rounded-xl font-bold hover:bg-emerald-500/40 transition-all border border-white/30">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                 </svg>
-                Contact Us
+                {{ __('messages.Contact Us') }}
             </a>
         </div>
     </div>

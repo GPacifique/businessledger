@@ -15,7 +15,7 @@
             <rect width="100" height="100" fill="url(#grid)"/>
         </svg>
     </div>
-    
+
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <span class="inline-block px-4 py-2 bg-emerald-400/20 text-emerald-300 rounded-full text-sm font-semibold mb-6">
             {{ config('landing.testimonials.badge', 'Client Testimonials') }}
@@ -83,7 +83,7 @@
             @endforeach
             <div>
                 <p class="text-4xl lg:text-5xl font-bold mb-2">5.0</p>
-                <p class="text-emerald-100 text-lg">Average Rating</p>
+                <p class="text-emerald-100 text-lg">{{ __('messages.Average Rating') }}</p>
             </div>
         </div>
     </div>
@@ -92,20 +92,20 @@
 {{-- CTA Section --}}
 <section class="py-16 lg:py-24 bg-gray-50">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">Join Our Satisfied Clients</h2>
-        <p class="text-xl text-gray-600 mb-8">Experience the difference with {{ config('landing.company.name') }}. Let us help you find your perfect property.</p>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ __('messages.Join Our Satisfied Clients') }}</h2>
+        <p class="text-xl text-gray-600 mb-8">{{ __('messages.Experience the difference', ['company' => config('landing.company.name')]) }}</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="{{ route('properties.index') }}" class="inline-flex items-center justify-center px-8 py-4 bg-emerald-600 text-white rounded-xl font-bold hover:bg-emerald-700 transition-all">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                 </svg>
-                Browse Properties
+                {{ __('messages.Browse Properties') }}
             </a>
             <a href="{{ route('contact') }}" class="inline-flex items-center justify-center px-8 py-4 bg-gray-200 text-gray-800 rounded-xl font-bold hover:bg-gray-300 transition-all">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                 </svg>
-                Contact Us
+                {{ __('messages.Contact Us') }}
             </a>
         </div>
     </div>

@@ -6,10 +6,8 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}" class="flex items-center space-x-2">
-                        <div class="bg-white/20 backdrop-blur-sm p-2 rounded-xl">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-                            </svg>
+                        <div class="p-1 rounded-xl">
+                            <img src="{{ asset('images/logo.jpeg') }}" alt="EDI Properties Logo" class="w-10 h-10 rounded-lg object-cover">
                         </div>
                         <span class="text-white font-bold text-lg hidden sm:block">EDI Properties</span>
                     </a>
