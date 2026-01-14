@@ -72,7 +72,7 @@
         <x-landing.footer />
 
         <!-- Floating WhatsApp Button -->
-        <a href="https://wa.me/{{ config('landing.company.whatsapp') }}?text={{ urlencode('Hello, I need help with ' . config('landing.company.name')) }}"
+        <a href="https://wa.me/{{ config('landing.company.whatsapp') }}?text={{ urlencode('Hello! I found ' . config('landing.company.name') . ' - your premium real estate & property management company. I am interested in learning more about your properties including land, houses, farms, and investment opportunities in Rwanda.') }}"
            target="_blank"
            rel="noopener noreferrer"
            aria-label="Contact us on WhatsApp"
