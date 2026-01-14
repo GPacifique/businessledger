@@ -5,29 +5,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'BusinessLedger') }} | @yield('title', 'Dashboard')</title>
+        <title>{{ config('app.name', 'EDI Properties & Investments') }} | @yield('title', 'Dashboard')</title>
 
         <!-- SEO Meta Tags -->
-        <meta name="description" content="BusinessLedger - Business Management system for inventory, sales, purchases, and staff management. Simplify your business operations.">
-        <meta name="keywords" content="business management, inventory, sales, purchases, POS, Rwanda, RWF, business management">
-        <meta name="author" content="BusinessLedger">
+        <meta name="description" content="EDI Properties & Investments - Premium Real Estate & Property Management Solutions in Rwanda.">
+        <meta name="keywords" content="real estate, properties, land, houses, farms, Rwanda, Kigali, investment, edi properties, property management">
+        <meta name="author" content="EDI Properties & Investments">
         <meta name="robots" content="index, follow">
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="{{ url()->current() }}">
-        <meta property="og:title" content="{{ config('app.name', 'BusinessLedger') }} - Business Management System">
-        <meta property="og:description" content="Simplify your business management with BusinessLedger. Track inventory, sales, purchases, and staff all in one place.">
+        <meta property="og:title" content="{{ config('app.name', 'EDI Properties & Investments') }} - Real Estate & Property Management">
+        <meta property="og:description" content="Your trusted partner in land, houses, farms, and premium property investments in Rwanda.">
         <meta property="og:image" content="{{ asset('images/og-image.png') }}">
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
-        <meta property="og:site_name" content="BusinessLedger">
+        <meta property="og:site_name" content="EDI Properties & Investments">
 
         <!-- Twitter -->
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:url" content="{{ url()->current() }}">
-        <meta name="twitter:title" content="{{ config('app.name', 'BusinessLedger') }} - Business Management System">
-        <meta name="twitter:description" content="Simplify your business management with BusinessLedger. Track inventory, sales, purchases, and staff all in one place.">
+        <meta name="twitter:title" content="{{ config('app.name', 'EDI Properties & Investments') }} - Real Estate & Property Management">
+        <meta name="twitter:description" content="Your trusted partner in land, houses, farms, and premium property investments in Rwanda.">
         <meta name="twitter:image" content="{{ asset('images/og-image.png') }}">
 
         <!-- Favicon -->

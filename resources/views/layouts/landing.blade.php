@@ -8,26 +8,26 @@
         <title>@yield('title', config('app.name', 'EDI_PROPERTIES') . ' - Property Management and Real Estate Services')</title>
 
         <!-- SEO Meta Tags -->
-        <meta name="description" content="@yield('meta_description', 'EDI property- The smart way to track your business income and expenses. Manage your finances, monitor cash flow, and make better business decisions.')">
-        <meta name="keywords" content="@yield('meta_keywords', 'income tracking, expense management, business finance, cash flow, profit tracking, financial reports, Rwanda, RWF, business accounting')">
-        <meta name="author" content="BusinessLedger">
+        <meta name="description" content="@yield('meta_description', 'EDI Properties & Investments - Your trusted partner in land, houses, farms, and premium property investments in Rwanda.')">
+        <meta name="keywords" content="@yield('meta_keywords', 'real estate, properties, land, houses, farms, Rwanda, Kigali, investment, edi properties, property management')">
+        <meta name="author" content="EDI Properties & Investments">
         <meta name="robots" content="index, follow">
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="{{ url()->current() }}">
-        <meta property="og:title" content="@yield('og_title', 'BusinessLedger - Smart Income & Expense Management')">
-        <meta property="og:description" content="@yield('og_description', 'Track your business income and expenses effortlessly. Get insights into your cash flow and profitability.')">
+        <meta property="og:title" content="@yield('og_title', 'EDI Properties & Investments - Premium Real Estate & Property Management')">
+        <meta property="og:description" content="@yield('og_description', 'Your trusted partner in land, houses, farms, and premium property investments in Rwanda.')">
         <meta property="og:image" content="{{ asset('images/og-image.png') }}">
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
-        <meta property="og:site_name" content="BusinessLedger">
+        <meta property="og:site_name" content="EDI Properties & Investments">
 
         <!-- Twitter -->
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:url" content="{{ url()->current() }}">
-        <meta name="twitter:title" content="@yield('twitter_title', 'BusinessLedger - Smart Income & Expense Management')">
-        <meta name="twitter:description" content="@yield('twitter_description', 'Track your business income and expenses effortlessly. Get insights into your cash flow and profitability.')">
+        <meta name="twitter:title" content="@yield('twitter_title', 'EDI Properties & Investments - Premium Real Estate')">
+        <meta name="twitter:description" content="@yield('twitter_description', 'Your trusted partner in land, houses, farms, and premium property investments in Rwanda.')">
         <meta name="twitter:image" content="{{ asset('images/og-image.png') }}">
 
         <!-- Favicon -->
