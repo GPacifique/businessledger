@@ -22,6 +22,7 @@ class PropertyController extends Controller
                 'bedrooms' => 4,
                 'bathrooms' => 3,
                 'area' => '450 m²',
+                'features' => ['Swimming Pool', 'Garden', 'Garage', 'Security System', 'Modern Kitchen', 'City Views', 'Balcony', 'Terrace'],
             ],
             [
                 'title' => 'Prime Commercial Land - Kimihurura',
@@ -33,6 +34,7 @@ class PropertyController extends Controller
                 'bedrooms' => null,
                 'bathrooms' => null,
                 'area' => '800 m²',
+                'features' => ['Prime Location', 'Clean Title', 'Road Access', 'Utilities Available', 'Commercial Zoning', 'High Traffic Area'],
             ],
             [
                 'title' => 'Modern Apartment - Gacuriro',
@@ -44,6 +46,7 @@ class PropertyController extends Controller
                 'bedrooms' => 2,
                 'bathrooms' => 2,
                 'area' => '120 m²',
+                'features' => ['Fully Furnished', 'Parking', '24/7 Security', 'Modern Kitchen', 'Balcony', 'WiFi', 'Backup Generator'],
             ],
             [
                 'title' => 'Agricultural Farm - Rwamagana',
@@ -55,6 +58,7 @@ class PropertyController extends Controller
                 'bedrooms' => null,
                 'bathrooms' => null,
                 'area' => '5 hectares',
+                'features' => ['Water Access', 'Fertile Soil', 'Farmhouse', 'Storage Facility', 'Fenced', 'Road Access', 'Irrigation System'],
             ],
             [
                 'title' => 'Downtown Office Space',
@@ -66,6 +70,7 @@ class PropertyController extends Controller
                 'bedrooms' => null,
                 'bathrooms' => 2,
                 'area' => '200 m²',
+                'features' => ['High-Speed Internet', 'Parking', 'Modern Facilities', 'Air Conditioning', '24/7 Access', 'Conference Room', 'Reception Area'],
             ],
             [
                 'title' => 'Family Home - Nyarutarama',
@@ -77,6 +82,7 @@ class PropertyController extends Controller
                 'bedrooms' => 3,
                 'bathrooms' => 2,
                 'area' => '280 m²',
+                'features' => ['Secure Estate', 'Garden', 'Garage', 'Modern Finishes', 'Quiet Location', 'Solar Panels', 'Water Tank'],
             ],
             [
                 'title' => 'Residential Plot - Kicukiro',
@@ -88,6 +94,7 @@ class PropertyController extends Controller
                 'bedrooms' => null,
                 'bathrooms' => null,
                 'area' => '600 m²',
+                'features' => ['Clean Title', 'Ready to Build', 'Road Access', 'Electricity Available', 'Water Access', 'Developing Area'],
             ],
             [
                 'title' => 'Warehouse & Industrial Space',
@@ -99,6 +106,7 @@ class PropertyController extends Controller
                 'bedrooms' => null,
                 'bathrooms' => 1,
                 'area' => '500 m²',
+                'features' => ['High Ceilings', 'Loading Dock', 'Office Space', '24/7 Security', 'Parking', 'Three-Phase Power', 'Fire Safety System'],
             ],
             [
                 'title' => 'Coffee Plantation - Huye',
@@ -110,6 +118,7 @@ class PropertyController extends Controller
                 'bedrooms' => null,
                 'bathrooms' => null,
                 'area' => '10 hectares',
+                'features' => ['Established Trees', 'Processing Facility', 'Workers Housing', 'Water Source', 'Storage Buildings', 'Equipment Included', 'Fertile Land'],
             ],
             [
                 'title' => 'Studio Apartment - Remera',
@@ -121,6 +130,7 @@ class PropertyController extends Controller
                 'bedrooms' => 1,
                 'bathrooms' => 1,
                 'area' => '45 m²',
+                'features' => ['Furnished', 'WiFi', 'Kitchenette', 'Security', 'Close to Transport', 'Utilities Included'],
             ],
             [
                 'title' => 'Shopping Center Plot',
@@ -132,6 +142,7 @@ class PropertyController extends Controller
                 'bedrooms' => null,
                 'bathrooms' => null,
                 'area' => '1,200 m²',
+                'features' => ['High Traffic Area', 'Commercial Zone', 'Clean Title', 'Corner Plot', 'Road Access', 'All Utilities', 'Prime Location'],
             ],
             [
                 'title' => 'Lakeside Land - Rubavu',
@@ -143,6 +154,7 @@ class PropertyController extends Controller
                 'bedrooms' => null,
                 'bathrooms' => null,
                 'area' => '2,000 m²',
+                'features' => ['Lake Views', 'Beach Access', 'Clean Title', 'Tourism Zone', 'Road Access', 'Utilities Available', 'Scenic Location'],
             ],
         ];
     }
