@@ -27,7 +27,7 @@
             <!-- Logo -->
             <a href="{{ url('/') }}" class="flex items-center space-x-3 group">
                 <div class="p-1 rounded-xl transition-all duration-300 group-hover:scale-105">
-                    <img src="{{ asset('images/logo.jpeg') }}" alt="EDI Properties Logo" class="w-12 h-12 rounded-lg object-cover">
+                    <img src="{{ asset('images/logo.jpg') }}" alt="EDI Properties Logo" class="w-12 h-12 rounded-lg object-cover">
                 </div>
                 <div>
                     <span :class="scrolled ? 'text-gray-900' : 'text-white'" class="text-xl font-bold font-display transition-colors duration-300">EDI Properties</span>

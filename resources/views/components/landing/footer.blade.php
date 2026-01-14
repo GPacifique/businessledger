@@ -7,7 +7,7 @@
             <div class="lg:col-span-1">
                 <a href="{{ url('/') }}" class="flex items-center space-x-3 mb-6">
                     <div class="p-1 rounded-xl">
-                        <img src="{{ asset('images/logo.jpeg') }}" alt="EDI Properties Logo" class="w-12 h-12 rounded-lg object-cover">
+                        <img src="{{ asset('images/logo.jpg') }}" alt="EDI Properties Logo" class="w-12 h-12 rounded-lg object-cover">
                     </div>
                     <div>
                         <span class="text-xl font-bold text-white font-display">EDI Properties</span>

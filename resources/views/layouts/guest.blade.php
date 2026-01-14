@@ -31,8 +31,8 @@
         <meta name="twitter:image" content="{{ asset('images/og-image.png') }}">
 
         <!-- Favicon -->
-        <link rel="icon" type="image/jpeg" href="{{ asset('images/logo.jpeg') }}">
-        <link rel="apple-touch-icon" href="{{ asset('images/logo.jpeg') }}">
+        <link rel="icon" type="image/jpeg" href="{{ asset('images/logo.jpg') }}">
+        <link rel="apple-touch-icon" href="{{ asset('images/logo.jpg') }}">
 
         <!-- Theme Color -->
         <meta name="theme-color" content="#10b981">
@@ -72,7 +72,7 @@
                     <div>
                         <div class="flex items-center space-x-3 mb-4">
                             <div class="p-1 rounded-xl">
-                                <img src="{{ asset('images/logo.jpeg') }}" alt="EDI Properties Logo" class="w-14 h-14 rounded-lg object-cover">
+                                <img src="{{ asset('images/logo.jpg') }}" alt="EDI Properties Logo" class="w-14 h-14 rounded-lg object-cover">
                             </div>
                             <div>
                                 <h1 class="text-3xl font-extrabold tracking-tight">EDI Properties</h1>
@@ -204,7 +204,7 @@
                 <div class="lg:hidden mb-8 text-center">
                     <div class="flex items-center justify-center space-x-2 mb-2">
                         <div class="p-1 rounded-xl">
-                            <img src="{{ asset('images/logo.jpeg') }}" alt="EDI Properties Logo" class="w-12 h-12 rounded-lg object-cover">
+                            <img src="{{ asset('images/logo.jpg') }}" alt="EDI Properties Logo" class="w-12 h-12 rounded-lg object-cover">
                         </div>
                         <h1 class="text-2xl font-bold text-gray-800">EDI Properties</h1>
                     </div>
