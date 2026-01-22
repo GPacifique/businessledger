@@ -5,6 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        <!-- Google AdSense Verification -->
+        <meta name="google-adsense-account" content="ca-pub-6462287919691866">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6462287919691866" crossorigin="anonymous"></script>
+
         <title>@yield('title', config('app.name', 'EDI_PROPERTIES') . ' - Property Management and Real Estate Services')</title>
 
         <!-- SEO Meta Tags -->
