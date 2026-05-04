@@ -11,6 +11,11 @@ return [
     'Profile' => 'Profile',
     'Log Out' => 'Log Out',
 //Bills
+'CUSTOMER' => 'CUSTOMER',
+'VENDOR' => 'VENDOR',
+'DESCRIPTION' => 'DESCRIPTION',
+'BILL NUMBER' => 'BILL NUMBER',
+'BILL'=>>'BILL',
 'Bills' => 'Bills',
 'Add Bill' => 'Add Bill',
 'Edit Bill' => 'Edit Bill',
