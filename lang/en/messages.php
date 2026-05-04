@@ -15,7 +15,7 @@ return [
 'VENDOR' => 'VENDOR',
 'DESCRIPTION' => 'DESCRIPTION',
 'BILL NUMBER' => 'BILL NUMBER',
-'BILL'=>>'BILL',
+'BILL'=>'BILL',
 'Bills' => 'Bills',
 'Add Bill' => 'Add Bill',
 'Edit Bill' => 'Edit Bill',
