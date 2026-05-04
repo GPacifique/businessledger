@@ -10,6 +10,25 @@ class IncomeController extends Controller
 {
     public function index()
     {
+        $user = auth()->user();
+    $business = $user->business;
+
+    $query = Income::where('business_id', $business->id)
+        ->with('category');
+
+    // Search by title OR category
+    if ($request->filled('search')) {
+        $search = $request->search;
+
+        $query->where(function ($q) use ($search) {
+            $q->where('title', 'like', '%' . $search . '%')
+              ->orWhereHas('category', function ($cat) use ($search) {
+                  $cat->where('name', 'like', '%' . $search . '%');
+              });
+        });
+    }
+
+    $incomes = $query->latest()->paginate(10);
         $business = auth()->user()->business;
         $incomes = Income::where('business_id', $business->id)
             ->with('category')
