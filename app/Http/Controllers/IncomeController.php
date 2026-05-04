@@ -8,9 +8,11 @@ use Illuminate\Http\Request;
 
 class IncomeController extends Controller
 {
-    public function index()
-    {
-        $user = auth()->user();
+    use Illuminate\Http\Request;
+
+public function index(Request $request)
+{
+    $user = auth()->user();
     $business = $user->business;
 
     $query = Income::where('business_id', $business->id)
@@ -28,17 +30,13 @@ class IncomeController extends Controller
         });
     }
 
-    $incomes = $query->latest()->paginate(10);
-        $business = auth()->user()->business;
-        $incomes = Income::where('business_id', $business->id)
-            ->with('category')
-            ->orderByDesc('date')
-            ->orderByDesc('created_at')
-            ->paginate(20);
+    $incomes = $query
+        ->orderByDesc('date')
+        ->orderByDesc('created_at')
+        ->paginate(20);
 
-        return view('incomes.index', compact('incomes'));
-    }
-
+    return view('incomes.index', compact('incomes'));
+}
     public function create()
     {
         $business = auth()->user()->business;
