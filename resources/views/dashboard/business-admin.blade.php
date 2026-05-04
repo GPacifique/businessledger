@@ -114,6 +114,217 @@
                 </div>
             </div>
 <!-- charts js-->
+<!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 6-Month Trend Line/Bar Chart
+            const trendCtx = document.getElementById('trendChart');
+            if (trendCtx) {
+                new Chart(trendCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: {!! json_encode(collect($monthlyData)->pluck('month')) !!},
+                        datasets: [
+                            {
+                                label: 'Income',
+                                data: {!! json_encode(collect($monthlyData)->pluck('income')) !!},
+                                backgroundColor: 'rgba(16, 185, 129, 0.8)',
+                                borderColor: 'rgb(16, 185, 129)',
+                                borderWidth: 2,
+                                borderRadius: 6,
+                                barPercentage: 0.4,
+                            },
+                            {
+                                label: 'Expenses',
+                                data: {!! json_encode(collect($monthlyData)->pluck('expenses')) !!},
+                                backgroundColor: 'rgba(239, 68, 68, 0.8)',
+                                borderColor: 'rgb(239, 68, 68)',
+                                borderWidth: 2,
+                                borderRadius: 6,
+                                barPercentage: 0.4,
+                            },
+                            {
+                                label: 'Profit',
+                                data: {!! json_encode(collect($monthlyData)->map(fn($d) => $d['income'] - $d['expenses'])) !!},
+                                type: 'line',
+                                borderColor: 'rgb(99, 102, 241)',
+                                backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                                borderWidth: 3,
+                                fill: true,
+                                tension: 0.4,
+                                pointBackgroundColor: 'rgb(99, 102, 241)',
+                                pointBorderColor: '#fff',
+                                pointBorderWidth: 2,
+                                pointRadius: 5,
+                                pointHoverRadius: 7,
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        interaction: {
+                            mode: 'index',
+                            intersect: false,
+                        },
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    usePointStyle: true,
+                                    padding: 20,
+                                    font: { size: 12, weight: '500' }
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(17, 24, 39, 0.9)',
+                                padding: 12,
+                                titleFont: { size: 14, weight: 'bold' },
+                                bodyFont: { size: 13 },
+                                callbacks: {
+                                    label: function(context) {
+                                        return context.dataset.label + ': ' + new Intl.NumberFormat().format(context.raw) + ' RWF';
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: { color: 'rgba(0,0,0,0.05)' },
+                                ticks: {
+                                    callback: function(value) {
+                                        return new Intl.NumberFormat('en', { notation: 'compact' }).format(value);
+                                    }
+                                }
+                            },
+                            x: {
+                                grid: { display: false }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Income by Category Doughnut Chart
+            const incomeCtx = document.getElementById('incomeCategoryChart');
+            if (incomeCtx) {
+                const incomeData = {!! json_encode($incomeByCategory->map(fn($c) => ['category' => $c['category'], 'total' => $c['total']])->values()) !!};
+
+                if (incomeData.length > 0) {
+                    const greenColors = [
+                        'rgba(16, 185, 129, 0.9)',
+                        'rgba(5, 150, 105, 0.9)',
+                        'rgba(4, 120, 87, 0.9)',
+                        'rgba(6, 95, 70, 0.9)',
+                        'rgba(52, 211, 153, 0.9)',
+                        'rgba(110, 231, 183, 0.9)',
+                        'rgba(167, 243, 208, 0.9)',
+                    ];
+
+                    new Chart(incomeCtx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: incomeData.map(d => d.category),
+                            datasets: [{
+                                data: incomeData.map(d => d.total),
+                                backgroundColor: greenColors.slice(0, incomeData.length),
+                                borderColor: '#fff',
+                                borderWidth: 3,
+                                hoverOffset: 10
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            cutout: '60%',
+                            plugins: {
+                                legend: {
+                                    position: 'bottom',
+                                    labels: {
+                                        usePointStyle: true,
+                                        padding: 15,
+                                        font: { size: 11 }
+                                    }
+                                },
+                                tooltip: {
+                                    backgroundColor: 'rgba(17, 24, 39, 0.9)',
+                                    padding: 12,
+                                    callbacks: {
+                                        label: function(context) {
+                                            const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                            const percentage = ((context.raw / total) * 100).toFixed(1);
+                                            return context.label + ': ' + new Intl.NumberFormat().format(context.raw) + ' RWF (' + percentage + '%)';
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+
+            // Expenses by Category Doughnut Chart
+            const expenseCtx = document.getElementById('expenseCategoryChart');
+            if (expenseCtx) {
+                const expenseData = {!! json_encode($expensesByCategory->map(fn($c) => ['category' => $c['category'], 'total' => $c['total']])->values()) !!};
+
+                if (expenseData.length > 0) {
+                    const redColors = [
+                        'rgba(239, 68, 68, 0.9)',
+                        'rgba(220, 38, 38, 0.9)',
+                        'rgba(185, 28, 28, 0.9)',
+                        'rgba(153, 27, 27, 0.9)',
+                        'rgba(248, 113, 113, 0.9)',
+                        'rgba(252, 165, 165, 0.9)',
+                        'rgba(254, 202, 202, 0.9)',
+                    ];
+
+                    new Chart(expenseCtx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: expenseData.map(d => d.category),
+                            datasets: [{
+                                data: expenseData.map(d => d.total),
+                                backgroundColor: redColors.slice(0, expenseData.length),
+                                borderColor: '#fff',
+                                borderWidth: 3,
+                                hoverOffset: 10
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            cutout: '60%',
+                            plugins: {
+                                legend: {
+                                    position: 'bottom',
+                                    labels: {
+                                        usePointStyle: true,
+                                        padding: 15,
+                                        font: { size: 11 }
+                                    }
+                                },
+                                tooltip: {
+                                    backgroundColor: 'rgba(17, 24, 39, 0.9)',
+                                    padding: 12,
+                                    callbacks: {
+                                        label: function(context) {
+                                            const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                            const percentage = ((context.raw / total) * 100).toFixed(1);
+                                            return context.label + ': ' + new Intl.NumberFormat().format(context.raw) + ' RWF (' + percentage + '%)';
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    </script>
 
             <!-- Balance Summary -->
             <div class="bg-white/80 backdrop-blur-lg overflow-hidden rounded-2xl shadow-xl border border-white/20 mb-8">
