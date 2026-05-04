@@ -26,6 +26,8 @@ return [
     'Create' => 'Create',
     'Actions' => 'Actions',
     'Net' => 'Net',
+    'Download Balance Sheet' => 'Download Balance Sheet',
+    
 
     // Income
     'Add Income' => 'Add Income',
