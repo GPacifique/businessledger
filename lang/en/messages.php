@@ -489,7 +489,7 @@ return [
     'Average Rating' => 'Average Rating',
     'Join Our Satisfied Clients' => 'Join Our Satisfied Clients',
     'Experience the difference' => 'Experience the difference with :company. Let us help you find your perfect property.',
-
+'download_balance_sheet' => 'Download Balance Sheet',
     // Auth Pages
     'Welcome Back!' => 'Welcome Back!',
     'Sign in to' => 'Sign in to',
