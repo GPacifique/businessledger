@@ -7,9 +7,9 @@
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}" class="flex items-center space-x-2">
                         <div class="p-1 rounded-xl">
-                            <img src="{{ asset('images/logo.jpg') }}" alt="EDI Properties Logo" class="w-10 h-10 rounded-lg object-cover">
+                            <img src="{{ asset('images/logo.jpg') }}" alt="BFTS Logo" class="w-10 h-10 rounded-lg object-cover">
                         </div>
-                        <span class="text-white font-bold text-lg hidden sm:block">EDI Properties</span>
+                        <span class="text-white font-bold text-lg hidden sm:block">BFTS </span>
                     </a>
                 </div>
 

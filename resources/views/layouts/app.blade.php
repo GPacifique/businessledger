@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'EDI Properties & Investments') }} | @yield('title', 'Dashboard')</title>
+        <title>{{ config('app.name', 'BFTS') }} | @yield('title', 'Dashboard')</title>
 
         <!-- SEO Meta Tags -->
         <meta name="description" content="bfts business management system-track incomes,expenses and profits||Management Solutions in Rwanda.">

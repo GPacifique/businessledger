@@ -9,28 +9,28 @@
         <meta name="google-adsense-account" content="ca-pub-6462287919691866">
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6462287919691866" crossorigin="anonymous"></script>
 
-        <title>@yield('title', config('app.name', 'EDI_PROPERTIES') . ' - Property Management and Real Estate Services')</title>
+        <title>@yield('title', config('app.name', 'BFTS') . ' - Finance Business Management  Services')</title>
 
         <!-- SEO Meta Tags -->
-        <meta name="description" content="@yield('meta_description', 'EDI Properties & Investments - Your trusted partner in land, houses, farms, and premium property investments in Rwanda.')">
+        <meta name="description" content="@yield('meta_description', 'BFTS - Your trusted partner in land, houses, farms, and premium property investments in Rwanda.')">
         <meta name="keywords" content="@yield('meta_keywords', 'real estate, properties, land, houses, farms, Rwanda, Kigali, investment, edi properties, property management')">
-        <meta name="author" content="EDI Properties & Investments">
+        <meta name="author" content="BFTS">
         <meta name="robots" content="index, follow">
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="{{ url()->current() }}">
-        <meta property="og:title" content="@yield('og_title', 'EDI Properties & Investments - Premium Real Estate & Property Management')">
+        <meta property="og:title" content="@yield('og_title', 'BFTS - Finance Business Management Services')">
         <meta property="og:description" content="@yield('og_description', 'Your trusted partner in land, houses, farms, and premium property investments in Rwanda.')">
         <meta property="og:image" content="{{ asset('images/og-image.png') }}">
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
-        <meta property="og:site_name" content="EDI Properties & Investments">
+        <meta property="og:site_name" content="BFTS">
 
         <!-- Twitter -->
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:url" content="{{ url()->current() }}">
-        <meta name="twitter:title" content="@yield('twitter_title', 'EDI Properties & Investments - Premium Real Estate')">
+        <meta name="twitter:title" content="@yield('twitter_title', 'BFTS - Finance Business Management Services')">
         <meta name="twitter:description" content="@yield('twitter_description', 'Your trusted partner in land, houses, farms, and premium property investments in Rwanda.')">
         <meta name="twitter:image" content="{{ asset('images/og-image.png') }}">
 

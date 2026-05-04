@@ -113,6 +113,7 @@
                     </div>
                 </div>
             </div>
+<!-- charts js-->
 
             <!-- Balance Summary -->
             <div class="bg-white/80 backdrop-blur-lg overflow-hidden rounded-2xl shadow-xl border border-white/20 mb-8">

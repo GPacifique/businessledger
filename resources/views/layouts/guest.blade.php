@@ -5,29 +5,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'EDI Properties') }} | @yield('title', 'Welcome')</title>
+        <title>{{ config('app.name', 'BFTS') }} | @yield('title', 'Welcome')</title>
 
         <!-- SEO Meta Tags -->
-        <meta name="description" content="EDI Properties - Your trusted partner in real estate. Find your dream property in Rwanda with our expert guidance.">
-        <meta name="keywords" content="real estate, properties, land, houses, apartments, Rwanda, Kigali, investment, edi properties">
-        <meta name="author" content="EDI Properties">
+        <meta name="description" content="BFTS - Your trusted partner in Business management software tool in Rwanda with our expert guidance.">
+        <meta name="keywords" content="real estate, properties, land, houses, apartments, Rwanda, Kigali, investment, bfts properties">
+        <meta name="author" content="BFTS">
         <meta name="robots" content="index, follow">
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="{{ url()->current() }}">
-        <meta property="og:title" content="{{ config('app.name', 'EDI Properties') }} - Real Estate & Investments">
-        <meta property="og:description" content="Find your dream property in Rwanda with EDI Properties. Expert guidance for residential, commercial, and land investments.">
+        <meta property="og:title" content="{{ config('app.name', 'bfts') }} - Software solution for all businesses">
+        <meta property="og:description" content="use this app in accounting for all business.">
         <meta property="og:image" content="{{ asset('images/og-image.png') }}">
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
-        <meta property="og:site_name" content="EDI Properties">
+        <meta property="og:site_name" content="BFTS">
 
         <!-- Twitter -->
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:url" content="{{ url()->current() }}">
-        <meta name="twitter:title" content="{{ config('app.name', 'EDI Properties') }} - Real Estate & Investments">
-        <meta name="twitter:description" content="Find your dream property in Rwanda with EDI Properties. Expert guidance for residential, commercial, and land investments.">
+        <meta name="twitter:title" content="{{ config('app.name', 'BFTS') }} - Software solution for all businesses">
+        <meta name="twitter:description" content="use this app in accounting for all business.">
         <meta name="twitter:image" content="{{ asset('images/og-image.png') }}">
 
         <!-- Favicon -->
@@ -75,24 +75,73 @@
                                 <img src="{{ asset('images/logo.jpg') }}" alt="EDI Properties Logo" class="w-14 h-14 rounded-lg object-cover">
                             </div>
                             <div>
-                                <h1 class="text-3xl font-extrabold tracking-tight">EDI Properties</h1>
-                                <p class="text-emerald-200 text-sm">Real Estate & Investments</p>
+                                <h1 class="text-3xl font-extrabold tracking-tight">BFTS</h1>
+                                <p class="text-emerald-200 text-sm">Accounting software</p>
                             </div>
                         </div>
 
                         <!-- Motivational Quote -->
                         @php
                             $quotes = [
-                                "Home is where your story begins.",
-                                "The best investment on earth is earth.",
-                                "Don't wait to buy real estate. Buy real estate and wait.",
-                                "Real estate is an imperishable asset, ever-increasing in value.",
-                                "Owning a home is a keystone of wealth.",
-                                "The wise young man invests in real estate.",
-                                "Land monopoly is the mother of all monopolies.",
-                                "Buy land, they're not making it anymore.",
-                                "In real estate, you make 10% of your money in the market, and 90% waiting.",
-                                "Every accomplishment starts with the decision to try.",
+                                 "Success in business starts with smart decisions.",
+    
+    "Track your finances today to secure your future tomorrow.",
+    
+    "Profit is not an accident—it is the result of planning.",
+    
+    "Great businesses are built on great management.",
+    
+    "Every dollar saved is a dollar earned.",
+    
+    "Small daily improvements lead to long-term business success.",
+    
+    "Your business grows when your systems grow.",
+    
+    "Good management turns vision into reality.",
+    
+    "Revenue is vanity, profit is sanity.",
+    
+    "Behind every successful business is organized data.",
+    
+    "Manage expenses wisely and profits will follow.",
+    
+    "Efficiency is doing things right; effectiveness is doing the right things.",
+    
+    "Business success begins with proper planning.",
+    
+    "What gets measured gets improved.",
+    
+    "Strong businesses are built with discipline and consistency.",
+    
+    "Financial clarity leads to smarter decisions.",
+    
+    "Growth happens when you track what matters.",
+    
+    "A goal without a plan is just a wish.",
+    
+    "Smart businesses monitor income, control expenses, and maximize profits.",
+    
+    "The secret of success is consistency of purpose.",
+    
+    "Your dashboard reflects the health of your business.",
+    
+    "Work smarter, manage better, grow faster.",
+    
+    "Every transaction tells a story—make yours profitable.",
+    
+    "Success is built one smart decision at a time.",
+    
+    "Turn your data into decisions and decisions into growth.",
+    
+    "Well-managed businesses survive every season.",
+    
+    "Leadership and organization drive business excellence.",
+    
+    "Profit grows where discipline flows.",
+    
+    "Dream big, manage wisely.",
+    
+    "Today's planning creates tomorrow's success.",
                             ];
                             $randomQuote = $quotes[array_rand($quotes)];
                         @endphp
@@ -104,7 +153,7 @@
 
                     <!-- Features -->
                     <div class="space-y-6">
-                        <h2 class="text-2xl font-bold mb-6">Why Choose EDI Properties?</h2>
+                        <h2 class="text-2xl font-bold mb-6">Why Choose BFTS?</h2>
 
                         <div class="space-y-4">
                             <div class="flex items-start space-x-4 bg-white/10 backdrop-blur-sm rounded-xl p-4 transform hover:scale-105 transition">
@@ -114,8 +163,8 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 class="font-semibold">Premium Properties</h3>
-                                    <p class="text-emerald-200 text-sm">Curated selection of residential & commercial properties</p>
+                                    <h3 class="font-semibold">A solution to all business accounting practices</h3>
+                                    <p class="text-emerald-200 text-sm">accounting system</p>
                                 </div>
                             </div>
 
@@ -138,8 +187,8 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 class="font-semibold">Land Investments</h3>
-                                    <p class="text-emerald-200 text-sm">Prime plots in strategic locations across Rwanda</p>
+                                    <h3 class="font-semibold"></h3>
+                                    <p class="text-emerald-200 text-sm">strategic locations across Rwanda</p>
                                 </div>
                             </div>
 
@@ -168,7 +217,7 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="text-2xl font-bold">0788 309 762</p>
+                                    <p class="text-2xl font-bold">0786163963</p>
                                     <p class="text-emerald-200 text-sm">Available Mon-Sat</p>
                                 </div>
                             </div>
