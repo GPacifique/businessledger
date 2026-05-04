@@ -8,11 +8,9 @@ use Illuminate\Http\Request;
 
 class IncomeController extends Controller
 {
-    use Illuminate\Http\Request;
-
-public function index(Request $request)
-{
-    $user = auth()->user();
+    public function index(Request $request)
+    {
+        $user = auth()->user();
     $business = $user->business;
 
     $query = Income::where('business_id', $business->id)
