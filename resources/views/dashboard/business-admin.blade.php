@@ -7,9 +7,18 @@
                 </h2>
                 <p class="text-gray-500 text-sm mt-1">{{ __('messages.Welcome back!') }} {{ __("messages.Here's what's happening with your business today.") }}</p>
             </div>
-            <span class="px-4 py-2 text-sm bg-gradient-to-r from-emerald-400 to-green-500 text-white rounded-full font-semibold shadow-lg shadow-green-500/30">
-                {{ __('messages.Business Admin') }}
-            </span>
+            <div class="flex items-center space-x-3">
+                <a href="{{ route('business.balance-sheet') }}"
+                    class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 border border-transparent rounded-xl font-semibold text-sm text-white hover:from-indigo-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all duration-300 shadow-lg shadow-indigo-500/25 hover:shadow-xl hover:-translate-y-0.5">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    {{ __('messages.Download Balance Sheet') }}
+                </a>
+                <span class="px-4 py-2 text-sm bg-gradient-to-r from-emerald-400 to-green-500 text-white rounded-full font-semibold shadow-lg shadow-green-500/30">
+                    {{ __('messages.Business Admin') }}
+                </span>
+            </div>
         </div>
     </x-slot>
 
@@ -323,6 +332,70 @@
                     });
                 }
             }
+
+            // Financial Overview Chart
+            const overviewCtx = document.getElementById('overviewChart');
+            if (overviewCtx) {
+                const totalIncome = {{ $stats['total_income'] ?? 0 }};
+                const totalExpenses = {{ $stats['total_expenses'] ?? 0 }};
+                const netBalance = {{ $stats['balance'] ?? 0 }};
+
+                new Chart(overviewCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Total Income', 'Total Expenses', 'Net Balance'],
+                        datasets: [{
+                            label: 'Amount (RWF)',
+                            data: [totalIncome, totalExpenses, netBalance],
+                            backgroundColor: [
+                                'rgba(16, 185, 129, 0.8)',
+                                'rgba(239, 68, 68, 0.8)',
+                                netBalance >= 0 ? 'rgba(99, 102, 241, 0.8)' : 'rgba(245, 101, 101, 0.8)'
+                            ],
+                            borderColor: [
+                                'rgb(16, 185, 129)',
+                                'rgb(239, 68, 68)',
+                                netBalance >= 0 ? 'rgb(99, 102, 241)' : 'rgb(245, 101, 101)'
+                            ],
+                            borderWidth: 2,
+                            borderRadius: 8,
+                            borderSkipped: false,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(17, 24, 39, 0.9)',
+                                padding: 12,
+                                callbacks: {
+                                    label: function(context) {
+                                        return context.label + ': ' + new Intl.NumberFormat().format(context.raw) + ' RWF';
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: { color: 'rgba(0,0,0,0.05)' },
+                                ticks: {
+                                    callback: function(value) {
+                                        return new Intl.NumberFormat('en', { notation: 'compact' }).format(value);
+                                    }
+                                }
+                            },
+                            x: {
+                                grid: { display: false }
+                            }
+                        }
+                    }
+                });
+            }
         });
     </script>
 
@@ -432,6 +505,71 @@
                         <p class="text-sm text-gray-500">{{ __('messages.View financial reports') }}</p>
                     </div>
                 </a>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <!-- 6-Month Financial Trend Chart -->
+                <div class="bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl border border-white/20 p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-6 flex items-center">
+                        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center mr-3">
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                            </svg>
+                        </span>
+                        {{ __('messages.6-Month Financial Trend') }}
+                    </h3>
+                    <div style="position: relative; height: 300px;">
+                        <canvas id="trendChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Income by Category -->
+                <div class="bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl border border-white/20 p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-6 flex items-center">
+                        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center mr-3">
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
+                            </svg>
+                        </span>
+                        {{ __('messages.Income by Category') }}
+                    </h3>
+                    <div style="position: relative; height: 300px;">
+                        <canvas id="incomeCategoryChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Expenses by Category -->
+                <div class="bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl border border-white/20 p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-6 flex items-center">
+                        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-rose-500 to-red-600 flex items-center justify-center mr-3">
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
+                            </svg>
+                        </span>
+                        {{ __('messages.Expenses by Category') }}
+                    </h3>
+                    <div style="position: relative; height: 300px;">
+                        <canvas id="expenseCategoryChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Financial Overview Chart -->
+                <div class="bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl border border-white/20 p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-6 flex items-center">
+                        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center mr-3">
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                        </span>
+                        {{ __('messages.Financial Overview') }}
+                    </h3>
+                    <div style="position: relative; height: 300px;">
+                        <canvas id="overviewChart"></canvas>
+                    </div>
+                </div>
             </div>
 
             <!-- Recent Transactions -->

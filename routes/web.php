@@ -87,6 +87,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Business Admin Routes - Only accessible by business_admin
     Route::middleware(RoleMiddleware::class.':business_admin')->group(function () {
         Route::get('/business/dashboard', [BusinessAdminController::class, 'dashboard'])->name('business.dashboard');
+        Route::get('/business/balance-sheet', [BusinessAdminController::class, 'downloadBalanceSheet'])->name('business.balance-sheet');
     });
 
     // Seller Routes - Only accessible by seller
