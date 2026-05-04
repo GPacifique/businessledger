@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Business;
 use App\Models\Income;
 use App\Models\Expense;
@@ -73,12 +72,35 @@ class BusinessAdminController extends Controller
             ->orderByDesc('created_at')
             ->take(5)
             ->get();
+ $monthlyData = [];
 
+    for ($i = 5; $i >= 0; $i--) {
+        $monthDate = Carbon::now()->subMonths($i);
+
+        $income = Income::where('business_id', $business->id)
+            ->whereYear('date', $monthDate->year)
+            ->whereMonth('date', $monthDate->month)
+            ->sum('amount');
+
+        $expense = Expense::where('business_id', $business->id)
+            ->whereYear('date', $monthDate->year)
+            ->whereMonth('date', $monthDate->month)
+            ->sum('amount');
+
+        $monthlyData[] = [
+            'month' => $monthDate->format('M'),
+            'income' => $income,
+            'expense' => $expense,
+            'profit' => $income - $expense
+        ];
+    }
         return view('dashboard.business-admin', compact(
             'business',
             'stats',
             'recentIncomes',
-            'recentExpenses'
-        ));
+            'recentExpenses',
+            'monthlyData'
+        ));         
+        
     }
 }
