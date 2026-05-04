@@ -10,7 +10,16 @@ return [
     'Staff' => 'Staff',
     'Profile' => 'Profile',
     'Log Out' => 'Log Out',
-
+//Bills
+'Bills' => 'Bills',
+'Add Bill' => 'Add Bill',
+'Edit Bill' => 'Edit Bill',
+'Bill Details' => 'Bill Details',
+'Save Bill' => 'Save Bill',
+'Update Bill' => 'Update Bill',
+'Back to Bills' => 'Back to Bills',
+'All Status' => 'All Status',
+'Search by bill number or customer' => 'Search by bill number, vendor, or description',
     // Common Actions
     'Add' => 'Add',
     'Edit' => 'Edit',
