@@ -93,7 +93,7 @@ class BusinessAdminController extends Controller
             'expense' => $expense,
             'profit' => $income - $expense
         ];
-
+ }
     // Income grouped by category
 $incomeByCategory = Income::where('business_id', $business->id)
     ->with('category')
@@ -124,7 +124,7 @@ $expenseByCategory = Expense::where('business_id', $business->id)
         ];
     })
     ->values();
-    }
+   
         return view('dashboard.business-admin', compact(
             'business',
             'stats',
