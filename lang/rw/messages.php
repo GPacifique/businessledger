@@ -177,7 +177,7 @@ return [
     'Business Details' => 'Amakuru y\'Ubucuruzi',
     'Business Name' => 'Izina ry\'Ubucuruzi',
     'Not registered' => 'Ntabwo yanditswe',
-
+'Download Balance Sheet'=>'Bona Imbonerahamwe',
     // Language
     'Language' => 'Ururimi',
     'English' => 'Icyongereza',
