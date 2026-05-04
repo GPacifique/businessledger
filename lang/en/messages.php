@@ -12,9 +12,9 @@ return [
     'Log Out' => 'Log Out',
 //Bills
 'Bill Number'=>'Bill Number',
-'customer'=>'Customer',
-'vendor'=>'Vendor',
-'description'=>'Description',
+'Customer'=>'Customer',
+'Vendor'=>'Vendor',
+'Description'=>'Description',
 'Bill Date' => 'Bill Date',
 'Due Date' => 'Due Date',
 'Create Bill' => 'Create Bill',
