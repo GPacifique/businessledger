@@ -2,21 +2,65 @@
 
 @php
     $quotes = [
-        "Home is where your story begins.",
-        "The best investment on earth is earth.",
-        "Don't wait to buy real estate. Buy real estate and wait.",
-        "Real estate is an imperishable asset, ever-increasing in value.",
-        "Owning a home is a keystone of wealth.",
-        "The wise young man invests in real estate.",
-        "Land monopoly is the mother of all monopolies.",
-        "Buy land, they're not making it anymore.",
-        "In real estate, you make 10% of your money in the market, and 90% waiting.",
-        "Every accomplishment starts with the decision to try.",
-        "Your dream property is just one call away.",
-        "Invest in land today, secure your tomorrow.",
-        "A house is made of walls and beams; a home is built with love and dreams.",
-        "Real estate cannot be lost or stolen, nor can it be carried away.",
-        "The best time to buy a home is always five years ago.",
+          "Success in business starts with smart decisions.",
+    
+    "Track your finances today to secure your future tomorrow.",
+    
+    "Profit is not an accident—it is the result of planning.",
+    
+    "Great businesses are built on great management.",
+    
+    "Every dollar saved is a dollar earned.",
+    
+    "Small daily improvements lead to long-term business success.",
+    
+    "Your business grows when your systems grow.",
+    
+    "Good management turns vision into reality.",
+    
+    "Revenue is vanity, profit is sanity.",
+    
+    "Behind every successful business is organized data.",
+    
+    "Manage expenses wisely and profits will follow.",
+    
+    "Efficiency is doing things right; effectiveness is doing the right things.",
+    
+    "Business success begins with proper planning.",
+    
+    "What gets measured gets improved.",
+    
+    "Strong businesses are built with discipline and consistency.",
+    
+    "Financial clarity leads to smarter decisions.",
+    
+    "Growth happens when you track what matters.",
+    
+    "A goal without a plan is just a wish.",
+    
+    "Smart businesses monitor income, control expenses, and maximize profits.",
+    
+    "The secret of success is consistency of purpose.",
+    
+    "Your dashboard reflects the health of your business.",
+    
+    "Work smarter, manage better, grow faster.",
+    
+    "Every transaction tells a story—make yours profitable.",
+    
+    "Success is built one smart decision at a time.",
+    
+    "Turn your data into decisions and decisions into growth.",
+    
+    "Well-managed businesses survive every season.",
+    
+    "Leadership and organization drive business excellence.",
+    
+    "Profit grows where discipline flows.",
+    
+    "Dream big, manage wisely.",
+    
+    "Today's planning creates tomorrow's success.",
     ];
     $randomQuote = $quotes[array_rand($quotes)];
 @endphp
