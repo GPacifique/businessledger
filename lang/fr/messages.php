@@ -83,6 +83,14 @@ return [
     'Expenses by Category' => 'Dépenses par catégorie',
     'Net Balance' => 'Solde net',
     'Total' => 'Total',
+'6-Month Financial Trend' => 'Tendance financière sur 6 mois',
+'Monthly Income vs Expenses' => 'Revenu mensuel vs dépenses',
+'Income by Category (Current Year)' => 'Revenu par catégorie (année en cours)',
+'Expenses by Category (Current Year)' => 'Dépenses par catégorie (année en cours)',
+'Profit & Loss Summary' => 'Résumé des profits et pertes',  
+'Download Balance Sheet' => 'Télécharger le bilan',
+'Well-managed businesses survive every season' => 'Les entreprises bien gérées survivent à chaque saison', 
+'A goal without a plan is just a wish.' => 'Un objectif sans plan n\'est qu\'un souhait.',  
 
     // Form Fields
     'Title' => 'Titre',

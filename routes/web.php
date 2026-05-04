@@ -16,6 +16,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\ContactSubmissionController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\BillController;
 use App\Models\ContactSubmission;
 use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -104,6 +105,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('incomes', IncomeController::class);
     Route::resource('expenses', ExpenseController::class);
     Route::resource('categories', CategoryController::class)->except(['show']);
+    Route::resource('bills', BillController::class);
+    Route::post('bills/{bill}/mark-as', [BillController::class, 'markAs'])->name('bills.markAs');
+    Route::get('bills/{bill}/download', [BillController::class, 'download'])->name('bills.download');
     Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
     Route::resource('staff', StaffController::class);
 
