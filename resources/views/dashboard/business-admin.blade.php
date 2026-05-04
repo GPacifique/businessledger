@@ -138,7 +138,7 @@
                             },
                             {
                                 label: 'Expenses',
-                                data: {!! json_encode(collect($monthlyData)->pluck('expense')) !!},
+                                data: {!! json_encode(collect($monthlyData)->pluck('expenses')) !!},
                                 backgroundColor: 'rgba(239, 68, 68, 0.8)',
                                 borderColor: 'rgb(239, 68, 68)',
                                 borderWidth: 2,
@@ -147,7 +147,7 @@
                             },
                             {
                                 label: 'Profit',
-                                data: {!! json_encode(collect($monthlyData)->map(fn($d) => $d['income'] - $d['expenses'])) !!},
+                                data: {!! json_encode(collect($monthlyData)->pluck('profit')) !!},
                                 type: 'line',
                                 borderColor: 'rgb(99, 102, 241)',
                                 backgroundColor: 'rgba(99, 102, 241, 0.1)',
