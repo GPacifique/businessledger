@@ -59,6 +59,11 @@
                             </a>
                         </div>
                     @else
+                    <div class="mb-2">
+    <input type="text"
+           class="form-control table-search"
+           placeholder="Search income...">
+</div>
                         <div class="overflow-x-auto">
                             <table class="min-w-full">
                                 <thead>
@@ -150,7 +155,20 @@
                                 </tbody>
                             </table>
                         </div>
+<script>
+document.querySelectorAll(".table-search").forEach(input => {
+    input.addEventListener("keyup", function () {
+        let value = this.value.toLowerCase();
+        let table = this.nextElementSibling; // table after input
+        let rows = table.getElementsByTagName("tr");
 
+        for (let i = 1; i < rows.length; i++) {
+            let text = rows[i].innerText.toLowerCase();
+            rows[i].style.display = text.includes(value) ? "" : "none";
+        }
+    });
+});
+</script>
                         <!-- Pagination -->
                         <div class="mt-6">
                             {{ $incomes->links() }}
