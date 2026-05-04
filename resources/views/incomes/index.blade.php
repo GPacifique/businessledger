@@ -59,11 +59,43 @@
                             </a>
                         </div>
                     @else
-                    <div class="mb-2">
-    <input type="text"
-           class="form-control table-search"
-           placeholder="Search income...">
-</div>
+                    <div class="row mb-3">
+    <div class="col-md-4">
+        <label>From Date</label>
+        <input type="date" id="fromDate" class="form-control">
+    </div>
+
+    <div class="col-md-4">
+        <label>To Date</label>
+        <input type="date" id="toDate" class="form-control">
+    </div>
+
+    <div class="col-md-4 d-flex align-items-end">
+        <button class="btn btn-primary w-100" onclick="filterTableByDate()">
+            Filter Records
+        </button>
+    </div>
+</div><script>
+function filterTableByDate() {
+    let fromDate = document.getElementById('fromDate').value;
+    let toDate = document.getElementById('toDate').value;
+
+    let rows = document.querySelectorAll('#recordsTable tbody tr');
+
+    rows.forEach(row => {
+        let rowDate = row.cells[2].textContent.trim(); // Date column index
+
+        if (
+            (!fromDate || rowDate >= fromDate) &&
+            (!toDate || rowDate <= toDate)
+        ) {
+            row.style.display = "";
+        } else {
+            row.style.display = "none";
+        }
+    });
+}
+</script>
                         <div class="overflow-x-auto">
                             <table class="min-w-full">
                                 <thead>
@@ -155,20 +187,7 @@
                                 </tbody>
                             </table>
                         </div>
-<script>
-document.querySelectorAll(".table-search").forEach(input => {
-    input.addEventListener("keyup", function () {
-        let value = this.value.toLowerCase();
-        let table = this.nextElementSibling; // table after input
-        let rows = table.getElementsByTagName("tr");
 
-        for (let i = 1; i < rows.length; i++) {
-            let text = rows[i].innerText.toLowerCase();
-            rows[i].style.display = text.includes(value) ? "" : "none";
-        }
-    });
-});
-</script>
                         <!-- Pagination -->
                         <div class="mt-6">
                             {{ $incomes->links() }}
