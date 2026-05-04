@@ -269,7 +269,7 @@
             // Expenses by Category Doughnut Chart
             const expenseCtx = document.getElementById('expenseCategoryChart');
             if (expenseCtx) {
-                const expenseData = {!! json_encode($expensesByCategory->map(fn($c) => ['category' => $c['category'], 'total' => $c['total']])->values()) !!};
+                const expenseData = {!! json_encode($expenseByCategory->map(fn($c) => ['category' => $c['category'], 'total' => $c['total']])->values()) !!};
 
                 if (expenseData.length > 0) {
                     const redColors = [
