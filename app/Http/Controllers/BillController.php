@@ -87,6 +87,7 @@ class BillController extends Controller
             'status' => $request->status,
             'tax_rate' => $request->tax_rate,
             'discount_amount' => $request->discount_amount,
+            'total' => 0,
             'notes' => $request->notes,
             'created_by' => auth()->id(),
         ]);
