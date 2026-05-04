@@ -124,6 +124,7 @@ $expenseByCategory = Expense::where('business_id', $business->id)
         ];
     })
     ->values();
+    }
         return view('dashboard.business-admin', compact(
             'business',
             'stats',
