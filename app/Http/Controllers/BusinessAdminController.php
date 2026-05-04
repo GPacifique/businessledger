@@ -93,13 +93,45 @@ class BusinessAdminController extends Controller
             'expense' => $expense,
             'profit' => $income - $expense
         ];
-    }
+
+    // Income grouped by category
+$incomeByCategory = Income::where('business_id', $business->id)
+    ->with('category')
+    ->get()
+    ->groupBy(function ($income) {
+        return $income->category->name ?? 'Uncategorized';
+    })
+    ->map(function ($items, $category) {
+        return [
+            'category' => $category,
+            'total' => $items->sum('amount')
+        ];
+    })
+    ->values();
+
+
+// Expenses grouped by category (if you also have expense chart)
+$expenseByCategory = Expense::where('business_id', $business->id)
+    ->with('category')
+    ->get()
+    ->groupBy(function ($expense) {
+        return $expense->category->name ?? 'Uncategorized';
+    })
+    ->map(function ($items, $category) {
+        return [
+            'category' => $category,
+            'total' => $items->sum('amount')
+        ];
+    })
+    ->values();
         return view('dashboard.business-admin', compact(
             'business',
             'stats',
             'recentIncomes',
             'recentExpenses',
-            'monthlyData'
+            'monthlyData',
+            'incomeByCategory',
+            'expenseByCategory'
         ));         
         
     }
