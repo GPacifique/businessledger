@@ -7,6 +7,8 @@ use App\Models\BillItem;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Str;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\Storage;
 
 class BillController extends Controller
 {
@@ -91,6 +93,19 @@ class BillController extends Controller
             'notes' => $request->notes,
             'created_by' => auth()->id(),
         ]);
+        $billUrl = route('bills.show', $bill->id);
+
+$qrImage = QrCode::format('png')
+    ->size(300)
+    ->generate($billUrl);
+
+$fileName = 'qrcodes/bill-'.$bill->id.'.png';
+
+Storage::disk('public')->put($fileName, $qrImage);
+
+$bill->update([
+    'qr_code' => $fileName
+]);
 
         // Create bill items
         foreach ($request->items as $item) {

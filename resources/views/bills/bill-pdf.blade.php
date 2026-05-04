@@ -264,6 +264,12 @@
                 <div>{{ $bill->notes }}</div>
             </div>
         @endif
+        @if($bill->qr_code)
+            <div class="notes" style="margin-top: 20px; text-align: center;">
+                <div class="notes-title">Scan QR Code to Pay</div>
+                <div>{!! QrCode::size(150)->generate($bill->qr_code) !!}</div>
+            </div>
+        @endif
 
         <!-- Footer -->
         <div class="footer">
