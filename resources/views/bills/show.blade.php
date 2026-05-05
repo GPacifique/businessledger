@@ -71,7 +71,7 @@
                             <p class="text-sm text-gray-600">{{ $bill->customer_address }}</p>
                         @endif
                     </div>
-
+</div>
                 <!-- Bill Dates -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 pb-8 border-b border-gray-200">
                     <div>
@@ -150,7 +150,7 @@
                             <p class="text-xs text-gray-600 mt-2 text-center">Scan to view bill</p>
                         </div>
                     @endif
-                </div>
+                
                 <!-- Actions -->
                 <div class="flex justify-between items-center">
                     <div>
