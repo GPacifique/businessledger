@@ -48,7 +48,7 @@
                 </div>
 
                 <!-- Bill Details -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                     <!-- Bill From -->
                     <div>
                         <h3 class="text-sm font-bold text-gray-700 uppercase mb-3">{{ __('messages.From') }}</h3>
@@ -71,6 +71,14 @@
                             <p class="text-sm text-gray-600">{{ $bill->customer_address }}</p>
                         @endif
                     </div>
+
+                    <!-- QR Code -->
+                    @if($bill->qr_code)
+                        <div class="flex flex-col items-center justify-center p-4 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl border border-indigo-100">
+                            <img src="{{ asset('storage/' . $bill->qr_code) }}" alt="Bill QR Code" class="w-40 h-40">
+                            <p class="text-xs text-gray-600 mt-2 text-center">Scan to view bill</p>
+                        </div>
+                    @endif
                 </div>
 
                 <!-- Bill Dates -->

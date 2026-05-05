@@ -26,6 +26,7 @@ class Bill extends Model
         'total',
         'notes',
         'created_by',
+        'qr_code',
     ];
 
     protected function casts(): array

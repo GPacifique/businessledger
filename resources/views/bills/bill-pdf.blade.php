@@ -145,6 +145,23 @@
             color: #999;
             font-size: 9px;
         }
+        .qr-code-section {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+        }
+        .qr-code-section img {
+            max-width: 150px;
+            height: auto;
+        }
+        .qr-code-label {
+            font-size: 10px;
+            color: #666;
+            margin-top: 8px;
+        }
     </style>
 </head>
 <body>
@@ -206,6 +223,14 @@
                 </div>
             </div>
         </div>
+
+        <!-- QR Code -->
+        @if($bill->qr_code)
+            <div class="qr-code-section">
+                <img src="{{ public_path('storage/' . $bill->qr_code) }}" alt="Bill QR Code">
+                <div class="qr-code-label">Scan to view bill online</div>
+            </div>
+        @endif
 
         <!-- Line Items -->
         <div class="bill-details">

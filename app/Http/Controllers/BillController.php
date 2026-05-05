@@ -109,11 +109,13 @@ $bill->update([
 
         // Create bill items
         foreach ($request->items as $item) {
+            $total = $item['quantity'] * $item['unit_price'];
             BillItem::create([
                 'bill_id' => $bill->id,
                 'description' => $item['description'],
                 'quantity' => $item['quantity'],
                 'unit_price' => $item['unit_price'],
+                'total' => $total,
             ]);
         }
 
@@ -175,15 +177,28 @@ $bill->update([
         // Delete existing items and create new ones
         $bill->lineItems()->delete();
         foreach ($request->items as $item) {
+            $total = $item['quantity'] * $item['unit_price'];
             BillItem::create([
                 'bill_id' => $bill->id,
                 'description' => $item['description'],
                 'quantity' => $item['quantity'],
                 'unit_price' => $item['unit_price'],
+                'total' => $total,
             ]);
         }
 
         $bill->calculateTotals();
+
+        // Generate QR code if not already generated
+        if (!$bill->qr_code) {
+            $billUrl = route('bills.show', $bill->id);
+            $qrImage = QrCode::format('png')
+                ->size(300)
+                ->generate($billUrl);
+            $fileName = 'qrcodes/bill-' . $bill->id . '.png';
+            Storage::disk('public')->put($fileName, $qrImage);
+            $bill->update(['qr_code' => $fileName]);
+        }
 
         return redirect()->route('bills.show', $bill)->with('success', 'Bill updated successfully.');
     }

@@ -115,6 +115,9 @@ return [
     'Overdue' => 'Byarengeje Igihe',
     'Cancelled' => 'Byahagaritswe',
     'Download PDF' => 'Bika PDF',
+    'No bills found' => 'Nta fagiture zanditswe',
+    'All Status' => 'Imiterere Yose',
+    'Search by bill number or customer' => 'Shakisha fatura cyangwa umukiriya',
 
     // Categories
     'Add Category' => 'Ongeraho Icyiciro',
