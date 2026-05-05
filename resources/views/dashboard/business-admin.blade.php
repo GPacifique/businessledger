@@ -147,7 +147,7 @@
                             },
                             {
                                 label: 'Expenses',
-                                data: {!! json_encode(collect($monthlyData)->pluck('expenses')) !!},
+                                data: {!! json_encode(collect($monthlyData)->pluck('expense')) !!},
                                 backgroundColor: 'rgba(239, 68, 68, 0.8)',
                                 borderColor: 'rgb(239, 68, 68)',
                                 borderWidth: 2,
