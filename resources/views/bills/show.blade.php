@@ -72,15 +72,6 @@
                         @endif
                     </div>
 
-                    <!-- QR Code -->
-                    @if($bill->qr_code)
-                        <div class="flex flex-col items-center justify-center p-4 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl border border-indigo-100">
-                            <img src="{{ asset('storage/' . $bill->qr_code) }}" alt="Bill QR Code" class="w-40 h-40">
-                            <p class="text-xs text-gray-600 mt-2 text-center">Scan to view bill</p>
-                        </div>
-                    @endif
-                </div>
-
                 <!-- Bill Dates -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 pb-8 border-b border-gray-200">
                     <div>
@@ -152,7 +143,14 @@
                         <p class="text-gray-700">{{ $bill->notes }}</p>
                     </div>
                 @endif
-
+  <!-- QR Code -->
+                    @if($bill->qr_code)
+                        <div class="flex flex-col items-center justify-center p-4 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl border border-indigo-100">
+                            <img src="{{ asset('storage/' . $bill->qr_code) }}" alt="Bill QR Code" class="w-40 h-40">
+                            <p class="text-xs text-gray-600 mt-2 text-center">Scan to view bill</p>
+                        </div>
+                    @endif
+                </div>
                 <!-- Actions -->
                 <div class="flex justify-between items-center">
                     <div>
