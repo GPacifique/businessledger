@@ -150,7 +150,7 @@
                             <p class="text-xs text-gray-600 mt-2 text-center">Scan to view bill</p>
                         </div>
                     @endif
-                
+            </div>
                 <!-- Actions -->
                 <div class="flex justify-between items-center">
                     <div>
