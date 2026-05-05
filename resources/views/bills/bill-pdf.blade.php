@@ -224,13 +224,7 @@
             </div>
         </div>
 
-        <!-- QR Code -->
-        @if($bill->qr_code)
-            <div class="qr-code-section">
-                <img src="{{ public_path('storage/' . $bill->qr_code) }}" alt="Bill QR Code">
-                <div class="qr-code-label">Scan to view bill online</div>
-            </div>
-        @endif
+       
 
         <!-- Line Items -->
         <div class="bill-details">
@@ -288,14 +282,13 @@
                 <div class="notes-title">Notes</div>
                 <div>{{ $bill->notes }}</div>
             </div>
-        @endif
+       <!-- QR Code -->
         @if($bill->qr_code)
-            <div class="notes" style="margin-top: 20px; text-align: center;">
-                <div class="notes-title">Scan QR Code to Pay</div>
-                <div>{!! QrCode::size(150)->generate($bill->qr_code) !!}</div>
+            <div class="qr-code-section">
+                <img src="{{ public_path('storage/' . $bill->qr_code) }}" alt="Bill QR Code">
+                <div class="qr-code-label">Scan to view bill online</div>
             </div>
         @endif
-
         <!-- Footer -->
         <div class="footer">
             <p>Thank you for your business!</p>
