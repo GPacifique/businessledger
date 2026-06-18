@@ -416,58 +416,5 @@
 
 <!-- FOOTER -->
 
-<footer class="bg-gray-900 text-gray-300">
-    <div class="max-w-7xl mx-auto px-6 py-16">
-
-```
-    <div class="grid md:grid-cols-4 gap-10">
-
-        <div>
-            <h3 class="text-2xl font-bold text-white">
-                {{ config('app.name', 'FinTrack') }}
-            </h3>
-
-            <p class="mt-4 text-gray-400">
-                Smart cloud-based finance management software for modern businesses.
-            </p>
-        </div>
-
-        <div>
-            <h4 class="text-white font-semibold mb-4">Product</h4>
-            <ul class="space-y-2">
-                <li><a href="#features" class="hover:text-white">Features</a></li>
-                <li><a href="#pricing" class="hover:text-white">Pricing</a></li>
-                <li><a href="#faq" class="hover:text-white">FAQ</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <h4 class="text-white font-semibold mb-4">Company</h4>
-            <ul class="space-y-2">
-                <li><a href="#" class="hover:text-white">About Us</a></li>
-                <li><a href="#" class="hover:text-white">Contact</a></li>
-                <li><a href="#" class="hover:text-white">Support</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <h4 class="text-white font-semibold mb-4">Legal</h4>
-            <ul class="space-y-2">
-                <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
-                <li><a href="#" class="hover:text-white">Terms of Service</a></li>
-                <li><a href="#" class="hover:text-white">Security</a></li>
-            </ul>
-        </div>
-
-    </div>
-
-    <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
-        © {{ date('Y') }} {{ config('app.name', 'FinTrack') }}. All Rights Reserved.
-    </div>
-
-</div>
-```
-
-</footer>
 
 @endsection

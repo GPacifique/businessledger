@@ -11,7 +11,7 @@
                     </div>
                     <div>
                         <span class="text-xl font-bold text-white font-display">FinTrack</span>
-                        <p class="text-emerald-400 text-xs font-medium">Accounting Software</p>
+                        <p class="text-emerald-400 text-xs font-medium">Smart cloud-based finance management software for modern businesses.</p>
                     </div>
                 </a>
                 <p class="text-gray-400 text-sm leading-relaxed mb-6">
@@ -39,28 +39,30 @@
 
             <!-- Quick Links -->
             <div>
-                <h3 class="text-white font-semibold text-lg mb-6">Quick Links</h3>
+                <h3 class="text-white font-semibold text-lg mb-6">Product</h3>
                 <ul class="space-y-4">
-                    <li><a href="{{ route('home') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Home</a></li>
-                    <li><a href="{{ route('about') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">About Us</a></li>
-                    <li><a href="{{ route('services') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Services</a></li>
-                    <li><a href="{{ route('properties.index') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Properties</a></li>
-                    <li><a href="{{ route('testimonials') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Testimonials</a></li>
-                    <li><a href="{{ route('contact') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Contact</a></li>
+                    <li><a href="#features" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Features</a></li>
+                    <li><a href="#pricing" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Pricing</a></li>
+                    <li><a href="#faq" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">FAQ</a></li>
+            
                 </ul>
             </div>
 
             <!-- Services -->
             <div>
-                <h3 class="text-white font-semibold text-lg mb-6">Our Services</h3>
+                <h3 class="text-white font-semibold text-lg mb-6">Company</h3>
                 <ul class="space-y-4">
-                    <li><a href="{{ route('services') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Residential Houses</a></li>
-                    <li><a href="{{ route('services') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Land Sales</a></li>
-                    <li><a href="{{ route('services') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Farm Properties</a></li>
-                    <li><a href="{{ route('services') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Guest House</a></li>
-                    <li><a href="{{ route('services') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Property Management</a></li>
-                    <li><a href="{{ route('properties.index') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Browse Properties</a></li>
+                    <li><a href="{{ route('login') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">login</a></li>
+                    <li><a href="{{ route('register') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Register</a></li>
+                    <li><a href="#features" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Features</a></li>
+                     
                 </ul>
+                <h4 class="text-white font-semibold mb-4">Legal</h4>
+            <ul class="space-y-2">
+                <li><a href="#" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Privacy Policy</a></li>
+                <li><a href="#" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Terms of Service</a></li>
+                <li><a href="#" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Security</a></li>
+            </ul>
             </div>
 
             <!-- Contact Info -->
