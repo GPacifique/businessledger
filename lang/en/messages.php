@@ -10,7 +10,22 @@ return [
     'Staff' => 'Staff',
     'Profile' => 'Profile',
     'Log Out' => 'Log Out',
-
+//Bills
+'Bill Number'=>'Bill Number',
+'Customer'=>'Customer',
+'Vendor'=>'Vendor',
+'Description'=>'Description',
+'Bill Date' => 'Bill Date',
+'Due Date' => 'Due Date',
+'Create Bill' => 'Create Bill',
+'Add Bill' => 'Add Bill',
+'Edit Bill' => 'Edit Bill',
+'Bill Details' => 'Bill Details',
+'Save Bill' => 'Save Bill',
+'Update Bill' => 'Update Bill',
+'Back to Bills' => 'Back to Bills',
+'All Status' => 'All Status',
+'Search by bill number or customer' => 'Search by bill number, vendor, or description',
     // Common Actions
     'Add' => 'Add',
     'Edit' => 'Edit',
@@ -26,6 +41,8 @@ return [
     'Create' => 'Create',
     'Actions' => 'Actions',
     'Net' => 'Net',
+    'Download Balance Sheet' => 'Download Balance Sheet',
+    
 
     // Income
     'Add Income' => 'Add Income',
@@ -487,6 +504,10 @@ return [
     'Average Rating' => 'Average Rating',
     'Join Our Satisfied Clients' => 'Join Our Satisfied Clients',
     'Experience the difference' => 'Experience the difference with :company. Let us help you find your perfect property.',
+'download_balance_sheet' => 'Download Balance Sheet',
+'6-Month Financial Trend' => 'Six Month Financial Trend',
+'Financial Trends' => 'Financial Trends',
+'No financial data available for the past 6 months.' => 'No financial data available for the past 6 months.',   
 
     // Auth Pages
     'Welcome Back!' => 'Welcome Back!',

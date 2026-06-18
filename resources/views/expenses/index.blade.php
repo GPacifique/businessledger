@@ -65,6 +65,19 @@
                             </a>
                         </div>
                     @else
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <form method="GET" action="{{ route('expenses.index') }}" class="flex items-center space-x-2">
+                                <input type="text" name="search" value="{{ request('search') }}" placeholder="{{ __('messages.Search by title or category') }}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-transparent transition duration-200">
+                                <button type="submit" class="px-4 py-2 bg-gradient-to-r from-rose-500 via-red-500 to-pink-500 border border-transparent rounded-lg font-semibold text-sm text-white hover:from-rose-600 hover:via-red-600 hover:to-pink-600 transition-all duration-300 shadow-lg shadow-rose-500/25 hover:shadow-xl hover:-translate-y-0.5">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    </svg>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
                         <div class="overflow-x-auto rounded-xl">
                             <table class="min-w-full">
                                 <thead class="bg-gradient-to-r from-rose-500 via-red-500 to-pink-500">

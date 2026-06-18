@@ -8,18 +8,33 @@ use Illuminate\Http\Request;
 
 class IncomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $business = auth()->user()->business;
-        $incomes = Income::where('business_id', $business->id)
-            ->with('category')
-            ->orderByDesc('date')
-            ->orderByDesc('created_at')
-            ->paginate(20);
+        $user = auth()->user();
+    $business = $user->business;
 
-        return view('incomes.index', compact('incomes'));
+    $query = Income::where('business_id', $business->id)
+        ->with('category');
+
+    // Search by title OR category
+    if ($request->filled('search')) {
+        $search = $request->search;
+
+        $query->where(function ($q) use ($search) {
+            $q->where('title', 'like', '%' . $search . '%')
+              ->orWhereHas('category', function ($cat) use ($search) {
+                  $cat->where('name', 'like', '%' . $search . '%');
+              });
+        });
     }
 
+    $incomes = $query
+        ->orderByDesc('date')
+        ->orderByDesc('created_at')
+        ->paginate(20);
+
+    return view('incomes.index', compact('incomes'));
+}
     public function create()
     {
         $business = auth()->user()->business;

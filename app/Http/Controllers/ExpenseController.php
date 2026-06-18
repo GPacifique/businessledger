@@ -8,11 +8,26 @@ use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $business = auth()->user()->business;
-        $expenses = Expense::where('business_id', $business->id)
-            ->with('category')
+
+        $query = Expense::where('business_id', $business->id)
+            ->with('category');
+
+        // Search by title OR category
+        if ($request->filled('search')) {
+            $search = $request->search;
+
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', '%' . $search . '%')
+                  ->orWhereHas('category', function ($cat) use ($search) {
+                      $cat->where('name', 'like', '%' . $search . '%');
+                  });
+            });
+        }
+
+        $expenses = $query
             ->orderByDesc('date')
             ->orderByDesc('created_at')
             ->paginate(20);

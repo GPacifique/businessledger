@@ -59,6 +59,20 @@
                             </a>
                         </div>
                     @else
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <form method="GET" action="{{ route('incomes.index') }}" class="flex items-center space-x-2">
+                                <input type="text" name="search" value="{{ request('search') }}" placeholder="{{ __('messages.Search by title or category') }}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition duration-200">
+                                <button type="submit" class="px-4 py-2 bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500 border border-transparent rounded-lg font-semibold text-sm text-white hover:from-emerald-600 hover:via-green-600 hover:to-teal-600 transition-all duration-300 shadow-lg shadow-green-500/25 hover:shadow-xl hover:-translate-y-0.5">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    </svg>
+                                </button>
+                            </form>
+                        </div>
+                    </div>  
+
+ 
                         <div class="overflow-x-auto">
                             <table class="min-w-full">
                                 <thead>
