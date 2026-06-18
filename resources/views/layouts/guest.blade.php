@@ -5,34 +5,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'BFTS') }} | @yield('title', 'Welcome')</title>
+        <title>{{ config('app.name', 'FinTrack') }} | @yield('title', 'Welcome')</title>
 
         <!-- SEO Meta Tags -->
-        <meta name="description" content="BFTS - Your trusted partner in Business management software tool in Rwanda with our expert guidance.">
-        <meta name="keywords" content="real estate, properties, land, houses, apartments, Rwanda, Kigali, investment, bfts properties">
-        <meta name="author" content="BFTS">
+        <meta name="description" content="FinTrack - Your trusted partner in Business management software tool in Rwanda with our expert guidance.">
+        <meta name="keywords" content="FinTrack, accounting software, business management, Rwanda, Kigali, financial tracking, property management, real estate, farm management, business finance, income tracking, expense tracking, profit analysis">
+        <meta name="author" content="FinTrack by SHARP TECH LEARNERS">
         <meta name="robots" content="index, follow">
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="{{ url()->current() }}">
-        <meta property="og:title" content="{{ config('app.name', 'bfts') }} - Software solution for all businesses">
+        <meta property="og:title" content="{{ config('app.name', 'FinTrack') }} - Software solution for all businesses">
         <meta property="og:description" content="use this app in accounting for all business.">
         <meta property="og:image" content="{{ asset('images/og-image.png') }}">
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
-        <meta property="og:site_name" content="BFTS">
+        <meta property="og:site_name" content="FinTrack - Software solution for all businesses">
 
         <!-- Twitter -->
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:url" content="{{ url()->current() }}">
-        <meta name="twitter:title" content="{{ config('app.name', 'BFTS') }} - Software solution for all businesses">
+        <meta name="twitter:title" content="{{ config('app.name', 'FinTrack') }} - Software solution for all businesses">
         <meta name="twitter:description" content="use this app in accounting for all business.">
         <meta name="twitter:image" content="{{ asset('images/og-image.png') }}">
 
         <!-- Favicon -->
-        <link rel="icon" type="image/jpeg" href="{{ asset('images/logo.jpg') }}">
-        <link rel="apple-touch-icon" href="{{ asset('images/logo.jpg') }}">
+        <link rel="icon" type="image/jpeg" href="{{ asset('images/logo.png') }}">
+        <link rel="apple-touch-icon" href="{{ asset('images/logo.png') }}">
 
         <!-- Theme Color -->
         <meta name="theme-color" content="#10b981">
@@ -72,10 +72,10 @@
                     <div>
                         <div class="flex items-center space-x-3 mb-4">
                             <div class="p-1 rounded-xl">
-                                <img src="{{ asset('images/logo.jpg') }}" alt="EDI Properties Logo" class="w-14 h-14 rounded-lg object-cover">
+                                <img src="{{ asset('images/logo.png') }}" alt="FinTrack Logo" class="w-14 h-14 rounded-lg object-cover">
                             </div>
                             <div>
-                                <h1 class="text-3xl font-extrabold tracking-tight">BFTS</h1>
+                                <h1 class="text-3xl font-extrabold tracking-tight">FinTrack</h1>
                                 <p class="text-emerald-200 text-sm">Accounting software</p>
                             </div>
                         </div>
@@ -147,13 +147,13 @@
                         @endphp
                         <div class="mt-6 bg-white/10 backdrop-blur-sm rounded-xl p-4 border-l-4 border-amber-400">
                             <p class="text-white/90 italic text-sm">"{{ $randomQuote }}"</p>
-                            <p class="text-emerald-300 text-xs mt-2">— Your dream property awaits 🏠</p>
+                            <p class="text-emerald-300 text-xs mt-2">— Your trusted partner in business finance management 🏠</p>
                         </div>
                     </div>
 
                     <!-- Features -->
                     <div class="space-y-6">
-                        <h2 class="text-2xl font-bold mb-6">Why Choose BFTS?</h2>
+                        <h2 class="text-2xl font-bold mb-6">Why Choose FinTrack?</h2>
 
                         <div class="space-y-4">
                             <div class="flex items-start space-x-4 bg-white/10 backdrop-blur-sm rounded-xl p-4 transform hover:scale-105 transition">
@@ -217,7 +217,7 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <p class="text-2xl font-bold">0786163963</p>
+                                    <p class="text-2xl font-bold">+250 72 9347391</p>
                                     <p class="text-emerald-200 text-sm">Available Mon-Sat</p>
                                 </div>
                             </div>
@@ -253,11 +253,11 @@
                 <div class="lg:hidden mb-8 text-center">
                     <div class="flex items-center justify-center space-x-2 mb-2">
                         <div class="p-1 rounded-xl">
-                            <img src="{{ asset('images/logo.jpg') }}" alt="EDI Properties Logo" class="w-12 h-12 rounded-lg object-cover">
+                            <img src="{{ asset('images/logo.png') }}" alt="FinTrack Logo" class="w-12 h-12 rounded-lg object-cover">
                         </div>
-                        <h1 class="text-2xl font-bold text-gray-800">EDI Properties</h1>
+                        <h1 class="text-2xl font-bold text-gray-800">FinTrack</h1>
                     </div>
-                    <p class="text-gray-500 text-sm">Real Estate & Investments</p>
+                    <p class="text-gray-500 text-sm">Accounting & Business Management Software</p>
                 </div>
 
                 <div class="w-full max-w-md">
@@ -268,7 +268,7 @@
                     <!-- Mobile Contact -->
                     <div class="lg:hidden mt-6 text-center">
                         <p class="text-gray-500 text-sm">Need help? Call</p>
-                        <a href="tel:0788309762" class="text-emerald-600 font-bold text-lg">0788 309 762</a>
+                        <a href="tel:+250729347391" class="text-emerald-600 font-bold text-lg">+250 72 9347391</a>
                     </div>
                 </div>
             </div>

@@ -9,14 +9,14 @@
 
 return [
     'company' => [
-        'name' => env('COMPANY_NAME', 'EDI Properties'),
-        'tagline' => env('COMPANY_TAGLINE', 'Premium Real Estate & Property Management'),
-        'description' => env('COMPANY_DESCRIPTION', 'Your trusted partner in land, houses, farms, and premium property investments'),
+        'name' => env('COMPANY_NAME', 'FinTrack Accounting & Finance'),
+        'tagline' => env('COMPANY_TAGLINE', 'Premium Accounting & Financial Solutions'),
+        'description' => env('COMPANY_DESCRIPTION', 'Your trusted partner in accounting and financial management. We provide expert services to help your business thrive.'),
         'phone' => env('COMPANY_PHONE', '+250 786 163 963'),
-        'email' => env('COMPANY_EMAIL', 'info@ediproperties.rw'),
+        'email' => env('COMPANY_EMAIL', 'info@fintrack.rw'),
         'location' => env('COMPANY_LOCATION', 'Kigali, Rwanda'),
         'business_hours' => env('COMPANY_HOURS', 'Monday - Saturday: 8:00 AM - 6:00 PM'),
-        'whatsapp' => env('COMPANY_WHATSAPP', '+250786163963'),
+        'whatsapp' => env('COMPANY_WHATSAPP', '+250729347391'),
     ],
 
     'colors' => [
@@ -25,14 +25,14 @@ return [
     ],
 
     'hero' => [
-        'badge' => 'Premium Real Estate Solutions',
-        'main_heading' => 'Find Your Perfect <span class="text-gradient">Property</span>',
-        'subheading' => 'Discover exceptional real estate opportunities - from luxurious houses and productive farms to prime commercial lands. Your investment starts here.',
-        'cta_primary_text' => 'Browse Properties',
-        'cta_secondary_text' => 'Schedule a Tour',
+        'badge' => 'Premium Accounting & Financial Solutions',
+        'main_heading' => 'Find Your Perfect <span class="text-gradient">Accounting Solution</span>',
+        'subheading' => 'Discover exceptional accounting and financial services - from bookkeeping to tax planning. Your business success starts here.',
+        'cta_primary_text' => 'Explore Services',
+        'cta_secondary_text' => 'Try Our Free Consultation',
         'stats' => [
-            ['value' => '500+', 'label' => 'Properties'],
-            ['value' => '1000+', 'label' => 'Happy Clients'],
+            ['value' => '500+', 'label' => 'Happy Clients'],
+            ['value' => '1000+', 'label' => 'Successful Projects'],
             ['value' => '15+', 'label' => 'Years Experience'],
         ],
     ],
@@ -40,83 +40,83 @@ return [
     'features' => [
         [
             'icon_bg' => 'bg-green-500',
-            'title' => 'Prime Land Investments',
-            'description' => 'Strategically located land parcels perfect for development or investment',
+            'title' => 'Business accounting software',
+            'description' => 'Comprehensive accounting solutions for businesses of all sizes',
         ],
         [
             'icon_bg' => 'bg-red-500',
-            'title' => 'Luxury Homes',
-            'description' => 'Modern houses with premium finishes and stunning architecture',
+            'title' => 'Income Tax Preparation',
+            'description' => 'Expert tax planning and preparation services to maximize your deductions and minimize your liability',
         ],
         [
             'icon_bg' => 'bg-blue-500',
-            'title' => 'Farm Investments',
-            'description' => 'Productive farmland and agricultural investment opportunities',
+            'title' => 'Financial Consulting',
+            'description' => 'Strategic financial advice to help your business grow and succeed',
         ],
         [
             'icon_bg' => 'bg-purple-500',
-            'title' => 'Guest House Hospitality',
-            'description' => 'Comfortable accommodation and hospitality services for your needs',
+            'title' => 'Payroll Services',
+            'description' => 'Efficient payroll processing and management services for your business',
         ],
     ],
 
     'about' => [
         'badge' => 'Why Partner With Us',
-        'heading' => 'Your Trusted Real Estate <span class="text-primary">Partner</span>',
-        'subheading' => 'With over 15 years of experience in real estate investments, we have helped thousands of clients find their perfect property and achieve their investment goals.',
+        'heading' => 'Your accounting software <span class="text-primary">Partner</span>',
+        'subheading' => 'With over 15 years of experience in financial services, we have helped thousands of clients find their perfect accounting solution and achieve their business goals.',
         'benefits' => [
             [
                 'icon' => 'shield',
-                'title' => 'Verified Properties',
-                'description' => 'All our properties are legally verified with complete documentation and transparency.',
+                'title' => 'Data Security & Transparency',
+                'description' => 'Your financial data is protected with industry-leading security measures and complete transparency.',
             ],
             [
                 'icon' => 'currency',
-                'title' => 'Best Value & Financing',
-                'description' => 'Competitive pricing with flexible payment plans and mortgage assistance options.',
+                'title' => 'Training & Resources',
+                'description' => 'Comprehensive training materials and resources to help you make informed financial decisions.',
             ],
             [
                 'icon' => 'lightning',
                 'title' => 'Expert Support',
-                'description' => 'Dedicated agents and property managers available to guide you through every step.',
+                'description' => 'Dedicated agents to guide you every step of the way.',
             ],
         ],
-        'cta_text' => 'Explore Our Properties',
+        'cta_text' => 'Explore Our Services',
     ],
 
     'services' => [
         'badge' => 'Our Services',
-        'heading' => 'Complete Real Estate <span class="text-primary">Solutions</span>',
-        'subheading' => 'From residential properties to commercial lands and hospitality ventures.',
+        'heading' => 'accounting system <span class="text-primary">Solutions</span>',
+        'subheading' => 'Comprehensive accounting services for businesses of all sizes. From bookkeeping to tax planning, we have the expertise to help your business thrive.',
         'items' => [
             [
-                'title' => 'Residential Houses',
-                'description' => 'Beautifully designed homes with modern amenities in prime neighborhoods',
+                'title' => 'financial accounting software',
+                'description' => 'Comprehensive accounting solutions for businesses of all sizes',
                 'icon_color' => 'emerald',
             ],
             [
-                'title' => 'Land Sales',
-                'description' => 'Prime commercial and residential land parcels with complete legal documentation',
+                'title' => 'Sales by category',
+                'description' => 'Detailed sales analytics and reporting by product category to optimize your inventory and marketing strategies',
                 'icon_color' => 'red',
             ],
             [
-                'title' => 'Farm Properties',
-                'description' => 'Productive agricultural lands with irrigation systems and infrastructure',
+                'title' => 'invoices and payments',
+                'description' => 'Efficient invoicing and payment processing solutions for your business',
                 'icon_color' => 'orange',
             ],
             [
-                'title' => 'Gym Facilities',
-                'description' => 'Modern fitness center with professional trainers and premium equipment',
+                'title' => 'incomes',
+                'description' => 'Comprehensive income tracking and reporting solutions for your business',
                 'icon_color' => 'blue',
             ],
             [
-                'title' => 'Guest House',
-                'description' => 'Comfortable hospitality accommodations for short and long-term stays',
+                'title' => 'expenses',
+                'description' => 'Comprehensive expense tracking and reporting solutions for your business',
                 'icon_color' => 'purple',
             ],
             [
-                'title' => 'Property Management',
-                'description' => 'Full property management services including maintenance and tenant relations',
+                'title' => 'tax planning',
+                'description' => 'Expert tax planning and preparation services to maximize your deductions and minimize your liability',
                 'icon_color' => 'cyan',
             ],
         ],
@@ -124,13 +124,13 @@ return [
 
     'process' => [
         'badge' => 'How To Get Started',
-        'heading' => 'Find Your Property in <span class="text-accent">3 Steps</span>',
-        'subheading' => 'Our streamlined process makes finding and securing your dream property simple and transparent.',
+        'heading' => 'register <span class="text-accent">3 Steps</span>',
+        'subheading' => 'streamlined process makes registering simple and transparent.',
         'steps' => [
             [
                 'number' => '1',
-                'title' => 'Browse Properties',
-                'description' => 'Explore our extensive portfolio of properties from residential to commercial and farms.',
+                'title' => 'monthly subscription',
+                'description' => 'Choose a subscription plan that fits your needs. Sign up online and get instant access to our services.',
             ],
             [
                 'number' => '2',

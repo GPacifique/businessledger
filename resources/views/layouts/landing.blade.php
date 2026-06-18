@@ -9,34 +9,34 @@
         <meta name="google-adsense-account" content="ca-pub-6462287919691866">
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6462287919691866" crossorigin="anonymous"></script>
 
-        <title>@yield('title', config('app.name', 'BFTS') . ' - Finance Business Management  Services')</title>
+        <title>@yield('title', config('app.name', 'FinTrack') . ' - Finance Business Management  Services')</title>
 
         <!-- SEO Meta Tags -->
-        <meta name="description" content="@yield('meta_description', 'BFTS - Your trusted partner in land, houses, farms, and premium property investments in Rwanda.')">
-        <meta name="keywords" content="@yield('meta_keywords', 'real estate, properties, land, houses, farms, Rwanda, Kigali, investment, edi properties, property management')">
-        <meta name="author" content="BFTS">
+        <meta name="description" content="@yield('meta_description', 'FinTrack - Accounting software in Rwanda.')">
+        <meta name="keywords" content="@yield('meta_keywords', 'FinTrack, accounting software, business management, financial tracking, property management, real estate, farm management, business finance, income tracking, expense tracking, profit analysis')">
+        <meta name="author" content="FinTrack - Your software partner in Rwanda.">
         <meta name="robots" content="index, follow">
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="{{ url()->current() }}">
-        <meta property="og:title" content="@yield('og_title', 'BFTS - Finance Business Management Services')">
-        <meta property="og:description" content="@yield('og_description', 'Your trusted partner in land, houses, farms, and premium property investments in Rwanda.')">
+        <meta property="og:title" content="@yield('og_title', 'FinTrack - Finance Business Management Services')">
+        <meta property="og:description" content="@yield('og_description', 'FinTrack - Accounting software in Rwanda.')">
         <meta property="og:image" content="{{ asset('images/og-image.png') }}">
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
-        <meta property="og:site_name" content="BFTS">
+        <meta property="og:site_name" content="FinTrack - Accounting software in Rwanda.">
 
         <!-- Twitter -->
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:url" content="{{ url()->current() }}">
-        <meta name="twitter:title" content="@yield('twitter_title', 'BFTS - Finance Business Management Services')">
-        <meta name="twitter:description" content="@yield('twitter_description', 'Your trusted partner in land, houses, farms, and premium property investments in Rwanda.')">
+        <meta name="twitter:title" content="@yield('twitter_title', 'FinTrack - Finance Business Management Services')">
+        <meta name="twitter:description" content="@yield('twitter_description', 'FinTrack - Accounting software  in Rwanda.')">
         <meta name="twitter:image" content="{{ asset('images/og-image.png') }}">
 
         <!-- Favicon -->
-        <link rel="icon" type="image/jpeg" href="{{ asset('images/logo.jpg') }}">
-        <link rel="apple-touch-icon" href="{{ asset('images/logo.jpg') }}">
+        <link rel="icon" type="image/jpeg" href="{{ asset('images/logo.png') }}">
+        <link rel="apple-touch-icon" href="{{ asset('images/logo.png') }}">
 
         <!-- Theme Color -->
         <meta name="theme-color" content="#059669">
