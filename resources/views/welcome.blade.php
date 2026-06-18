@@ -13,14 +13,20 @@
 
             <!-- Logo -->
             <a href="{{ url('/') }}" class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold">
-                    F
+                <div class="w-20 h-20 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold">
+                    <img
+                    src="{{ asset('images/logo.png') }}"
+                    alt="FinTrack"
+                    class="rounded-3xl w-full">
                 </div>
 
                 <div>
-                    <h1 class="text-xl font-bold text-indigo-600">
+                    <span class="text-xl font-bold text-gray-900">
                         {{ config('app.name', 'FinTrack') }}
-                    </h1>
+                    </span>
+                    <p class="text-sm text-gray-500 -mt-1">
+                        Smart Finance Management
+                    </p>
                 </div>
             </a>
 
