@@ -13,7 +13,7 @@
 
             <!-- Logo -->
             <a href="{{ url('/') }}" class="flex items-center gap-3">
-                <div class="w-20 h-20 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold">
+                <div class="w-20 h-20 bg-white-600 rounded-xl flex items-center justify-center text-white font-bold">
                     <img
                     src="{{ asset('images/logo.png') }}"
                     alt="FinTrack"
