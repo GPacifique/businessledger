@@ -92,7 +92,7 @@
                             <option value="">No Business Assigned</option>
                             @foreach($businesses as $business)
                                 <option value="{{ $business->id }}"
-                                    {{ old('business_id', $user->businesses->first()?->id) == $business->id ? 'selected' : '' }}>
+                                    {{ old('business_id', $user->business_id) == $business->id ? 'selected' : '' }}>
                                     {{ $business->name }}
                                 </option>
                             @endforeach
