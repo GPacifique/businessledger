@@ -62,19 +62,19 @@
             <a href="{{ route('expenses.index') ?? '#' }}" class="ft-navlink">
                 <i data-lucide="credit-card" class="w-[18px] h-[18px]"></i> Expenses
             </a>
-            <a href="{{ route('invoices.index') ?? '#' }}" class="ft-navlink">
+            <a href="{{ route('incomes.index') ?? '#' }}" class="ft-navlink">
                 <i data-lucide="file-text" class="w-[18px] h-[18px]"></i> Invoices
             </a>
             <a href="{{ route('bills.index') ?? '#' }}" class="ft-navlink">
                 <i data-lucide="file-text" class="w-[18px] h-[18px]"></i> Bills
             </a>
-            <a href="{{ route('payroll.index') ?? '#' }}" class="ft-navlink">
+            <a href="{{ route('incomes.index') ?? '#' }}" class="ft-navlink">
                 <i data-lucide="user-round" class="w-[18px] h-[18px]"></i> Payroll
             </a>
-            <a href="{{ route('budgets.index') ?? '#' }}" class="ft-navlink">
+            <a href="{{ route('incomes.index') ?? '#' }}" class="ft-navlink">
                 <i data-lucide="pie-chart" class="w-[18px] h-[18px]"></i> Budgets
             </a>
-            <a href="{{ route('banking.index') ?? '#' }}" class="ft-navlink">
+            <a href="{{ route('incomes.index') ?? '#' }}" class="ft-navlink">
                 <i data-lucide="landmark" class="w-[18px] h-[18px]"></i> Banking
             </a>
             <a href="{{ route('reports.index') ?? '#' }}" class="ft-navlink">
