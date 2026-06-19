@@ -83,7 +83,7 @@
             <a href="{{ route('incomes.index') ?? '#' }}" class="ft-navlink">
                 <i data-lucide="user-round" class="w-[18px] h-[18px]"></i> Contacts
             </a>
-            <a href="{{ route('profile') ?? '#' }}" class="ft-navlink">
+            <a href="{{ route('incomes.index') ?? '#' }}" class="ft-navlink">
                 <i data-lucide="settings" class="w-[18px] h-[18px]"></i> Settings
             </a>
         </nav>
