@@ -80,7 +80,7 @@
             <a href="{{ route('reports.index') ?? '#' }}" class="ft-navlink">
                 <i data-lucide="square-check-big" class="w-[18px] h-[18px]"></i> Reports
             </a>
-            <a href="{{ route('contacts.index') ?? '#' }}" class="ft-navlink">
+            <a href="{{ route('incomes.index') ?? '#' }}" class="ft-navlink">
                 <i data-lucide="user-round" class="w-[18px] h-[18px]"></i> Contacts
             </a>
             <a href="{{ route('settings.index') ?? '#' }}" class="ft-navlink">
