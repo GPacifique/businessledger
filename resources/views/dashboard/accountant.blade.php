@@ -56,7 +56,7 @@
             <a href="{{ route('dashboard') }}" class="ft-navlink active">
                 <i data-lucide="layout-grid" class="w-[18px] h-[18px]"></i> Dashboard
             </a>
-            <a href="{{ route('income.index') ?? '#' }}" class="ft-navlink">
+            <a href="{{ route('incomes.index') ?? '#' }}" class="ft-navlink">
                 <i data-lucide="circle-dollar-sign" class="w-[18px] h-[18px]"></i> Income
             </a>
             <a href="{{ route('expenses.index') ?? '#' }}" class="ft-navlink">
