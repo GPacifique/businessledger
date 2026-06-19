@@ -16,7 +16,7 @@
                     {{ __('messages.Download Balance Sheet') }}
                 </a>
                 <span class="px-4 py-2 text-sm bg-gradient-to-r from-emerald-400 to-green-500 text-white rounded-full font-semibold shadow-lg shadow-green-500/30">
-                    {{ __('messages.Business Admin') }}
+                    {{ __('messages.Accountant') }}
                 </span>
             </div>
         </div>
