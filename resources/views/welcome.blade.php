@@ -25,7 +25,7 @@
                         {{ config('app.name', 'FinTrack') }}
                     </span>
                     <p class="text-sm text-gray-500 -mt-1">
-                        Smart Finance Management
+                        Smart Finance Management SaaS
                     </p>
                 </div>
             </a>
@@ -95,7 +95,7 @@
 
         <div>
             <span class="inline-block bg-indigo-100 text-indigo-700 px-5 py-2 rounded-full text-sm font-semibold">
-                Cloud Finance Management
+                Cloud Finance Management Saas
             </span>
 
             <h1 class="text-5xl lg:text-6xl font-bold mt-6 leading-tight text-gray-900">

@@ -111,7 +111,6 @@
                     <ul class="space-y-2">
                         <li><a href="{{ route('login') }}" class="text-emerald-200 hover:text-white transition text-sm">Login</a></li>
                         <li><a href="{{ route('register') }}" class="text-emerald-200 hover:text-white transition text-sm">Register</a></li>
-                        <li><a href="{{ route('properties.index') }}" class="text-emerald-200 hover:text-white transition text-sm">Properties</a></li>
                         <li><a href="{{ route('about') }}" class="text-emerald-200 hover:text-white transition text-sm">About Us</a></li>
                     </ul>
                 </div>
