@@ -91,14 +91,14 @@ $navLinks=[
 ],
 
 [
-'href'=>route('income.index'),
-'label'=>'Income'
+'href'=>route('incomes.index'),
+'label'=>'Incomes'
 ],
 
 [
 'href'=>route('expenses.index'),
 'label'=>'Expenses'
-],
+],       
 
 
 [
