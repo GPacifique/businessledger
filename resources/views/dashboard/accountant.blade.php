@@ -370,11 +370,11 @@ document.addEventListener('DOMContentLoaded', function () {
     new Chart(ieCtx, {
         type: 'line',
         data: {
-            labels: @json($monthLabels ?? ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']),
+            labels: {!! json_encode($monthLabels ?? ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']) !!},
             datasets: [
                 {
                     label: 'Income',
-                    data: @json($incomeSeries ?? [40,42,46,42,55,52,55,58,62,53,48,62]).map(v => v * 1000),
+                    data: {!! json_encode($incomeSeries ?? [40,42,46,42,55,52,55,58,62,53,48,62]) !!}.map(v => v * 1000),
                     borderColor: '#3B82F6',
                     backgroundColor: ieGradientBlue,
                     fill: true,
@@ -385,7 +385,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 {
                     label: 'Expenses',
-                    data: @json($expenseSeries ?? [28,29,18,25,22,20,28,25,38,28,25,38]).map(v => v * 1000),
+                    data: {!! json_encode($expenseSeries ?? [28,29,18,25,22,20,28,25,38,28,25,38]) !!}.map(v => v * 1000),
                     borderColor: '#EF4444',
                     backgroundColor: ieGradientRed,
                     fill: true,
@@ -425,16 +425,16 @@ document.addEventListener('DOMContentLoaded', function () {
     new Chart(document.getElementById('expenseDonutChart'), {
         type: 'doughnut',
         data: {
-            labels: @json(array_column($expenseBreakdown ?? [
+            labels: {!! json_encode(array_column($expenseBreakdown ?? [
                 ['label' => 'Operations'], ['label' => 'Marketing'], ['label' => 'Salaries'], ['label' => 'Utilities'], ['label' => 'Others']
-            ], 'label')),
+            ], 'label')) !!},
             datasets: [{
-                data: @json(array_column($expenseBreakdown ?? [
+                data: {!! json_encode(array_column($expenseBreakdown ?? [
                     ['percent' => 40], ['percent' => 20], ['percent' => 20], ['percent' => 10], ['percent' => 10]
-                ], 'percent')),
-                backgroundColor: @json(array_column($expenseBreakdown ?? [
+                ], 'percent')) !!},
+                backgroundColor: {!! json_encode(array_column($expenseBreakdown ?? [
                     ['color' => '#4F46E5'], ['color' => '#16A34A'], ['color' => '#A855F7'], ['color' => '#F59E0B'], ['color' => '#EF4444']
-                ], 'color')),
+                ], 'color')) !!},
                 borderWidth: 0,
                 cutout: '72%',
             }],
@@ -450,18 +450,18 @@ document.addEventListener('DOMContentLoaded', function () {
     new Chart(document.getElementById('cashFlowChart'), {
         type: 'bar',
         data: {
-            labels: @json($cashFlowLabels ?? ['May 1-5','May 6-12','May 13-19','May 20-26','May 27-31']),
+            labels: {!! json_encode($cashFlowLabels ?? ['May 1-5','May 6-12','May 13-19','May 20-26','May 27-31']) !!},
             datasets: [
                 {
                     label: 'Cash Inflow',
-                    data: @json($cashInflow ?? [38,42,48,40,28]),
+                    data: {!! json_encode($cashInflow ?? [38,42,48,40,28]) !!},
                     backgroundColor: '#3B82F6',
                     borderRadius: 4,
                     barPercentage: 0.55,
                 },
                 {
                     label: 'Cash Outflow',
-                    data: @json($cashOutflow ?? [-8,-12,-15,-10,-9]),
+                    data: {!! json_encode($cashOutflow ?? [-8,-12,-15,-10,-9]) !!},
                     backgroundColor: '#EF4444',
                     borderRadius: 4,
                     barPercentage: 0.55,
