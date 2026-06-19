@@ -268,7 +268,7 @@
                     <!-- Mobile Contact -->
                     <div class="lg:hidden mt-6 text-center">
                         <p class="text-gray-500 text-sm">Need help? Call</p>
-                        <a href="tel:0788309762" class="text-emerald-600 font-bold text-lg">0788 309 762</a>
+                        <a href="tel:+250729347391" class="text-emerald-600 font-bold text-lg">+250 729 347 391</a>
                     </div>
                 </div>
             </div>

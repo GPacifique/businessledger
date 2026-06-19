@@ -7,11 +7,11 @@
             <div class="lg:col-span-1">
                 <a href="{{ url('/') }}" class="flex items-center space-x-3 mb-6">
                     <div class="p-1 rounded-xl">
-                        <img src="{{ asset('images/logo.jpg') }}" alt="EDI Properties Logo" class="w-12 h-12 rounded-lg object-cover">
+                        <img src="{{ asset('images/logo.jpg') }}" alt="BFTS Logo" class="w-12 h-12 rounded-lg object-cover">
                     </div>
                     <div>
-                        <span class="text-xl font-bold text-white font-display">EDI Properties</span>
-                        <p class="text-emerald-400 text-xs font-medium">Real Estate & Investments</p>
+                        <span class="text-xl font-bold text-white font-display">BFTS BY SHARPTECH LEARNERS</span>
+                        <p class="text-emerald-400 text-xs font-medium">BUSINESS FINANCES TRACKING SYSTEM</p>
                     </div>
                 </a>
                 <p class="text-gray-400 text-sm leading-relaxed mb-6">

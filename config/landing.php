@@ -9,14 +9,14 @@
 
 return [
     'company' => [
-        'name' => env('COMPANY_NAME', 'EDI Properties'),
-        'tagline' => env('COMPANY_TAGLINE', 'Premium Real Estate & Property Management'),
-        'description' => env('COMPANY_DESCRIPTION', 'Your trusted partner in land, houses, farms, and premium property investments'),
-        'phone' => env('COMPANY_PHONE', '+250 786 163 963'),
-        'email' => env('COMPANY_EMAIL', 'info@ediproperties.rw'),
+        'name' => env('COMPANY_NAME', 'BFTS BY SHARP TECH LEARNERS'),
+        'tagline' => env('COMPANY_TAGLINE', 'Business finances tracking system'),
+        'description' => env('COMPANY_DESCRIPTION', 'Your trusted partner in managing business finances with ease and efficiency.'),
+        'phone' => env('COMPANY_PHONE', '+250 729 347 391'),
+        'email' => env('COMPANY_EMAIL', 'info@bfts.sharptechlearners.com'),
         'location' => env('COMPANY_LOCATION', 'Kigali, Rwanda'),
         'business_hours' => env('COMPANY_HOURS', 'Monday - Saturday: 8:00 AM - 6:00 PM'),
-        'whatsapp' => env('COMPANY_WHATSAPP', '+250786163963'),
+        'whatsapp' => env('COMPANY_WHATSAPP', '+250729347391'),
     ],
 
     'colors' => [
@@ -25,60 +25,60 @@ return [
     ],
 
     'hero' => [
-        'badge' => 'Premium Real Estate Solutions',
-        'main_heading' => 'Find Your Perfect <span class="text-gradient">Property</span>',
-        'subheading' => 'Discover exceptional real estate opportunities - from luxurious houses and productive farms to prime commercial lands. Your investment starts here.',
-        'cta_primary_text' => 'Browse Properties',
-        'cta_secondary_text' => 'Schedule a Tour',
+        'badge' => 'track your business finances with ease',
+        'main_heading' => 'join our <span class="text-gradient">Platform</span>',
+        'subheading' => 'Streamline your financial management and gain valuable insights into your business performance.',
+        'cta_primary_text' => 'Get Started',
+        'cta_secondary_text' => 'Learn More',
         'stats' => [
-            ['value' => '500+', 'label' => 'Properties'],
-            ['value' => '1000+', 'label' => 'Happy Clients'],
-            ['value' => '15+', 'label' => 'Years Experience'],
+            ['value' => '500+', 'label' => 'Active Users'],
+            ['value' => '1000+', 'label' => 'Transactions Tracked'],
+            ['value' => '15+', 'label' => 'Years of Experience'],
         ],
     ],
 
     'features' => [
         [
             'icon_bg' => 'bg-green-500',
-            'title' => 'Prime Land Investments',
-            'description' => 'Strategically located land parcels perfect for development or investment',
+            'title' => 'Income management',
+            'description' => 'Efficiently track and manage your income streams',
         ],
         [
             'icon_bg' => 'bg-red-500',
-            'title' => 'Luxury Homes',
-            'description' => 'Modern houses with premium finishes and stunning architecture',
+            'title' => 'Expense tracking',
+            'description' => 'Monitor and control your business expenses effectively',
         ],
         [
             'icon_bg' => 'bg-blue-500',
-            'title' => 'Farm Investments',
-            'description' => 'Productive farmland and agricultural investment opportunities',
+            'title' => 'Financial reporting',
+            'description' => 'Generate comprehensive reports for informed decision-making',
         ],
         [
             'icon_bg' => 'bg-purple-500',
-            'title' => 'Guest House Hospitality',
-            'description' => 'Comfortable accommodation and hospitality services for your needs',
+            'title' => 'Payment Reminders',
+            'description' => 'Stay on top of your financial obligations with timely payment notifications',
         ],
     ],
 
     'about' => [
-        'badge' => 'Why Partner With Us',
-        'heading' => 'Your Trusted Real Estate <span class="text-primary">Partner</span>',
-        'subheading' => 'With over 15 years of experience in real estate investments, we have helped thousands of clients find their perfect property and achieve their investment goals.',
+        'badge' => 'reports and insights',
+        'heading' => 'Your Trusted Financial <span class="text-primary">Partner</span>',
+        'subheading' => 'With over 15 years of experience in financial management, we have helped thousands of clients streamline their accounting processes and achieve their financial goals.',
         'benefits' => [
             [
-                'icon' => 'shield',
-                'title' => 'Verified Properties',
-                'description' => 'All our properties are legally verified with complete documentation and transparency.',
+                'icon' => 'money',
+                'title' => 'Transparent Transactions',
+                'description' => 'Data-driven insights into your financial activities.',
             ],
             [
                 'icon' => 'currency',
-                'title' => 'Best Value & Financing',
-                'description' => 'Competitive pricing with flexible payment plans and mortgage assistance options.',
+                'title' => 'Real-Time Tracking',
+                'description' => 'Monitor your financial status as it happens.',
             ],
             [
                 'icon' => 'lightning',
-                'title' => 'Expert Support',
-                'description' => 'Dedicated agents and property managers available to guide you through every step.',
+                'title' => 'Automated Reminders',
+                'description' => 'Stay on top of your financial obligations with timely payment notifications.',
             ],
         ],
         'cta_text' => 'Explore Our Properties',
@@ -86,37 +86,37 @@ return [
 
     'services' => [
         'badge' => 'Our Services',
-        'heading' => 'Complete Real Estate <span class="text-primary">Solutions</span>',
-        'subheading' => 'From residential properties to commercial lands and hospitality ventures.',
+        'heading' => 'Complete Financial <span class="text-primary">Solutions</span>',
+        'subheading' => 'From income management to expense tracking and financial reporting.',
         'items' => [
             [
-                'title' => 'Residential Houses',
-                'description' => 'Beautifully designed homes with modern amenities in prime neighborhoods',
+                'title' => 'daily reports',
+                'description' => 'Comprehensive daily financial summaries for informed decision-making',
                 'icon_color' => 'emerald',
             ],
             [
-                'title' => 'Land Sales',
-                'description' => 'Prime commercial and residential land parcels with complete legal documentation',
+                'title' => 'weekly reports',
+                'description' => 'Comprehensive weekly financial summaries for informed decision-making',
                 'icon_color' => 'red',
             ],
             [
-                'title' => 'Farm Properties',
-                'description' => 'Productive agricultural lands with irrigation systems and infrastructure',
+                'title' => 'monthly reports',
+                'description' => 'Comprehensive monthly financial summaries for informed decision-making',
                 'icon_color' => 'orange',
             ],
             [
-                'title' => 'Gym Facilities',
-                'description' => 'Modern fitness center with professional trainers and premium equipment',
+                'title' => 'Yearly reports',
+                'description' => 'Comprehensive yearly financial summaries for informed decision-making',
                 'icon_color' => 'blue',
             ],
             [
-                'title' => 'Guest House',
-                'description' => 'Comfortable hospitality accommodations for short and long-term stays',
+                'title' => 'Payment Reminders',
+                'description' => 'Stay on top of your financial obligations with timely payment notifications',
                 'icon_color' => 'purple',
             ],
             [
-                'title' => 'Property Management',
-                'description' => 'Full property management services including maintenance and tenant relations',
+                'title' => 'sales reports',
+                'description' => 'categorized sales reports for tracking performance and trends',
                 'icon_color' => 'cyan',
             ],
         ],
@@ -124,7 +124,7 @@ return [
 
     'process' => [
         'badge' => 'How To Get Started',
-        'heading' => 'Find Your Property in <span class="text-accent">3 Steps</span>',
+        'heading' => 'register <span class="text-accent">3 Steps</span>',
         'subheading' => 'Our streamlined process makes finding and securing your dream property simple and transparent.',
         'steps' => [
             [
@@ -154,10 +154,10 @@ return [
     'testimonials' => [
         'badge' => 'Client Testimonials',
         'heading' => 'Trusted by <span class="text-primary">Satisfied Clients</span>',
-        'subheading' => 'See what our clients have to say about their property investments with EDI Properties.',
+        'subheading' => 'See what our clients have to say about their experience with BFTS BY SHARP TECH LEARNERS .',
         'items' => [
             [
-                'quote' => 'Found my dream home through EDI Properties! The process was smooth and transparent. Highly recommend!',
+                'quote' => 'Found my dream home through BFTS BY SHARP TECH LEARNERS ! The process was smooth and transparent. Highly recommend!',
                 'author' => 'Jean Muigai',
                 'role' => 'Homeowner',
                 'company' => 'Kigali Resident',
@@ -289,7 +289,7 @@ return [
 
     'cta' => [
         'heading' => 'Ready to Find Your Property?',
-        'subheading' => 'Join hundreds of satisfied clients who have found their perfect investment with EDI Properties.',
+        'subheading' => 'Join hundreds of satisfied clients who have found their perfect investment with BFTS BY SHARP TECH LEARNERS.',
         'cta_text' => 'Get Started Today',
         'benefits' => [
             'Free Property Consultation',
