@@ -24,7 +24,7 @@ return [
     'Filter' => 'Shungura',
     'Search' => 'Shakisha',
     'Submit' => 'Ohereza',
-    'Create' => 'Kurema',
+    'Create' => 'bika',
     'Actions' => 'Ibikorwa',
     'Net' => 'Ibyasigaye',
     //bill
@@ -39,9 +39,9 @@ return [
     'Bill Date' => 'Itariki ya Fagiture',
     'Due Date' => 'Itariki yo Kwishyura',   
     'Status' => 'Imiterere',
-    'Tax Rate' => 'Igipimo cya Mili',
-    'Discount' => 'Agabanyo',
-    'Subtotal' => 'Igiteranyo cy\'Ibitaramo',
+    'Tax Rate' => 'Igipimo cy\'umusoro',
+    'Discount' => 'promosiyo',
+    'Subtotal' => 'Igiteranyo',
     'Tax' => 'Umusoro',
     'Total' => 'Igiteranyo',
     'Line Items' => 'Ibigize Fagiture',
@@ -169,7 +169,7 @@ return [
     'Last Updated' => 'Byahinduwe',
 
     // Payment Methods
-    'Cash' => 'Amafaranga',
+    'Cash' => 'Kashi',
     'Bank Transfer' => 'Kohereza kuri Banki',
     'Mobile Money' => 'Mobile Money',
     'Cheque' => 'Sheki',
@@ -188,9 +188,23 @@ return [
     "You're logged in!" => "Winjiye neza!",
 
     // Dashboard
+    'Six Month Financial Trend' => 'Imiterere y\'Imari mu mezi 6',
+    'Monthly Income vs Expenses' => 'Ibyinjiye vs Ibyasohotse',
+    'Income by Category (Current Year)' => 'Ibyinjiye ku Cyiciro (Uyu Mwaka)',
+    'Expenses by Category (Current Year)' => 'Ibyasohotse ku Cyiciro (Uyu Mwaka)',
+    'Profit & Loss Summary' => 'Incamake y\'Inyungu n\'Igihombo',
+    'Well-managed businesses survive every season' => 'Ubucuruzi bucungwe neza burarokoka mu bihe byose',
+    'A goal without a plan is just a wish.' => 'Intego idafite gahunda ni inzozi gusa.',
+    // Language
+    'Language' => 'Ururimi',
+    'English' => 'Icyongereza',
+    'French' => 'Igifaransa',
+    'Kinyarwanda' => 'Ikinyarwanda',
+    'Swahili' => 'Igiswahili',
+    // Dashboard Messages
     'System Admin Dashboard' => 'Ikibaho cy\'Umuyobozi wa Sisitemu',
     'Manage all businesses and users' => 'Gucunga ubucuruzi bwose n\'abakoresha',
-    'Business Admin' => 'Umuyobozi w\'Ubucuruzi',
+    'Business Admin' => 'Umuyobozi',
     'Accountant' => 'Umubarurishamafaranga',
     'Financial Overview' => 'Incamake y\'Imari',
     'Total Businesses' => 'Ubucuruzi Bwose',
@@ -244,7 +258,7 @@ return [
     'Business Details' => 'Amakuru y\'Ubucuruzi',
     'Business Name' => 'Izina ry\'Ubucuruzi',
     'Not registered' => 'Ntabwo yanditswe',
-'Download Balance Sheet'=>'Bona Imbonerahamwe',
+'Download Balance Sheet'=>'raporo',
 '6-Month Financial Trend
 '=>'Imiterere y\'Imari mu mezi 6',
 'Monthly Income vs Expenses'=>'Ibyinjiye vs Ibyasohotse by\'Ukwezi',
