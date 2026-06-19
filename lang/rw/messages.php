@@ -188,7 +188,7 @@ return [
     "You're logged in!" => "Winjiye neza!",
 
     // Dashboard
-    'Six Month Financial Trend' => 'Imiterere y\'Imari mu mezi 6',
+    '6 Month Financial Trend' => 'Imiterere y\'Imari mu mezi 6',
     'Monthly Income vs Expenses' => 'Ibyinjiye vs Ibyasohotse',
     'Income by Category (Current Year)' => 'Ibyinjiye ku Cyiciro (Uyu Mwaka)',
     'Expenses by Category (Current Year)' => 'Ibyasohotse ku Cyiciro (Uyu Mwaka)',
