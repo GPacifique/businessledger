@@ -10,6 +10,11 @@ return [
     'Staff' => 'Staff',
     'Profile' => 'Profile',
     'Log Out' => 'Log Out',
+    'Bills' => 'Bills',
+    //Transactions
+    'Transactions' => 'Transactions',
+    'Accounts' => 'Accounts',
+    'Transaction Categories' => 'Transaction Categories',
 //Bills
 'Bill Number'=>'Bill Number',
 'Customer'=>'Customer',
@@ -41,7 +46,7 @@ return [
     'Create' => 'Create',
     'Actions' => 'Actions',
     'Net' => 'Net',
-    'Download Balance Sheet' => 'Download Balance Sheet',
+    'Download Balance Sheet' => 'Download report',
     
 
     // Income
@@ -140,7 +145,7 @@ return [
     // Dashboard
     'System Admin Dashboard' => 'System Admin Dashboard',
     'Manage all businesses and users' => 'Manage all businesses and users',
-    'Business Admin' => 'Business Admin',
+    'Business Admin' => 'Admin',
     'Accountant' => 'Accountant',
     'Financial Overview' => 'Financial Overview',
     'Total Businesses' => 'Total Businesses',
@@ -357,7 +362,7 @@ return [
     'Last Active' => 'Last Active',
 
     // Balance Sheet PDF
-    'Balance Sheet' => 'Balance Sheet',
+    'Balance Sheet' => 'Report',
     'Generated on' => 'Generated on',
     'Report Period' => 'Report Period',
     'All Time' => 'All Time',

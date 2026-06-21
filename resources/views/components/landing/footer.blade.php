@@ -7,15 +7,23 @@
             <div class="lg:col-span-1">
                 <a href="{{ url('/') }}" class="flex items-center space-x-3 mb-6">
                     <div class="p-1 rounded-xl">
+<<<<<<< HEAD
                         <img src="{{ asset('images/logo.jpg') }}" alt="BFTS Logo" class="w-12 h-12 rounded-lg object-cover">
                     </div>
                     <div>
                         <span class="text-xl font-bold text-white font-display">BFTS BY SHARPTECH LEARNERS</span>
                         <p class="text-emerald-400 text-xs font-medium">BUSINESS FINANCES TRACKING SYSTEM</p>
+=======
+                        <img src="{{ asset('images/logo.png') }}" alt="FinTrack Logo" class="w-20 h-2o rounded-lg object-cover">
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold text-white font-display">FinTrack</span>
+                        <p class="text-emerald-400 text-xs font-medium">Smart Finance Management Saas </p>
+>>>>>>> c8b632c30de81a504d80a640af39cd472bf6fccd
                     </div>
                 </a>
                 <p class="text-gray-400 text-sm leading-relaxed mb-6">
-                    {{ config('landing.company.description', 'Your trusted partner in land, houses, farms, and premium property investments.') }}
+                    {{ config('landing.company.description', 'FinTrack - Accounting software in Rwanda.') }}
                 </p>
                 <!-- Social Links -->
                 <div class="flex items-center space-x-4">
@@ -39,28 +47,30 @@
 
             <!-- Quick Links -->
             <div>
-                <h3 class="text-white font-semibold text-lg mb-6">Quick Links</h3>
+                <h3 class="text-white font-semibold text-lg mb-6">Product</h3>
                 <ul class="space-y-4">
-                    <li><a href="{{ route('home') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Home</a></li>
-                    <li><a href="{{ route('about') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">About Us</a></li>
-                    <li><a href="{{ route('services') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Services</a></li>
-                    <li><a href="{{ route('properties.index') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Properties</a></li>
-                    <li><a href="{{ route('testimonials') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Testimonials</a></li>
-                    <li><a href="{{ route('contact') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Contact</a></li>
+                    <li><a href="#features" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Features</a></li>
+                    <li><a href="#pricing" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Pricing</a></li>
+                    <li><a href="#faq" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">FAQ</a></li>
+            
                 </ul>
             </div>
 
             <!-- Services -->
             <div>
-                <h3 class="text-white font-semibold text-lg mb-6">Our Services</h3>
+                <h3 class="text-white font-semibold text-lg mb-6">Company</h3>
                 <ul class="space-y-4">
-                    <li><a href="{{ route('services') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Residential Houses</a></li>
-                    <li><a href="{{ route('services') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Land Sales</a></li>
-                    <li><a href="{{ route('services') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Farm Properties</a></li>
-                    <li><a href="{{ route('services') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Guest House</a></li>
-                    <li><a href="{{ route('services') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Property Management</a></li>
-                    <li><a href="{{ route('properties.index') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Browse Properties</a></li>
+                    <li><a href="{{ route('login') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">login</a></li>
+                    <li><a href="{{ route('register') }}" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Register</a></li>
+                    <li><a href="#features" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Features</a></li>
+                     
                 </ul>
+                <h4 class="text-white font-semibold mb-4">Legal</h4>
+            <ul class="space-y-2">
+                <li><a href="#" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Privacy Policy</a></li>
+                <li><a href="#" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Terms of Service</a></li>
+                <li><a href="#" class="text-gray-400 hover:text-emerald-400 transition-colors duration-200">Security</a></li>
+            </ul>
             </div>
 
             <!-- Contact Info -->

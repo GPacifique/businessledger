@@ -5,34 +5,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'BFTS') }} | @yield('title', 'Dashboard')</title>
+        <title>{{ config('app.name', 'FinTrack') }} | @yield('title', 'Dashboard')</title>
 
         <!-- SEO Meta Tags -->
-        <meta name="description" content="bfts business management system-track incomes,expenses and profits||Management Solutions in Rwanda.">
-        <meta name="keywords" content="bfts business management system-track incomes,expenses and profits,real estate, properties, land, houses, farms, Rwanda, Kigali, investment, bfts properties, property management">
-        <meta name="author" content="bfts Properties & Investments">
+        <meta name="description" content="FinTrack - Accounting software to track incomes,expenses and profits||Management Solutions in Rwanda.">
+        <meta name="keywords" content="FinTrack track incomes,expenses and profits, Rwanda, Kigali, accounting software, business management, financial tracking, property management, real estate, farm management, business finance, income tracking, expense tracking, profit analysis">
+        <meta name="author" content="FinTrack by SHARP TECH LEARNERS">
         <meta name="robots" content="index, follow">
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="{{ url()->current() }}">
-        <meta property="og:title" content="{{ config('app.name', 'bfts business management system-track incomes,expenses and profits') }} - Real Estate & Property Management">
-        <meta property="og:description" content="Your trusted partner in bfts business management system-track incomes,expenses and profits in Rwanda.">
+        <meta property="og:title" content="{{ config('app.name', 'FinTrack business management system-track incomes,expenses and profits') }} - Real Estate & Property Management">
+        <meta property="og:description" content="Your trusted partner in FinTrack business management system-track incomes,expenses and profits in Rwanda.">
         <meta property="og:image" content="{{ asset('images/og-image.png') }}">
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
-        <meta property="og:site_name" content="bfts Properties & Investments">
+        <meta property="og:site_name" content="FinTrack accounting Software - Your trusted partner in business finance management">
 
         <!-- Twitter -->
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:url" content="{{ url()->current() }}">
-        <meta name="twitter:title" content="{{ config('app.name', 'bfts business management system-track incomes,expenses and profits') }} - Real Estate & Property Management">
-        <meta name="twitter:description" content="bfts business management system-track incomes,expenses and profits.Your trusted partner in land, houses, farms, and premium property investments in Rwanda.">
+        <meta name="twitter:title" content="{{ config('app.name', 'FinTrack business management system-track incomes,expenses and profits') }} - Real Estate & Property Management">
+        <meta name="twitter:description" content="FinTrack business management system-track incomes,expenses and profits.Your trusted partner in land, houses, farms, and premium property investments in Rwanda.">
         <meta name="twitter:image" content="{{ asset('images/og-image.png') }}">
 
         <!-- Favicon -->
-        <link rel="icon" type="image/jpeg" href="{{ asset('images/logo.jpg') }}">
-        <link rel="apple-touch-icon" href="{{ asset('images/logo.jpg') }}">
+        <link rel="icon" type="image/jpeg" href="{{ asset('images/logo.png') }}">
+        <link rel="apple-touch-icon" href="{{ asset('images/logo.png') }}">
 
         <!-- Theme Color -->
         <meta name="theme-color" content="#6366f1">

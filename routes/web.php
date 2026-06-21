@@ -20,7 +20,23 @@ use App\Http\Controllers\BillController;
 use App\Models\ContactSubmission;
 use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\TransactionCategoryController;
+Route::resource(
+    'transactions',
+    TransactionController::class
+);
 
+Route::resource(
+    'accounts',
+    AccountController::class
+);
+
+Route::resource(
+    'transaction-categories',
+    TransactionCategoryController::class
+);
 // Language switch route
 Route::get('language/{locale}', [LanguageController::class, 'switch'])->name('language.switch');
 

@@ -6,7 +6,11 @@
             </svg>
         </div>
         <h2 class="text-2xl font-bold bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">Create Account</h2>
+<<<<<<< HEAD
         <p class="text-gray-500 mt-1">Join BFTS BY SHARPTECH LEARNERS today</p>
+=======
+        <p class="text-gray-500 mt-1">Join {{ config('app.name') }} today</p>
+>>>>>>> c8b632c30de81a504d80a640af39cd472bf6fccd
     </div>
 
     <form method="POST" action="{{ route('register') }}">
