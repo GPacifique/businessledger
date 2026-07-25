@@ -268,7 +268,11 @@
                     <!-- Mobile Contact -->
                     <div class="lg:hidden mt-6 text-center">
                         <p class="text-gray-500 text-sm">Need help? Call</p>
+<<<<<<< HEAD
+                        <a href="tel:+250729347391" class="text-emerald-600 font-bold text-lg">+250 729 347 391</a>
+=======
                         <a href="tel:+250729347391" class="text-emerald-600 font-bold text-lg">+250 72 9347391</a>
+>>>>>>> c8b632c30de81a504d80a640af39cd472bf6fccd
                     </div>
                 </div>
             </div>

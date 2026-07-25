@@ -7,11 +7,19 @@
             <div class="lg:col-span-1">
                 <a href="{{ url('/') }}" class="flex items-center space-x-3 mb-6">
                     <div class="p-1 rounded-xl">
+<<<<<<< HEAD
+                        <img src="{{ asset('images/logo.jpg') }}" alt="BFTS Logo" class="w-12 h-12 rounded-lg object-cover">
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold text-white font-display">BFTS BY SHARPTECH LEARNERS</span>
+                        <p class="text-emerald-400 text-xs font-medium">BUSINESS FINANCES TRACKING SYSTEM</p>
+=======
                         <img src="{{ asset('images/logo.png') }}" alt="FinTrack Logo" class="w-20 h-2o rounded-lg object-cover">
                     </div>
                     <div>
                         <span class="text-xl font-bold text-white font-display">FinTrack</span>
                         <p class="text-emerald-400 text-xs font-medium">Smart Finance Management Saas </p>
+>>>>>>> c8b632c30de81a504d80a640af39cd472bf6fccd
                     </div>
                 </a>
                 <p class="text-gray-400 text-sm leading-relaxed mb-6">
