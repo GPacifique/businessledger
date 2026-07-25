@@ -208,6 +208,8 @@ return [
     'Swahili' => 'Swahili',
 
     // Dashboard Messages
+    'No bills found'=>'No bills found',
+    'Get started by creating your first bill.'=>'Get started by creating your first bill.',
     'Welcome back!' => 'Welcome back!',
     "Here's what's happening with your business today." => "Here's what's happening with your business today.",
 
